@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+        <link rel="stylesheet" href="../resources/css/ui-lightness/theme.css" />
+        <link rel="stylesheet" href="../resources/css/inputtext/inputtext.css" />
+        <link rel="stylesheet" href="../resources/css/inputtextarea/inputtextarea.css" />
+        <link rel="stylesheet" href="../resources/css/autocomplete/autocomplete.css" />
+        <link rel="stylesheet" href="../resources/demo/demo.css" />
+        <script type="text/javascript" src="../resources/js/jquery.js"></script>
+        <script type="text/javascript" src="../resources/js/jquery-ui.js"></script>    
+        <script type="text/javascript" src="../resources/plugins/rangyinput.js"></script>
+        <script type="text/javascript" src="../resources/plugins/cursorposition.js"></script>
+        <script type="text/javascript" src="../resources/js/core/core.js"></script>
+        <script type="text/javascript" src="../resources/js/inputtextarea/inputtextarea.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('#basic').inputtextarea();
+                $('#resize').inputtextarea({autoResize:true});
+                $('#maxlength').inputtextarea({maxlength:10});
+                $('#counter').inputtextarea({counter:'display', counterTemplate:'{0} characters remaining.', maxlength:10});
+                $('#ac').inputtextarea(
+                    {
+                        autoComplete:true
+                        ,completeSource:function(request, response) {
+                            $.ajax({
+                                type: "GET",
+                                url: '../autocomplete',
+                                data: {query: request.query},
+                                dataType: "json",
+                                context: this,
+                                success: function(data) {
+                                    response.call(this, data);
+                                }
+                            });
+                        }
+                    });
+            });
+        </script>
+    </head>
+    
+    <body>
+
+        Default
+        <textarea id="basic" rows="5" cols="30"></textarea>
+        
+        <br /><br />
+        
+        AutoResize
+        <textarea id="resize" rows="5" cols="30"></textarea>
+        
+        <br /><br />
+
+        Maxlength with Remaining Chars
+        <textarea id="counter" rows="5" cols="30"></textarea>
+        <span id="display"></span>
+        
+        <br /><br />
+        
+        AutoComplete
+        <textarea id="ac" rows="5" cols="30"></textarea>
+        
+    </body>
+</html>

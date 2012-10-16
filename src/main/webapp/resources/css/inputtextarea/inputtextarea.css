@@ -1,0 +1,4 @@
+.ui-inputtextarea-resizable {
+    overflow: hidden;
+    resize:none;
+}
