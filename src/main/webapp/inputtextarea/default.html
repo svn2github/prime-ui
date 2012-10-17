@@ -23,6 +23,7 @@
                 $('#ac').inputtextarea(
                     {
                         autoComplete:true
+                        ,scrollHeight:150
                         ,completeSource:function(request, response) {
                             $.ajax({
                                 type: "GET",
