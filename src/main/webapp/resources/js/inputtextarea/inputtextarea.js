@@ -163,12 +163,12 @@ PrimeFaces.widget.InputTextarea = PrimeFaces.widget.BaseWidget.extend({
                         if(prev.length == 1) {
                             highlightedItem.removeClass('ui-state-highlight');
                             prev.addClass('ui-state-highlight');
+                            
+                            if(_self.cfg.scrollHeight) {
+                                PrimeFaces.scrollInView(_self.panel, prev);
+                            }
                         }
                         
-                        if(_self.cfg.scrollHeight) {
-                            PrimeFaces.scrollInView(_self.panel, prev);
-                        }
-
                         e.preventDefault();
                     }
                     else {
@@ -185,10 +185,10 @@ PrimeFaces.widget.InputTextarea = PrimeFaces.widget.BaseWidget.extend({
                         if(next.length == 1) {
                             highlightedItem.removeClass('ui-state-highlight');
                             next.addClass('ui-state-highlight');
-                        }
-                        
-                        if(_self.cfg.scrollHeight) {
-                            PrimeFaces.scrollInView(_self.panel, next);
+                            
+                            if(_self.cfg.scrollHeight) {
+                                PrimeFaces.scrollInView(_self.panel, next);
+                            }
                         }
 
                         e.preventDefault();
