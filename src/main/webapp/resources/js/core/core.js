@@ -64,9 +64,9 @@
 })();
 
 /**
- * PrimeFaces Object 
+ * PUI Object 
  */
-PrimeFaces = {
+PUI = {
   
   widget: {}
   

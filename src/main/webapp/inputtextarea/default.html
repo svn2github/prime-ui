@@ -9,19 +9,20 @@
         <link rel="stylesheet" href="../resources/css/autocomplete/autocomplete.css" />
         <link rel="stylesheet" href="../resources/demo/demo.css" />
         <script type="text/javascript" src="../resources/js/jquery.js"></script>
-        <script type="text/javascript" src="../resources/js/jquery-ui.js"></script>    
+        <script type="text/javascript" src="../resources/js/jquery-ui.js"></script> 
         <script type="text/javascript" src="../resources/plugins/rangyinput.js"></script>
         <script type="text/javascript" src="../resources/plugins/cursorposition.js"></script>
-        <script type="text/javascript" src="../resources/js/core/core.js"></script>
+        <script type="text/javascript" src="../resources/js/inputtext/inputtext.js"></script>
         <script type="text/javascript" src="../resources/js/inputtextarea/inputtextarea.js"></script>
         <script type="text/javascript">
             $(function() {
                 $('#basic').inputtextarea();
+                
                 $('#resize').inputtextarea({autoResize:true});
-                $('#maxlength').inputtextarea({maxlength:10});
-                $('#counter').inputtextarea({counter:'display', counterTemplate:'{0} characters remaining.', maxlength:10});
-                $('#ac').inputtextarea(
-                    {
+                
+                $('#counter').inputtextarea({counter:$('#display'), counterTemplate:'{0} characters remaining.', maxlength:10});
+                
+                $('#ac').inputtextarea({
                         autoComplete:true
                         ,scrollHeight:150
                         ,completeSource:function(request, response) {
