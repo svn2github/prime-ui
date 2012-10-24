@@ -1,265 +1,211 @@
 /**
- * PrimeFaces Spinner Widget
+ * PrimeUI Spinner widget
  */
-PrimeFaces.widget.Spinner = PrimeFaces.widget.BaseWidget.extend({
-    
-    init: function(cfg) {
-        this._super(cfg);
-        
-        if(!this.jq.hasClass('ui-spinner')) {
-            this.enhanceMarkup();
-        }
-        
-        this.input = this.jq.children('.ui-spinner-input');
-        this.upButton = this.jq.children('a.ui-spinner-up');
-        this.downButton = this.jq.children('a.ui-spinner-down');
+$(function() {
 
-        //init value from input
-        this.initValue();
-
-        //aria
-        this.addARIA();
-
-        if(this.input.prop('disabled')||this.input.prop('readonly')) {
-            return;
-        }
-
-        this.bindEvents();
-        
-        //pfs metadata
-        this.input.data(PrimeFaces.CLIENT_ID_DATA, this.id);
-
-        PrimeFaces.enhanceInput(this.input);
-    },
-    
-    bindEvents: function() {
-        var _self = this;
-
-        //visuals for spinner buttons
-        this.jq.children('.ui-spinner-button')
-            .mouseover(function() {
-                $(this).addClass('ui-state-hover');
-            }).mouseout(function() {
-                $(this).removeClass('ui-state-hover ui-state-active');
-
-                if(_self.timer) {
-                    clearInterval(_self.timer);
-                }
-            }).mouseup(function() {
-                clearInterval(_self.timer);
-                $(this).removeClass('ui-state-active').addClass('ui-state-hover');
-            }).mousedown(function(e) {
-                var element = $(this),
-                dir = element.hasClass('ui-spinner-up') ? 1 : -1;
-
-                element.removeClass('ui-state-hover').addClass('ui-state-active');
-                
-                if(_self.input.is(':not(:focus)')) {
-                    _self.input.focus();
-                }
-
-                _self.repeat(null, dir);
-
-                //keep focused
-                e.preventDefault();
-        });
-
-        this.input.keydown(function (e) {        
-            var keyCode = $.ui.keyCode;
-            
-            switch(e.which) {            
-                case keyCode.UP:
-                    _self.spin(_self.cfg.step);
-                break;
-
-                case keyCode.DOWN:
-                    _self.spin(-1 * _self.cfg.step);
-                break;
-
-                default:
-                    //do nothing
-                break;
-            }
-        });
-
-        
-        this.input.keyup(function () { 
-            //update value from manual user input
-            _self.updateValue();
-        })
-        .blur(function () { 
-            //format value onblur
-            _self.format();
-        })
-        .focus(function () {
-            //remove formatting
-            _self.input.val(_self.value);
-        });
-        
-        //mousewheel
-        this.input.bind('mousewheel', function(event, delta) {
-            if(_self.input.is(':focus')) {
-                if(delta > 0)
-                    _self.spin(_self.cfg.step);
-                else
-                    _self.spin(-1 * _self.cfg.step);
-                
-                return false;
-            }
-        });
-
-        //client behaviors
-        if(this.cfg.behaviors) {
-            PrimeFaces.attachBehaviors(this.input, this.cfg.behaviors);
-        }
-    },
-    
-    repeat: function(interval, dir) {
-        var _self = this,
-        i = interval || 500;
-
-        clearTimeout(this.timer);
-        this.timer = setTimeout(function() {
-            _self.repeat(40, dir);
-        }, i);
-
-        this.spin(this.cfg.step * dir);
-    },
-    
-    spin: function(step) {
-        var newValue = this.value + step;
-
-        if(this.cfg.min != undefined && newValue < this.cfg.min) {
-            newValue = this.cfg.min;
-        }
-
-        if(this.cfg.max != undefined && newValue > this.cfg.max) {
-            newValue = this.cfg.max;
-        }
-
-        this.input.val(newValue);
-        this.value = newValue;
-        this.input.attr('aria-valuenow', newValue);
-
-        this.input.change();
-    },
-    
-    /**
-     * Parses value on keyup
-     */
-    updateValue: function() {
-        var value = this.input.val();
-
-        if(value == '') {
-            if(this.cfg.min != undefined)
-                this.value = this.cfg.min;
-            else
-                this.value = 0;
-        }
-        else {
-            if(this.cfg.step)
-                value = parseFloat(value);
-            else
-                value = parseInt(value);
-            
-            if(!isNaN(value)) {
-                this.value = value;
-            }
-        }
-    },
-    
-    /**
-     * Parses value on initial load
-     */
-    initValue: function() {
-        var value = this.input.val();
-
-        if(value == '') {
-            if(this.cfg.min != undefined)
-                this.value = this.cfg.min;
-            else
-                this.value = 0;
-        }
-        else {
-            if(this.cfg.prefix)
-                value = value.split(this.cfg.prefix)[1];
-
-            if(this.cfg.suffix)
-                value = value.split(this.cfg.suffix)[0];
-
-            if(this.cfg.step)
-                this.value = parseFloat(value);
-            else
-                this.value = parseInt(value);
-        }
-    },
-     
-    format: function() {
-        var value = this.value;
-
-        if(this.cfg.prefix)
-            value = this.cfg.prefix + value;
-
-        if(this.cfg.suffix)
-            value = value + this.cfg.suffix;
-        
-        this.input.val(value);
-    },
-    
-    addARIA: function() {
-        this.input.attr('role', 'spinner');
-        this.input.attr('aria-multiline', false);
-        this.input.attr('aria-valuenow', this.value);
-
-        if(this.cfg.min != undefined) 
-            this.input.attr('aria-valuemin', this.cfg.min);
-
-        if(this.cfg.max != undefined) 
-            this.input.attr('aria-valuemax', this.cfg.max);
-
-        if(this.input.prop('disabled'))
-            this.input.attr('aria-disabled', true);
-
-        if(this.input.prop('readonly'))
-            this.input.attr('aria-readonly', true);
-    },
-    
-    enhanceMarkup: function() {
-        var input = this.jq.children('input');
-        
-        this.jq.addClass('ui-spinner ui-widget ui-corner-all');
-        input.addClass('ui-spinner-input');
-        
-        if(input.prop('disabled')) {
-            this.jq.addClass('ui-state-disabled');
-        }
-        
-        this.jq.append('<a class="ui-spinner-button ui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default ui-button-text-only"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-n"></span></span></a><a class="ui-spinner-button ui-spinner-down ui-corner-br ui-button ui-widget ui-state-default ui-button-text-only"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-s"></span></span></a>');
-    }
-    
-});
-
-/**
- * jQuery Plugin for Spinner Widget
- */
-(function( $ ) {
-  
-  $.fn.spinner = function(options) {
-      
-        var cfg = $.extend({
+    $.widget("primeui.spinner", {
+       
+        options: {
             step: 1.0
-        }, options);
+        },
+        
+        _create: function() {
+            var input = this.element,
+            disabled = input.prop('disabled');
             
-      return this.each(function() {
-          var input = $(this),
-          id = input.attr('id');
-          
-          input.wrap('<span id="' + id + '"/>').removeAttr('id');
-         
-         cfg.id = id;
-         
-         new PrimeFaces.widget.Spinner(cfg);
-      });
-  };
-  
-})(jQuery);
+            input.inputtext().addClass('ui-spinner-input').wrap('<span class="ui-spinner ui-widget ui-corner-all" />');
+            this.wrapper = input.parent();
+            this.wrapper.append('<a class="ui-spinner-button ui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default ui-button-text-only"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-n"></span></span></a><a class="ui-spinner-button ui-spinner-down ui-corner-br ui-button ui-widget ui-state-default ui-button-text-only"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-s"></span></span></a>');
+            this.upButton = this.wrapper.children('a.ui-spinner-up');
+            this.downButton = this.wrapper.children('a.ui-spinner-down');
+            
+            this._initValue();
+    
+            if(!disabled&&!input.prop('readonly')) {
+                this._bindEvents();
+            }
+            
+            if(disabled) {
+                this.wrapper.addClass('ui-state-disabled');
+            }
+
+            //aria
+            input.attr({
+                'role': 'spinner'
+                ,'aria-multiline': false
+                ,'aria-valuenow': this.value
+            });
+            
+            if(this.options.min != undefined) 
+                input.attr('aria-valuemin', this.options.min);
+
+            if(this.options.max != undefined) 
+                input.attr('aria-valuemax', this.options.max);
+
+            if(input.prop('disabled'))
+                input.attr('aria-disabled', true);
+
+            if(input.prop('readonly'))
+                input.attr('aria-readonly', true);
+        },
+        
+
+        _bindEvents: function() {
+            var $this = this;
+            
+            //visuals for spinner buttons
+            this.wrapper.children('.ui-spinner-button')
+                .mouseover(function() {
+                    $(this).addClass('ui-state-hover');
+                }).mouseout(function() {
+                    $(this).removeClass('ui-state-hover ui-state-active');
+
+                    if($this.timer) {
+                        clearInterval($this.timer);
+                    }
+                }).mouseup(function() {
+                    clearInterval($this.timer);
+                    $(this).removeClass('ui-state-active').addClass('ui-state-hover');
+                }).mousedown(function(e) {
+                    var element = $(this),
+                    dir = element.hasClass('ui-spinner-up') ? 1 : -1;
+
+                    element.removeClass('ui-state-hover').addClass('ui-state-active');
+
+                    if($this.element.is(':not(:focus)')) {
+                        $this.element.focus();
+                    }
+
+                    $this._repeat(null, dir);
+
+                    //keep focused
+                    e.preventDefault();
+            });
+
+            this.element.keydown(function (e) {        
+                var keyCode = $.ui.keyCode;
+
+                switch(e.which) {            
+                    case keyCode.UP:
+                        $this._spin($this.options.step);
+                    break;
+
+                    case keyCode.DOWN:
+                        $this._spin(-1 * $this.options.step);
+                    break;
+
+                    default:
+                        //do nothing
+                    break;
+                }
+            })
+            .keyup(function () { 
+                $this._updateValue();
+            })
+            .blur(function () { 
+                $this._format();
+            })
+            .focus(function () {
+                //remove formatting
+                $this.element.val($this.value);
+            });
+
+            //mousewheel
+            this.element.bind('mousewheel', function(event, delta) {
+                if($this.element.is(':focus')) {
+                    if(delta > 0)
+                        $this._spin($this.options.step);
+                    else
+                        $this._spin(-1 * $this.options.step);
+
+                    return false;
+                }
+            });
+        },
+
+        _repeat: function(interval, dir) {
+            var $this = this,
+            i = interval || 500;
+
+            clearTimeout(this.timer);
+            this.timer = setTimeout(function() {
+                $this._repeat(40, dir);
+            }, i);
+
+            this._spin(this.options.step * dir);
+        },
+
+        _spin: function(step) {
+            var newValue = this.value + step;
+
+            if(this.options.min != undefined && newValue < this.options.min) {
+                newValue = this.cfg.min;
+            }
+
+            if(this.options.max != undefined && newValue > this.options.max) {
+                newValue = this.cfg.max;
+            }
+
+            this.element.val(newValue).attr('aria-valuenow', newValue);
+            this.value = newValue;
+
+            this.element.trigger('change');
+        },
+
+        _updateValue: function() {
+            var value = this.element.val();
+
+            if(value == '') {
+                if(this.options.min != undefined)
+                    this.value = this.options.min;
+                else
+                    this.value = 0;
+            }
+            else {
+                if(this.options.step)
+                    value = parseFloat(value);
+                else
+                    value = parseInt(value);
+
+                if(!isNaN(value)) {
+                    this.value = value;
+                }
+            }
+        },
+
+        _initValue: function() {
+            var value = this.element.val();
+
+            if(value == '') {
+                if(this.options.min != undefined)
+                    this.value = this.options.min;
+                else
+                    this.value = 0;
+            }
+            else {
+                if(this.options.prefix)
+                    value = value.split(this.options.prefix)[1];
+
+                if(this.options.suffix)
+                    value = value.split(this.options.suffix)[0];
+
+                if(this.options.step)
+                    this.value = parseFloat(value);
+                else
+                    this.value = parseInt(value);
+            }
+        },
+
+        _format: function() {
+            var value = this.value;
+
+            if(this.options.prefix)
+                value = this.options.prefix + value;
+
+            if(this.options.suffix)
+                value = value + this.options.suffix;
+
+            this.element.val(value);
+        }
+    });
+});
