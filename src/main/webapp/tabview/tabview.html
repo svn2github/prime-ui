@@ -8,14 +8,14 @@
         <link rel="stylesheet" href="../resources/demo/demo.css" />
         <script type="text/javascript" src="../resources/js/jquery.js"></script>
         <script type="text/javascript" src="../resources/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="../resources/js/core/core.js"></script>
         <script type="text/javascript" src="../resources/js/tabview/tabview.js"></script>
         <script type="text/javascript">
             $(function() {
                 $('#default').tabview();
                 
                 $('#dynamic').tabview({
-                    onTabChange: function(index) {
+                    change: function(event, index) {
+                        alert(index);
                         $.ajax({
                             type: "GET",
                             url: '../tabcontent',
@@ -23,7 +23,7 @@
                             dataType: "html",
                             context: this,
                             success: function(data) {
-                                this.panelContainer.children().eq(index).html(data);
+                                $(this).children('div.ui-tabs-panels').children().eq(index).html(data);
                             }
                         });
                     }
