@@ -11,11 +11,12 @@
         <script type="text/javascript" src="../resources/js/tabview/tabview.js"></script>
         <script type="text/javascript">
             $(function() {
-                $('#default').tabview();
+               
+                 $('#default').tabview();
                 
                 $('#dynamic').tabview({
                     change: function(event, index) {
-                        alert(index);
+                       
                         $.ajax({
                             type: "GET",
                             url: '../tabcontent',
@@ -41,7 +42,6 @@
                 $('#left').tabview({
                     orientation: 'left'
                 });
-                
             });
         </script>
     </head>
