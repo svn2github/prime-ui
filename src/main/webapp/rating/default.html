@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="../resources/css/rating/rating.css" />
         <link rel="stylesheet" href="../resources/demo/demo.css" />
         <script type="text/javascript" src="../resources/js/jquery.js"></script>
-        <script type="text/javascript" src="../resources/js/core/core.js"></script>
+        <script type="text/javascript" src="../resources/js/jquery-ui.js"></script>
         <script type="text/javascript" src="../resources/js/rating/rating.js"></script>
         <script type="text/javascript">
             $(function() {
@@ -15,15 +15,15 @@
                 
                 $('#default').rating();
                 
-                $('#callback').rating({onRate: function(value) { 
+                $('#callback').rating({rate: function(value) { 
                         alert(value);
                 }});
                 
                 $('#nocancel').rating({cancel:false});
                 
-                $('#readonly').rating({readonly:true,cancel:false});
+                $('#readonly').rating({readonly:true, cancel:false});
                 
-                $('#disabled').rating({disabled:true,cancel:false});
+                $('#disabled').rating({disabled:true, cancel:false});
             });
         </script>
     </head>
