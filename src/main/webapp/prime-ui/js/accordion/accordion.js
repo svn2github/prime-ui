@@ -18,7 +18,7 @@ $(function() {
             var $this = this;
             this.element.addClass('ui-accordion ui-widget ui-helper-reset');
             
-            this.element.children('h3').addClass('ui-accordion-header ui-helper-reset ui-state-default').each(function(i) {
+            this.element.children('h3').addClass('ui-accordion-header ui-helper-reset ui-state-default').each(function(i) {
                 var header = $(this),
                 title = header.html(),
                 headerClass = (i == $this.options.activeIndex) ? 'ui-state-active ui-corner-top' : 'ui-corner-all',

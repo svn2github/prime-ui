@@ -9,8 +9,12 @@
  
     <fileSets>
         <fileSet>
-            <directory>${basedir}/src/main/webapp/primeui</directory>
-            <outputDirectory>/</outputDirectory>
+            <directory>${basedir}/src/main/webapp/prime-ui</directory>
+            <outputDirectory>/uncompressed</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}/prime-ui</directory>
+            <outputDirectory>/compressed</outputDirectory>
         </fileSet>
     </fileSets>
     

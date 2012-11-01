@@ -5,7 +5,7 @@
     <groupId>org.primefaces</groupId>
     <artifactId>prime-ui</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>prime-ui</name>
     <url>http://maven.apache.org</url>
@@ -26,6 +26,94 @@
                         <contextPath>/prime-ui</contextPath>
                     </webAppConfig>
                 </configuration>
+            </plugin>
+            
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>yuicompressor-maven-plugin</artifactId>
+                <version>1.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compress</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirectory>${basedir}/src/main/webapp/prime-ui</sourceDirectory>
+                            <outputDirectory>${project.build.directory}/prime-ui/uncompressed</outputDirectory>
+                            <nosuffix>true</nosuffix>
+                            <insertNewLine>true</insertNewLine>
+                            <excludes>
+                                <exclude>**/*.js</exclude>
+                                <exclude>**/*.css</exclude>
+                            </excludes>
+                            <aggregations>
+                                <aggregation>
+                                    <output>${project.build.directory}/prime-ui/uncompressed/prime-ui-${project.version}.js</output>
+                                    <includes>
+                                        <include>${basedir}/prime-ui/js/accordion/accordion.js</include>
+                                        <include>${basedir}/prime-ui/js/inputtext/inputtext.js</include>
+                                        <include>${basedir}/prime-ui/js/inputtextarea/inputtextarea.js</include>
+                                        <include>${basedir}/prime-ui/js/rating/rating.js</include>
+                                        <include>${basedir}/prime-ui/js/spinner/spinner.js</include>
+                                        <include>${basedir}/prime-ui/js/tabview/tabview.js</include>
+                                    </includes>
+                                </aggregation>
+
+                                <aggregation>
+                                    <output>${basedir}/prime-ui/uncompressed/prime-ui-${project.version}.css</output>
+                                    <includes>
+                                        <include>${basedir}/prime-ui/css/autocomplete/autocomplete.css</include>
+                                        <include>${basedir}/prime-ui/css/accordion/accordion.css</include>
+                                        <include>${basedir}/prime-ui/css/inputtext/inputtext.css</include>
+                                        <include>${basedir}/prime-ui/css/inputtextarea/inputtextarea.css</include>
+                                        <include>${basedir}/prime-ui/css/rating/rating.css</include>
+                                        <include>${basedir}/prime-ui/css/spinner/spinner.css</include>
+                                        <include>${basedir}/prime-ui/css/tabview/tabview.css</include>
+                                    </includes>
+                                </aggregation>
+                            </aggregations>
+                        </configuration>
+                    </execution>
+                    
+                    <execution>
+                        <goals>
+                            <goal>compress</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirectory>${basedir}/src/main/webapp/prime-ui</sourceDirectory>
+                            <outputDirectory>${project.build.directory}/prime-ui</outputDirectory>
+                            <nosuffix>true</nosuffix>
+                            <insertNewLine>true</insertNewLine>
+                            <aggregations>
+                                <aggregation>
+                                    <output>${project.build.directory}/prime-ui/prime-ui-${project.version}-min.js</output>
+                                    <includes>
+                                        <include>${project.build.directory}/prime-ui/js/accordion/accordion.js</include>
+                                        <include>${project.build.directory}/prime-ui/js/inputtext/inputtext.js</include>
+                                        <include>${project.build.directory}/prime-ui/js/inputtextarea/inputtextarea.js</include>
+                                        <include>${project.build.directory}/prime-ui/js/rating/rating.js</include>
+                                        <include>${project.build.directory}/prime-ui/js/spinner/spinner.js</include>
+                                        <include>${project.build.directory}/prime-ui/js/tabview/tabview.js</include>
+                                    </includes>
+                                </aggregation>
+
+                                <aggregation>
+                                    <output>${project.build.directory}/prime-ui/prime-ui-${project.version}-min.css</output>
+                                    <includes>
+                                        <include>${project.build.directory}/prime-ui/css/autocomplete/autocomplete.css</include>
+                                        <include>${project.build.directory}/prime-ui/css/accordion/accordion.css</include>
+                                        <include>${project.build.directory}/prime-ui/css/inputtext/inputtext.css</include>
+                                        <include>${project.build.directory}/prime-ui/css/inputtextarea/inputtextarea.css</include>
+                                        <include>${project.build.directory}/prime-ui/css/rating/rating.css</include>
+                                        <include>${project.build.directory}/prime-ui/css/spinner/spinner.css</include>
+                                        <include>${project.build.directory}/prime-ui/css/tabview/tabview.css</include>
+                                    </includes>
+                                </aggregation>
+                            </aggregations>
+                        </configuration>
+                    </execution>
+                </executions>   
+                
             </plugin>
             
             <plugin>
