@@ -3,11 +3,13 @@
 
     <head>
         <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+        <title>Prime-UI Showcase</title>
         <link rel="stylesheet" href="demo/css/ui-lightness/theme.css" />
         <link rel="stylesheet" href="demo/css/demo.css" />
         <link rel="stylesheet" href="prime-ui/css/accordion/accordion.css" />
         <script type="text/javascript" src="demo/js/jquery.js"></script>
         <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="demo/js/demo.js"></script>
         <script type="text/javascript" src="prime-ui/js/accordion/accordion.js"></script>
         <script type="text/javascript">
             $(function() {
@@ -16,47 +18,89 @@
                 $('#multiple').accordion({multiple:true});
             });
         </script>
-    </head>
-    
-    <body>
-        
-        Default
-        <div id="default">
-            <h3>Godfather 1</h3>
-            <div>
-                The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+	<body>
+
+		<div id="header" class="ui-widget ui-widget-header">
+			<div id="logo">
+				<img src="demo/images/logo.png" alt="Logo"/>
+			</div>
+		</div>
+
+        <div id="page" class="ui-widget">
+            <div id="sidebar" class="ui-widget-content ui-corner-bottom ui-helper-clearfix ui-shadow">
+
+                <h3 class="ui-widget ui-widget-header ui-corner-all title" style="margin-top:2px">WIDGETS</h3>
+                <div class="ui-widget submenu-content">
+                    <a href="accordion.html" class="ui-state-default ui-state-highlight ui-corner-all widget-link">
+                        Accordion
+                    </a>
+                    <a href="accordion.html" class="ui-state-default ui-corner-all widget-link">
+                        Inputtext
+                    </a>
+                    <a href="accordion.html" class="ui-state-default ui-corner-all widget-link">
+                        Inputtextarea
+                    </a>
+                    <a href="accordion.html" class="ui-state-default ui-corner-all widget-link">
+                        Rating
+                    </a>
+                    <a href="accordion.html" class="ui-state-default ui-corner-all widget-link">
+                        Spinner
+                    </a>
+                    <a href="accordion.html" class="ui-state-default ui-corner-all widget-link">
+                        Tabview
+                    </a>
+                </div>
+
             </div>
-            
-            <h3>Godfather 2</h3>
-            <div>
-                Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+
+            <div id="content">
+
+                <div class="title ui-widget-header ui-corner-all">Default</div>
+                <div id="default">
+                    <h3>Godfather 1</h3>
+                    <div>
+                        The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+                    </div>
+
+                    <h3>Godfather 2</h3>
+                    <div>
+                        Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+                    </div>
+
+                    <h3>Godfather 3</h3>
+                    <div>
+                        After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+                    </div>    
+                </div>
+
+                <br />
+
+                <div class="title ui-widget-header ui-corner-all">Multiple</div>
+                <div id="multiple">
+                    <h3>Godfather 1</h3>
+                    <div>
+                        The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+                    </div>
+
+                    <h3>Godfather 2</h3>
+                    <div>
+                        Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+                    </div>
+
+                    <h3>Godfather 3</h3>
+                    <div>
+                        After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+                    </div>    
+                </div>
+
             </div>
-               
-            <h3>Godfather 3</h3>
-            <div>
-                After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
-            </div>    
+
+            <div style="clear: both;">&nbsp;</div>
         </div>
-        
-        <br />
-        
-        Multiple
-        <div id="multiple">
-            <h3>Godfather 1</h3>
-            <div>
-                The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
-            </div>
-            
-            <h3>Godfather 2</h3>
-            <div>
-                Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
-            </div>
-               
-            <h3>Godfather 3</h3>
-            <div>
-                After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
-            </div>    
-        </div>
+
+		<div id="footer" class="ui-widget ui-widget-header ui-corner-all">
+			Prime-UI
+		</div>
 
     </body>
 </html>

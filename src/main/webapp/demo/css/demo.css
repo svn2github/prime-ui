@@ -1,3 +1,67 @@
 .ui-widget {
     font-size: 80%;
 }
+
+body {
+    margin:0;
+    padding:0;
+}
+
+#header {
+    padding: 4px 0px;
+    height: 75px;
+    position: relative;
+    background-color: black;
+}
+
+#logo {
+    text-align: left;
+    margin-left: 10px;
+}
+
+#page {
+	padding: 10px 0px;
+	background: #FFFFFF;
+}
+
+/* Content */
+#content {
+	width: 70%;
+    float:left;
+    padding-left:10px;
+}
+
+#sidebar {
+	float: left;
+	width: 25%;
+	padding: 0 10px;
+	margin-left: -1px;
+    overflow: hidden;
+    height:600px;
+}
+
+/* Footer */
+#footer {
+	height: 70px;
+	margin: 0 auto;
+	padding: 0 20px;
+    font-size: 14px;
+}
+
+#footer p {
+	margin: 0;
+	padding: 25px 0 0 0;
+	text-align: center;
+}
+
+.title {
+    padding: 4px 10px;
+    margin-bottom: 5px;
+}
+
+.widget-link {
+    display: block;
+    text-decoration: none;
+    padding: 4px 10px;
+    margin-bottom: 1px;
+}
