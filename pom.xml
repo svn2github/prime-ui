@@ -34,6 +34,7 @@
                 <version>1.1</version>
                 <executions>
                     <execution>
+                        <id>uncompressed</id>
                         <goals>
                             <goal>compress</goal>
                         </goals>
@@ -50,25 +51,25 @@
                                 <aggregation>
                                     <output>${project.build.directory}/prime-ui/uncompressed/prime-ui-${project.version}.js</output>
                                     <includes>
-                                        <include>${basedir}/prime-ui/js/accordion/accordion.js</include>
-                                        <include>${basedir}/prime-ui/js/inputtext/inputtext.js</include>
-                                        <include>${basedir}/prime-ui/js/inputtextarea/inputtextarea.js</include>
-                                        <include>${basedir}/prime-ui/js/rating/rating.js</include>
-                                        <include>${basedir}/prime-ui/js/spinner/spinner.js</include>
-                                        <include>${basedir}/prime-ui/js/tabview/tabview.js</include>
+                                        <include>${basedir}/src/main/webapp/prime-ui/js/accordion/accordion.js</include>
+                                        <include>${basedir}/src/main/webapp/prime-ui/js/inputtext/inputtext.js</include>
+                                        <include>${basedir}/src/main/webapp/prime-ui/js/inputtextarea/inputtextarea.js</include>
+                                        <include>${basedir}/src/main/webapp/prime-ui/js/rating/rating.js</include>
+                                        <include>${basedir}/src/main/webapp/prime-ui/js/spinner/spinner.js</include>
+                                        <include>${basedir}/src/main/webapp/prime-ui/js/tabview/tabview.js</include>
                                     </includes>
                                 </aggregation>
 
                                 <aggregation>
-                                    <output>${basedir}/prime-ui/uncompressed/prime-ui-${project.version}.css</output>
+                                    <output>${project.build.directory}/prime-ui/uncompressed/prime-ui-${project.version}.css</output>
                                     <includes>
-                                        <include>${basedir}/prime-ui/css/autocomplete/autocomplete.css</include>
-                                        <include>${basedir}/prime-ui/css/accordion/accordion.css</include>
-                                        <include>${basedir}/prime-ui/css/inputtext/inputtext.css</include>
-                                        <include>${basedir}/prime-ui/css/inputtextarea/inputtextarea.css</include>
-                                        <include>${basedir}/prime-ui/css/rating/rating.css</include>
-                                        <include>${basedir}/prime-ui/css/spinner/spinner.css</include>
-                                        <include>${basedir}/prime-ui/css/tabview/tabview.css</include>
+                                        <include>${basedir}/src/main/webapp/prime-ui/css/autocomplete/autocomplete.css</include>
+                                        <include>${basedir}/src/main/webapp/prime-ui/css/accordion/accordion.css</include>
+                                        <include>${basedir}/src/main/webapp/prime-ui/css/inputtext/inputtext.css</include>
+                                        <include>${basedir}/src/main/webapp/prime-ui/css/inputtextarea/inputtextarea.css</include>
+                                        <include>${basedir}/src/main/webapp/prime-ui/css/rating/rating.css</include>
+                                        <include>${basedir}/src/main/webapp/prime-ui/css/spinner/spinner.css</include>
+                                        <include>${basedir}/src/main/webapp/prime-ui/css/tabview/tabview.css</include>
                                     </includes>
                                 </aggregation>
                             </aggregations>
@@ -76,37 +77,38 @@
                     </execution>
                     
                     <execution>
+                        <id>compressed</id>
                         <goals>
                             <goal>compress</goal>
                         </goals>
                         <configuration>
                             <sourceDirectory>${basedir}/src/main/webapp/prime-ui</sourceDirectory>
-                            <outputDirectory>${project.build.directory}/prime-ui</outputDirectory>
+                            <outputDirectory>${project.build.directory}/prime-ui/compressed</outputDirectory>
                             <nosuffix>true</nosuffix>
                             <insertNewLine>true</insertNewLine>
                             <aggregations>
                                 <aggregation>
-                                    <output>${project.build.directory}/prime-ui/prime-ui-${project.version}-min.js</output>
+                                    <output>${project.build.directory}/prime-ui/compressed/prime-ui-${project.version}-min.js</output>
                                     <includes>
-                                        <include>${project.build.directory}/prime-ui/js/accordion/accordion.js</include>
-                                        <include>${project.build.directory}/prime-ui/js/inputtext/inputtext.js</include>
-                                        <include>${project.build.directory}/prime-ui/js/inputtextarea/inputtextarea.js</include>
-                                        <include>${project.build.directory}/prime-ui/js/rating/rating.js</include>
-                                        <include>${project.build.directory}/prime-ui/js/spinner/spinner.js</include>
-                                        <include>${project.build.directory}/prime-ui/js/tabview/tabview.js</include>
+                                        <include>${project.build.directory}/prime-ui/compressed/js/accordion/accordion.js</include>
+                                        <include>${project.build.directory}/prime-ui/compressed/js/inputtext/inputtext.js</include>
+                                        <include>${project.build.directory}/prime-ui/compressed/js/inputtextarea/inputtextarea.js</include>
+                                        <include>${project.build.directory}/prime-ui/compressed/js/rating/rating.js</include>
+                                        <include>${project.build.directory}/prime-ui/compressed/js/spinner/spinner.js</include>
+                                        <include>${project.build.directory}/prime-ui/compressed/js/tabview/tabview.js</include>
                                     </includes>
                                 </aggregation>
 
                                 <aggregation>
-                                    <output>${project.build.directory}/prime-ui/prime-ui-${project.version}-min.css</output>
+                                    <output>${project.build.directory}/prime-ui/compressed/prime-ui-${project.version}-min.css</output>
                                     <includes>
-                                        <include>${project.build.directory}/prime-ui/css/autocomplete/autocomplete.css</include>
-                                        <include>${project.build.directory}/prime-ui/css/accordion/accordion.css</include>
-                                        <include>${project.build.directory}/prime-ui/css/inputtext/inputtext.css</include>
-                                        <include>${project.build.directory}/prime-ui/css/inputtextarea/inputtextarea.css</include>
-                                        <include>${project.build.directory}/prime-ui/css/rating/rating.css</include>
-                                        <include>${project.build.directory}/prime-ui/css/spinner/spinner.css</include>
-                                        <include>${project.build.directory}/prime-ui/css/tabview/tabview.css</include>
+                                        <include>${project.build.directory}/prime-ui/compressed/css/autocomplete/autocomplete.css</include>
+                                        <include>${project.build.directory}/prime-ui/compressed/css/accordion/accordion.css</include>
+                                        <include>${project.build.directory}/prime-ui/compressed/css/inputtext/inputtext.css</include>
+                                        <include>${project.build.directory}/prime-ui/compressed/css/inputtextarea/inputtextarea.css</include>
+                                        <include>${project.build.directory}/prime-ui/compressed/css/rating/rating.css</include>
+                                        <include>${project.build.directory}/prime-ui/compressed/css/spinner/spinner.css</include>
+                                        <include>${project.build.directory}/prime-ui/compressed/css/tabview/tabview.css</include>
                                     </includes>
                                 </aggregation>
                             </aggregations>
