@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+        <link rel="stylesheet" href="../resources/css/ui-lightness/theme.css" />
+        <link rel="stylesheet" href="../resources/css/rating/rating.css" />
+        <link rel="stylesheet" href="../resources/demo/demo.css" />
+        <script type="text/javascript" src="../resources/js/jquery.js"></script>
+        <script type="text/javascript" src="../resources/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="../resources/js/rating/rating.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('#rating').rating();
+                
+                $('#default').rating();
+                
+                $('#callback').rating({rate: function(value) { 
+                        alert(value);
+                }});
+                
+                $('#nocancel').rating({cancel:false});
+                
+                $('#readonly').rating({readonly:true, cancel:false});
+                
+                $('#disabled').rating({disabled:true, cancel:false});
+            });
+        </script>
+    </head>
+    
+    <body>
+        
+        Basic
+        <input id="rating" type="hidden" />
+        <br /><br />
+        
+        Default Value
+        <input id="default" type="hidden" value="2"/>
+        <br /><br />
+        
+        Callback
+        <input id="callback" type="hidden" />
+        <br /><br />
+        
+        No Cancel
+        <input id="nocancel" type="hidden" />
+        <br /><br />
+        
+        ReadOnly
+        <input id="readonly" type="hidden" value="3" readonly="readonly"/>
+        <br /><br />
+        
+        Disabled
+        <input id="disabled" type="hidden" value="3" disabled="disabled"/>
+        
+    </body>
+</html>

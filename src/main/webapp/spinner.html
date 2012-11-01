@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+        <link rel="stylesheet" href="../resources/css/ui-lightness/theme.css" />
+        <link rel="stylesheet" href="../resources/css/inputtext/inputtext.css" />
+        <link rel="stylesheet" href="../resources/css/spinner/spinner.css" />
+        <link rel="stylesheet" href="../resources/demo/demo.css" />
+        <script type="text/javascript" src="../resources/js/jquery.js"></script>
+        <script type="text/javascript" src="../resources/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="../resources/js/inputtext/inputtext.js"></script>
+        <script type="text/javascript" src="../resources/js/spinner/spinner.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('#basic').spinner();
+                
+                $('#step').spinner({step:0.25});
+                
+                $('#minmax').spinner({
+                    min:0,
+                    max:100
+                });
+                
+                $('#prefix').spinner({prefix:'$'});
+                
+                $('#disabled').spinner();
+            });
+        </script>
+    </head>
+    
+    <body>
+        
+        Basic
+        <input id="basic" type="text" /> 
+        <br /><br />
+        Step
+        <input id="step" type="text" />
+        <br /><br />
+        Min-Max
+        <input id="minmax" type="text" />
+        <br /><br />
+        Prefix
+        <input id="prefix" type="text" value="$10"/>
+        <br /><br />
+        Disabled
+        <input id="disabled" type="text" disabled="disabled"/>
+        
+    </body>
+</html>
