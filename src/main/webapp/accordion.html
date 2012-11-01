@@ -7,15 +7,19 @@
         <link rel="stylesheet" href="demo/css/ui-lightness/theme.css" />
         <link rel="stylesheet" href="demo/css/demo.css" />
         <link rel="stylesheet" href="prime-ui/css/accordion/accordion.css" />
+        <link rel="stylesheet" href="prime-ui/css/tabview/tabview.css" />
         <script type="text/javascript" src="demo/js/jquery.js"></script>
         <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
         <script type="text/javascript" src="demo/js/demo.js"></script>
         <script type="text/javascript" src="prime-ui/js/accordion/accordion.js"></script>
+        <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
         <script type="text/javascript">
             $(function() {
                $('#default').accordion();
            
                 $('#multiple').accordion({multiple:true});
+                
+                $('#doc').tabview();
             });
         </script>
 	<body>
@@ -91,6 +95,24 @@
                     <div>
                         After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
                     </div>    
+                </div>
+                
+                <div class="title-docs ui-widget-header ui-corner-top">Documentation</div>
+                <div id="doc">
+                    <ul>
+                        <li><a href="#doc-overview">Overview</a></li>
+                        <li><a href="#doc-options">Options</a></li>
+                        <li><a href="#doc-events">Events</a></li>
+                        <li><a href="#doc-methods">Methods</a></li>
+                        <li><a href="#doc-methods">Source</a></li>
+                    </ul>
+                    <div>
+                        <div id="doc-overview"></div>
+                        <div id="doc-options"></div>
+                        <div id="doc-events"></div>
+                        <div id="doc-methods"></div>
+                        <div id="doc-source"></div>
+                    </div>
                 </div>
 
             </div>
