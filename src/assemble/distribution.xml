@@ -17,15 +17,15 @@
     <fileSets>
         <fileSet>
             <directory>${basedir}/src/main/webapp/prime-ui</directory>
-            <outputDirectory>/uncompressed</outputDirectory>
+            <outputDirectory>/development</outputDirectory>
         </fileSet>
         <fileSet>
-            <directory>${project.build.directory}/prime-ui/uncompressed</directory>
-            <outputDirectory>/uncompressed</outputDirectory>
+            <directory>${project.build.directory}/prime-ui/development</directory>
+            <outputDirectory>/development</outputDirectory>
         </fileSet>
         <fileSet>
-            <directory>${project.build.directory}/prime-ui/compressed</directory>
-            <outputDirectory>/compressed</outputDirectory>
+            <directory>${project.build.directory}/prime-ui/production</directory>
+            <outputDirectory>/production</outputDirectory>
         </fileSet>
     </fileSets>
     

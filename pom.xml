@@ -56,7 +56,7 @@
                                 </goals>
                                 <configuration>
                                     <sourceDirectory>${basedir}/src/main/webapp/prime-ui</sourceDirectory>
-                                    <outputDirectory>${project.build.directory}/prime-ui/uncompressed</outputDirectory>
+                                    <outputDirectory>${project.build.directory}/prime-ui/development</outputDirectory>
                                     <nosuffix>true</nosuffix>
                                     <insertNewLine>true</insertNewLine>
                                     <excludes>
@@ -65,8 +65,9 @@
                                     </excludes>
                                     <aggregations>
                                         <aggregation>
-                                            <output>${project.build.directory}/prime-ui/uncompressed/prime-ui-${project.version}.js</output>
+                                            <output>${project.build.directory}/prime-ui/development/prime-ui-${project.version}.js</output>
                                             <includes>
+                                                <include>${basedir}/src/main/resources/copyright.txt</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/accordion/accordion.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/inputtext/inputtext.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/inputtextarea/inputtextarea.js</include>
@@ -77,8 +78,9 @@
                                         </aggregation>
 
                                         <aggregation>
-                                            <output>${project.build.directory}/prime-ui/uncompressed/prime-ui-${project.version}.css</output>
+                                            <output>${project.build.directory}/prime-ui/development/prime-ui-${project.version}.css</output>
                                             <includes>
+                                                <include>${basedir}/src/main/resources/copyright.txt</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/autocomplete/autocomplete.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/accordion/accordion.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/inputtext/inputtext.css</include>
@@ -99,32 +101,34 @@
                                 </goals>
                                 <configuration>
                                     <sourceDirectory>${basedir}/src/main/webapp/prime-ui</sourceDirectory>
-                                    <outputDirectory>${project.build.directory}/prime-ui/compressed</outputDirectory>
+                                    <outputDirectory>${project.build.directory}/prime-ui/production</outputDirectory>
                                     <nosuffix>true</nosuffix>
                                     <insertNewLine>true</insertNewLine>
                                     <aggregations>
                                         <aggregation>
-                                            <output>${project.build.directory}/prime-ui/compressed/prime-ui-${project.version}-min.js</output>
+                                            <output>${project.build.directory}/prime-ui/production/prime-ui-${project.version}-min.js</output>
                                             <includes>
-                                                <include>${project.build.directory}/prime-ui/compressed/js/accordion/accordion.js</include>
-                                                <include>${project.build.directory}/prime-ui/compressed/js/inputtext/inputtext.js</include>
-                                                <include>${project.build.directory}/prime-ui/compressed/js/inputtextarea/inputtextarea.js</include>
-                                                <include>${project.build.directory}/prime-ui/compressed/js/rating/rating.js</include>
-                                                <include>${project.build.directory}/prime-ui/compressed/js/spinner/spinner.js</include>
-                                                <include>${project.build.directory}/prime-ui/compressed/js/tabview/tabview.js</include>
+                                                <include>${basedir}/src/main/resources/copyright.txt</include>
+                                                <include>${project.build.directory}/prime-ui/production/js/accordion/accordion.js</include>
+                                                <include>${project.build.directory}/prime-ui/production/js/inputtext/inputtext.js</include>
+                                                <include>${project.build.directory}/prime-ui/production/js/inputtextarea/inputtextarea.js</include>
+                                                <include>${project.build.directory}/prime-ui/production/js/rating/rating.js</include>
+                                                <include>${project.build.directory}/prime-ui/production/js/spinner/spinner.js</include>
+                                                <include>${project.build.directory}/prime-ui/production/js/tabview/tabview.js</include>
                                             </includes>
                                         </aggregation>
 
                                         <aggregation>
-                                            <output>${project.build.directory}/prime-ui/compressed/prime-ui-${project.version}-min.css</output>
+                                            <output>${project.build.directory}/prime-ui/production/prime-ui-${project.version}-min.css</output>
                                             <includes>
-                                                <include>${project.build.directory}/prime-ui/compressed/css/autocomplete/autocomplete.css</include>
-                                                <include>${project.build.directory}/prime-ui/compressed/css/accordion/accordion.css</include>
-                                                <include>${project.build.directory}/prime-ui/compressed/css/inputtext/inputtext.css</include>
-                                                <include>${project.build.directory}/prime-ui/compressed/css/inputtextarea/inputtextarea.css</include>
-                                                <include>${project.build.directory}/prime-ui/compressed/css/rating/rating.css</include>
-                                                <include>${project.build.directory}/prime-ui/compressed/css/spinner/spinner.css</include>
-                                                <include>${project.build.directory}/prime-ui/compressed/css/tabview/tabview.css</include>
+                                                <include>${basedir}/src/main/resources/copyright.txt</include>
+                                                <include>${project.build.directory}/prime-ui/production/css/autocomplete/autocomplete.css</include>
+                                                <include>${project.build.directory}/prime-ui/production/css/accordion/accordion.css</include>
+                                                <include>${project.build.directory}/prime-ui/production/css/inputtext/inputtext.css</include>
+                                                <include>${project.build.directory}/prime-ui/production/css/inputtextarea/inputtextarea.css</include>
+                                                <include>${project.build.directory}/prime-ui/production/css/rating/rating.css</include>
+                                                <include>${project.build.directory}/prime-ui/production/css/spinner/spinner.css</include>
+                                                <include>${project.build.directory}/prime-ui/production/css/tabview/tabview.css</include>
                                             </includes>
                                         </aggregation>
                                     </aggregations>
