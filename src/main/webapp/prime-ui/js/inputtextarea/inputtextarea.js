@@ -143,8 +143,8 @@ $(function() {
                                 highlightedItem.removeClass('ui-state-highlight');
                                 prev.addClass('ui-state-highlight');
 
-                                if($this.cfg.scrollHeight) {
-                                    PrimeFaces.scrollInView($this.panel, prev);
+                                if($this.options.scrollHeight) {
+                                    PUI.scrollInView($this.panel, prev);
                                 }
                             }
 
@@ -166,7 +166,7 @@ $(function() {
                                 next.addClass('ui-state-highlight');
 
                                 if($this.options.scrollHeight) {
-                                    PrimeFaces.scrollInView($this.panel, next);
+                                    PUI.scrollInView($this.panel, next);
                                 }
                             }
 

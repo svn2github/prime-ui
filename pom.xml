@@ -68,6 +68,7 @@
                                             <output>${project.build.directory}/prime-ui/development/prime-ui-${project.version}.js</output>
                                             <includes>
                                                 <include>${basedir}/src/main/resources/copyright.txt</include>
+                                                <include>${basedir}/src/main/webapp/prime-ui/js/core/core.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/accordion/accordion.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/inputtext/inputtext.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/inputtextarea/inputtextarea.js</include>
@@ -109,6 +110,7 @@
                                             <output>${project.build.directory}/prime-ui/production/prime-ui-${project.version}-min.js</output>
                                             <includes>
                                                 <include>${basedir}/src/main/resources/copyright.txt</include>
+                                                <include>${basedir}/src/main/webapp/prime-ui/js/core/core.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/accordion/accordion.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/inputtext/inputtext.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/inputtextarea/inputtextarea.js</include>
