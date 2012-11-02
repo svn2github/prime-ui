@@ -3,48 +3,129 @@
 
     <head>
         <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-        <link rel="stylesheet" href="demo/css/ui-lightness/theme.css" />
-        <link rel="stylesheet" href="demo/css/demo.css" />
-        <link rel="stylesheet" href="prime-ui/css/inputtext/inputtext.css" />
-        <link rel="stylesheet" href="prime-ui/css/spinner/spinner.css" />
-        <script type="text/javascript" src="demo/js/jquery.js"></script>
-        <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="prime-ui/js/inputtext/inputtext.js"></script>
-        <script type="text/javascript" src="prime-ui/js/spinner/spinner.js"></script>
-        <script type="text/javascript">
-            $(function() {
-                $('#basic').spinner();
+    <link rel="stylesheet" href="demo/css/aristo/theme.css" />
+    <link rel="stylesheet" href="demo/css/demo.css" />
+    <link rel="stylesheet" href="prime-ui/css/inputtext/inputtext.css" />
+    <link rel="stylesheet" href="prime-ui/css/spinner/spinner.css" />
+    <link rel="stylesheet" href="prime-ui/css/tabview/tabview.css" />
+    <script type="text/javascript" src="demo/js/jquery.js"></script>
+    <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="prime-ui/js/inputtext/inputtext.js"></script>
+    <script type="text/javascript" src="prime-ui/js/spinner/spinner.js"></script>
+    <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#basic').spinner();
                 
-                $('#step').spinner({step:0.25});
+            $('#step').spinner({step:0.25});
                 
-                $('#minmax').spinner({
-                    min:0,
-                    max:100
-                });
-                
-                $('#prefix').spinner({prefix:'$'});
-                
-                $('#disabled').spinner();
+            $('#minmax').spinner({
+                min:0,
+                max:100
             });
-        </script>
-    </head>
-    
-    <body>
-        
-        Basic
-        <input id="basic" type="text" /> 
-        <br /><br />
-        Step
-        <input id="step" type="text" />
-        <br /><br />
-        Min-Max
-        <input id="minmax" type="text" />
-        <br /><br />
-        Prefix
-        <input id="prefix" type="text" value="$10"/>
-        <br /><br />
-        Disabled
-        <input id="disabled" type="text" disabled="disabled"/>
-        
-    </body>
+                
+            $('#prefix').spinner({prefix:'$'});
+                
+            $('#disabled').spinner();
+            
+            $('#doc').tableview();
+        });
+    </script>
+</head>
+
+<body>
+
+<div id="header" class="ui-widget ui-widget-header">
+    <div id="logo">
+        <img src="demo/images/logo.png" alt="Logo"/>
+    </div>
+</div>
+
+<div id="page" class="ui-widget">
+    <div id="sidebar" class="ui-widget-content ui-corner-bottom ui-helper-clearfix ui-shadow">
+
+        <h3 class="ui-widget ui-widget-header ui-corner-all title" style="margin-top:2px">WIDGETS</h3>
+        <div class="ui-widget submenu-content">
+            <a href="accordion.html" class="ui-state-default ui-corner-all widget-link">
+                Accordion
+            </a>
+            <a href="inputtext.html" class="ui-state-default ui-corner-all widget-link">
+                Inputtext
+            </a>
+            <a href="inputtextarea.html" class="ui-state-default ui-corner-all widget-link">
+                Inputtextarea
+            </a>
+            <a href="rating.html" class="ui-state-default ui-corner-all widget-link">
+                Rating
+            </a>
+            <a href="spinner.html" class="ui-state-default ui-state-highlight ui-corner-all widget-link">
+                Spinner
+            </a>
+            <a href="tabview.html" class="ui-state-default ui-corner-all widget-link">
+                Tabview
+            </a>
+        </div>
+
+
+    </div>
+
+    <div id="content">
+        <table id="ratingTable">
+            <tr>
+                <td>Basic:</td>
+                <td> <input id="basic" type="text" />  </td>
+            </tr>
+
+            <tr>
+                <td>Step: </td>
+                <td> <input id="step" type="text" /> </td>
+            </tr>
+
+            <tr>
+                <td>Min-Max</td>
+                <td> <input id="minmax" type="text" /> </td>
+            </tr>
+
+            <tr>
+                <td>Prefix</td>
+                <td>  <input id="prefix" type="text" value="$10"/> </td>
+            </tr>
+
+            <tr>
+                <td>Disabled</td>
+                <td> <input id="disabled" type="text" disabled="disabled"/> </td>
+            </tr>
+        </table>     
+
+        <br>
+
+        <div class="title-docs ui-widget-header ui-corner-top">Documentation</div>
+        <div id="doc">
+            <ul>
+                <li><a href="#doc-overview">Overview</a></li>
+                <li><a href="#doc-options">Options</a></li>
+                <li><a href="#doc-events">Events</a></li>
+                <li><a href="#doc-methods">Methods</a></li>
+                <li><a href="#doc-methods">Source</a></li>
+            </ul>
+            <div>
+                <div id="doc-overview"></div>
+                <div id="doc-options"></div>
+                <div id="doc-events"></div>
+                <div id="doc-methods"></div>
+                <div id="doc-source"></div>
+            </div>
+        </div>
+    </div>
+
+    <div style="clear: both;">&nbsp;</div>
+</div>
+
+<div id="footer" class="ui-widget ui-widget-header ui-corner-all">
+    Prime-UI
+</div>
+
+
+
+</body>
 </html>

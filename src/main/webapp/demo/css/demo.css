@@ -19,6 +19,10 @@ body {
     margin-left: 10px;
 }
 
+#logo img{
+    width: 380px;
+}
+
 #page {
 	padding: 10px 0px;
 	background: #FFFFFF;
@@ -76,4 +80,12 @@ body {
     -webkit-border-top-left-radius: 0px; 
     -khtml-border-top-left-radius: 0px; 
     border-top-left-radius: 0px;
+}
+
+#ratingTable tr{
+    height: 30px;
+}
+
+#ratingTable tr td{
+    width: 100px;
 }
