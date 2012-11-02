@@ -29,7 +29,7 @@
                 
                 $('#disabled').spinner();
             
-                $('#doc').tableview();
+                $('#doc').tabview();
             });
         </script>
     </head>
@@ -70,36 +70,24 @@
             </div>
 
             <div id="content">
-                <table id="ratingTable">
-                    <tr>
-                        <td>Basic:</td>
-                        <td> <input id="basic" type="text" />  </td>
-                    </tr>
+                
+                <h3 class="title spinnerTitle" style="margin-top: 0px;">Basic</h3>
+                <input id="basic" type="text" />
+                
+                <h3 class="title spinnerTitle" >Step</h3>
+                <input id="step" type="text" />
+                
+                <h3 class="title spinnerTitle" >Min-Max</h3>
+                <input id="minmax" type="text" />
+                
+                <h3 class="title spinnerTitle" >Prefix</h3>
+                <input id="prefix" type="text" value="$10"/>
+                
+                <h3 class="title spinnerTitle" >Disabled</h3>
+                <input id="disabled" type="text" disabled="disabled"/>
+             
 
-                    <tr>
-                        <td>Step: </td>
-                        <td> <input id="step" type="text" /> </td>
-                    </tr>
-
-                    <tr>
-                        <td>Min-Max</td>
-                        <td> <input id="minmax" type="text" /> </td>
-                    </tr>
-
-                    <tr>
-                        <td>Prefix</td>
-                        <td>  <input id="prefix" type="text" value="$10"/> </td>
-                    </tr>
-
-                    <tr>
-                        <td>Disabled</td>
-                        <td> <input id="disabled" type="text" disabled="disabled"/> </td>
-                    </tr>
-                </table>     
-
-                <br>
-
-                <div class="title-docs ui-widget-header ui-corner-top">Documentation</div>
+                <h2 class="title" style="margin-top: 10px;">Documentation</h2> 
                 <div id="doc">
                     <ul>
                         <li><a href="#doc-overview">Overview</a></li>

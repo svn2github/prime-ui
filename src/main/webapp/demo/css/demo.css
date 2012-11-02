@@ -63,6 +63,7 @@ body {
     padding: 4px 10px;
     margin-bottom: 5px;
     border-bottom:1px solid lightgrey;
+    margin-top: 10px;
 }
 
 .title-docs {
@@ -77,10 +78,12 @@ body {
     margin-bottom: 1px;
 }
 
-#ratingTable tr{
-    height: 30px;
+.ratingTitle {
+    width: 200px;
+    margin-top: 40px;
 }
 
-#ratingTable tr td{
-    width: 100px;
+.spinnerTitle {
+    width: 200px;
+    margin-top: 20px;
 }
