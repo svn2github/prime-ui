@@ -85,5 +85,8 @@ body {
 
 .spinnerTitle {
     width: 200px;
-    margin-top: 20px;
+}
+
+.inputtextareaTitle {
+    width: 400px;
 }
