@@ -1,5 +1,5 @@
-.ui-rating-star,
-.ui-rating-cancel {
+.pui-rating-star,
+.pui-rating-cancel {
     float: left;
     display: block;
     overflow: hidden;
@@ -7,31 +7,31 @@
     cursor: pointer;
 }
 
-.ui-rating-star a,
-.ui-rating-cancel a {
+.pui-rating-star a,
+.pui-rating-cancel a {
     width: 16px;
     height: 15px;
     display: block;
     background: url("./images/rating.png") no-repeat 0 0;
 }
 
-.ui-rating-star a {
+.pui-rating-star a {
     background-position: 0 -32px;
 }
 
-.ui-rating-star-on a {
+.pui-rating-star-on a {
     background-position: 0 -48px;
 }
 
-.ui-rating-star-hover a {
+.pui-rating-star-hover a {
     background-position: 0 -64px;
 }
 
-.ui-rating-cancel-hover a {
+.pui-rating-cancel-hover a {
     background-position: 0 -16px;
 }
 
-.ui-rating.ui-state-disabled .ui-rating-star,
-.ui-rating.ui-state-disabled .ui-rating-cancel {
+.pui-rating.ui-state-disabled .pui-rating-star,
+.pui-rating.ui-state-disabled .pui-rating-cancel {
     cursor: default;    
 }

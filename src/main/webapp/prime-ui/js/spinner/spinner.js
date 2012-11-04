@@ -3,7 +3,7 @@
  */
 $(function() {
 
-    $.widget("primeui.spinner", {
+    $.widget("prime-ui.puispinner", {
        
         options: {
             step: 1.0
@@ -13,11 +13,11 @@ $(function() {
             var input = this.element,
             disabled = input.prop('disabled');
             
-            input.inputtext().addClass('ui-spinner-input').wrap('<span class="ui-spinner ui-widget ui-corner-all" />');
+            input.puiinputtext().addClass('pui-spinner-input').wrap('<span class="pui-spinner ui-widget ui-corner-all" />');
             this.wrapper = input.parent();
-            this.wrapper.append('<a class="ui-spinner-button ui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default ui-button-text-only"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-n"></span></span></a><a class="ui-spinner-button ui-spinner-down ui-corner-br ui-button ui-widget ui-state-default ui-button-text-only"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-s"></span></span></a>');
-            this.upButton = this.wrapper.children('a.ui-spinner-up');
-            this.downButton = this.wrapper.children('a.ui-spinner-down');
+            this.wrapper.append('<a class="pui-spinner-button pui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default ui-button-text-only"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-n"></span></span></a><a class="pui-spinner-button pui-spinner-down ui-corner-br ui-button ui-widget ui-state-default ui-button-text-only"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-s"></span></span></a>');
+            this.upButton = this.wrapper.children('a.pui-spinner-up');
+            this.downButton = this.wrapper.children('a.pui-spinner-down');
             
             this._initValue();
     
@@ -54,7 +54,7 @@ $(function() {
             var $this = this;
             
             //visuals for spinner buttons
-            this.wrapper.children('.ui-spinner-button')
+            this.wrapper.children('.pui-spinner-button')
                 .mouseover(function() {
                     $(this).addClass('ui-state-hover');
                 }).mouseout(function() {
@@ -68,7 +68,7 @@ $(function() {
                     $(this).removeClass('ui-state-active').addClass('ui-state-hover');
                 }).mousedown(function(e) {
                     var element = $(this),
-                    dir = element.hasClass('ui-spinner-up') ? 1 : -1;
+                    dir = element.hasClass('pui-spinner-up') ? 1 : -1;
 
                     element.removeClass('ui-state-hover').addClass('ui-state-active');
 

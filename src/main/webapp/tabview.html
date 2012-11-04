@@ -13,9 +13,9 @@
     <script type="text/javascript">
         $(function() {       
                
-            $('#default').tabview();
+            $('#default').puitabview();
                 
-            $('#dynamic').tabview({
+            $('#dynamic').puitabview({
                 change: function(event, index) {
                        
                     $.ajax({
@@ -32,20 +32,20 @@
             });
             
                 
-            $('#effect').tabview({
+            $('#effect').puitabview({
                 effect: {
                     name: 'fade'
                     ,duration: 'normal'
                 }
             });
                 
-            $('#closable').tabview();
+            $('#closable').puitabview();
                 
-            $('#left').tabview({
+            $('#left').puitabview({
                 orientation: 'left'
             });
             
-            $('#doc').tabview();
+            $('#doc').puitabview();
         });
     </script>
 </head>

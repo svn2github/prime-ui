@@ -1,11 +1,11 @@
-.ui-inputfield {
+.pui-inputtext {
     margin: 0;
     outline: medium none;
     padding: 4px;
     font-weight: normal;
 }
 
-.ui-widget-header .ui-inputfield,
-.ui-widget-content .ui-inputfield {
+.ui-widget-header .pui-inputtext,
+.ui-widget-content .pui-inputtext {
     font-weight: normal;
 }

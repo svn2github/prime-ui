@@ -3,16 +3,14 @@
  */
 $(function() {
 
-    $.widget("primeui.inputtext", {
+    $.widget("prime-ui.puiinputtext", {
        
         _create: function() {
             var input = this.element,
             disabled = input.prop('disabled');
 
             //visuals
-            if(!input.hasClass('ui-inputfield')) {
-                input.addClass('ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all');
-            }
+            input.addClass('pui-inputtext ui-widget ui-state-default ui-corner-all');
             
             if(disabled) {
                 input.addClass('ui-state-disabled');

@@ -3,7 +3,7 @@
  */
 $(function() {
 
-    $.widget("primeui.inputtextarea", {
+    $.widget("prime-ui.puiinputtextarea", {
        
         options: {
              autoResize: false
@@ -18,13 +18,13 @@ $(function() {
         _create: function() {
             var $this = this;
             
-            this.element.inputtext();
+            this.element.puiinputtext();
             
             if(this.options.autoResize) {
                 this.options.rowsDefault = this.element.attr('rows');
                 this.options.colsDefault = this.element.attr('cols');
         
-                this.element.addClass('ui-inputtextarea-resizable');
+                this.element.addClass('pui-inputtextarea-resizable');
                 
                 this.element.keyup(function() {
                     $this._resize();
@@ -86,7 +86,7 @@ $(function() {
         
         
         _initAutoComplete: function() {
-            var panelMarkup = '<div id="' + this.id + '_panel" class="ui-autocomplete-panel ui-widget-content ui-corner-all ui-helper-hidden ui-shadow"></div>',
+            var panelMarkup = '<div id="' + this.id + '_panel" class="pui-autocomplete-panel ui-widget-content ui-corner-all ui-helper-hidden ui-shadow"></div>',
             $this = this;
 
             this.panel = $(panelMarkup).appendTo(document.body);
@@ -214,7 +214,7 @@ $(function() {
             });
 
             //hide panel when outside is clicked
-            $(document.body).bind('mousedown.ui-inputtextarea', function (e) {
+            $(document.body).bind('mousedown.puiinputtextarea', function (e) {
                 if($this.panel.is(":hidden")) {
                     return;
                 }
@@ -298,10 +298,10 @@ $(function() {
         _handleResponse: function(data) {
             this.panel.html('');
 
-            var listContainer = $('<ul class="ui-autocomplete-items ui-autocomplete-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"></ul>');
+            var listContainer = $('<ul class="pui-autocomplete-items pui-autocomplete-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"></ul>');
 
             for(var i = 0; i < data.length; i++) {
-                var item = $('<li class="ui-autocomplete-item ui-autocomplete-list-item ui-corner-all"></li>');
+                var item = $('<li class="pui-autocomplete-item pui-autocomplete-list-item ui-corner-all"></li>');
                 item.attr('data-item-value', data[i].value);
                 item.text(data[i].label);
 
@@ -309,7 +309,7 @@ $(function() {
             }
 
             this.panel.append(listContainer).show();
-            this.items = this.panel.find('.ui-autocomplete-item');
+            this.items = this.panel.find('.pui-autocomplete-item');
 
             this._bindDynamicEvents();
 

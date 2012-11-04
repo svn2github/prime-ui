@@ -3,7 +3,7 @@
  */
 $(function() {
 
-    $.widget("primeui.rating", {
+    $.widget("prime-ui.puirating", {
        
         options: {
             stars: 5,
@@ -15,22 +15,22 @@ $(function() {
             
             input.wrap('<div />');
             this.container = input.parent();
-            this.container.addClass('ui-rating');
+            this.container.addClass('pui-rating');
             
             var inputVal = input.val(),
             value = inputVal == '' ? null : parseInt(inputVal);
             
             if(this.options.cancel) {
-                this.container.append('<div class="ui-rating-cancel"><a></a></div>');
+                this.container.append('<div class="pui-rating-cancel"><a></a></div>');
             }
 
             for(var i = 0; i < this.options.stars; i++) {
-                var styleClass = (value > i) ? "ui-rating-star ui-rating-star-on" : "ui-rating-star";
+                var styleClass = (value > i) ? "pui-rating-star pui-rating-star-on" : "pui-rating-star";
 
                 this.container.append('<div class="' + styleClass + '"><a></a></div>');
             }
             
-            this.stars = this.container.children('.ui-rating-star');
+            this.stars = this.container.children('.pui-rating-star');
 
             if(input.prop('disabled')) {
                 this.container.addClass('ui-state-disabled');
@@ -49,8 +49,8 @@ $(function() {
                 $this._setValue(value);
             });
 
-            this.container.children('.ui-rating-cancel').hover(function() {
-                $(this).toggleClass('ui-rating-cancel-hover');
+            this.container.children('.pui-rating-cancel').hover(function() {
+                $(this).toggleClass('pui-rating-cancel-hover');
             })
             .click(function() {
                 $this.cancel();
@@ -60,7 +60,7 @@ $(function() {
         cancel: function() {
             this.element.val('');
         
-            this.stars.filter('.ui-rating-star-on').removeClass('ui-rating-star-on');
+            this.stars.filter('.pui-rating-star-on').removeClass('pui-rating-star-on');
         },
         
         _getValue: function() {
@@ -73,12 +73,12 @@ $(function() {
             this.element.val(value);
 
             //update visuals
-            this.stars.removeClass('ui-rating-star-on');
+            this.stars.removeClass('pui-rating-star-on');
             for(var i = 0; i < value; i++) {
-                this.stars.eq(i).addClass('ui-rating-star-on');
+                this.stars.eq(i).addClass('pui-rating-star-on');
             }
             
-            this._trigger('rate');
+            this._trigger('rate', null, value);
         }
     });
     

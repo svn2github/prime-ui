@@ -3,7 +3,7 @@
  */
 $(function() {
 
-    $.widget("primeui.tabview", {
+    $.widget("prime-ui.puitabview", {
        
         options: {
              activeIndex:0
@@ -13,19 +13,19 @@ $(function() {
         _create: function() {
             var element = this.element;
             
-            element.addClass('ui-tabs ui-widget ui-widget-content ui-corner-all ui-hidden-container')
-                .children('ul').addClass('ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all')
+            element.addClass('pui-tabview ui-widget ui-widget-content ui-corner-all ui-hidden-container')
+                .children('ul').addClass('pui-tabview-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all')
                 .children('li').addClass('ui-state-default ui-corner-top');
                 
-            element.addClass('ui-tabs-' + this.options.orientation);
+            element.addClass('pui-tabview-' + this.options.orientation);
 
-            element.children('div').addClass('ui-tabs-panels').children().addClass('ui-tabs-panel ui-widget-content ui-corner-bottom');
+            element.children('div').addClass('pui-tabview-panels').children().addClass('pui-tabview-panel ui-widget-content ui-corner-bottom');
 
-            element.find('> ul.ui-tabs-nav > li').eq(this.options.activeIndex).addClass('ui-tabs-selected ui-state-active');
-            element.find('> div.ui-tabs-panels > div.ui-tabs-panel:not(:eq(' + this.options.activeIndex + '))').addClass('ui-helper-hidden');
+            element.find('> ul.pui-tabview-nav > li').eq(this.options.activeIndex).addClass('pui-tabview-selected ui-state-active');
+            element.find('> div.pui-tabview-panels > div.pui-tabview-panel:not(:eq(' + this.options.activeIndex + '))').addClass('ui-helper-hidden');
             
-            this.navContainer = element.children('.ui-tabs-nav');
-            this.panelContainer = element.children('.ui-tabs-panels');
+            this.navContainer = element.children('.pui-tabview-nav');
+            this.panelContainer = element.children('.pui-tabview-panels');
 
             this._bindEvents();
         },
@@ -79,7 +79,7 @@ $(function() {
            headers = this.navContainer.children(),
            oldHeader = headers.filter('.ui-state-active'),
            newHeader = headers.eq(newPanel.index()),
-           oldPanel = this.panelContainer.children('.ui-tabs-panel:visible'),
+           oldPanel = this.panelContainer.children('.pui-tabview-panel:visible'),
            $this = this;
 
            //aria
@@ -90,19 +90,19 @@ $(function() {
 
            if(this.options.effect) {
                 oldPanel.hide(this.options.effect.name, null, this.options.effect.duration, function() {
-                   oldHeader.removeClass('ui-state-focus ui-tabs-selected ui-state-active');
+                   oldHeader.removeClass('ui-state-focus pui-tabview-selected ui-state-active');
 
-                   newHeader.addClass('ui-state-focus ui-tabs-selected ui-state-active');
+                   newHeader.addClass('ui-state-focus pui-tabview-selected ui-state-active');
                    newPanel.show($this.options.name, null, $this.options.effect.duration, function() {
                        $this._trigger('change', null, index);
                    });
                });
            }
            else {
-               oldHeader.removeClass('ui-state-focus ui-tabs-selected ui-state-active');
+               oldHeader.removeClass('ui-state-focus pui-tabview-selected ui-state-active');
                oldPanel.hide();
 
-               newHeader.addClass('ui-state-focus ui-tabs-selected ui-state-active');
+               newHeader.addClass('ui-state-focus pui-tabview-selected ui-state-active');
                newPanel.show();
 
                this._trigger('change', null, index);

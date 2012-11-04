@@ -3,7 +3,7 @@
  */
 $(function() {
 
-    $.widget("primeui.accordion", {
+    $.widget("prime-ui.puiaccordion", {
        
         options: {
              activeIndex: 0,
@@ -16,9 +16,9 @@ $(function() {
             }
         
             var $this = this;
-            this.element.addClass('ui-accordion ui-widget ui-helper-reset');
+            this.element.addClass('pui-accordion ui-widget ui-helper-reset');
             
-            this.element.children('h3').addClass('ui-accordion-header ui-helper-reset ui-state-default').each(function(i) {
+            this.element.children('h3').addClass('pui-accordion-header ui-helper-reset ui-state-default').each(function(i) {
                 var header = $(this),
                 title = header.html(),
                 headerClass = (i == $this.options.activeIndex) ? 'ui-state-active ui-corner-top' : 'ui-corner-all',
@@ -29,15 +29,15 @@ $(function() {
             
             this.element.children('div').each(function(i) {
                 var content = $(this);
-                content.addClass('ui-accordion-content ui-helper-reset ui-widget-content');
+                content.addClass('pui-accordion-content ui-helper-reset ui-widget-content');
                 
                 if(i != $this.options.activeIndex) {
                     content.addClass('ui-helper-hidden');
                 }
             });
             
-            this.headers = this.element.children('.ui-accordion-header');
-            this.panels = this.element.children('.ui-accordion-content');
+            this.headers = this.element.children('.pui-accordion-header');
+            this.panels = this.element.children('.pui-accordion-content');
             this.headers.children('a').disableSelection();
             
             this._bindEvents();

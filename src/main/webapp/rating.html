@@ -14,21 +14,21 @@
     <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
-            $('#rating').rating();
+            $('#rating').puirating();
                 
-            $('#default').rating();
+            $('#default').puirating();
                 
-            $('#callback').rating({rate: function(value) { 
+            $('#callback').puirating({rate: function(event, value) { 
                     alert(value);
                 }});
                 
-            $('#nocancel').rating({cancel:false});
+            $('#nocancel').puirating({cancel:false});
                 
-            $('#readonly').rating({readonly:true, cancel:false});
+            $('#readonly').puirating({readonly:true, cancel:false});
                 
-            $('#disabled').rating({disabled:true, cancel:false});
+            $('#disabled').puirating({disabled:true, cancel:false});
             
-            $('#doc').tabview();
+            $('#doc').puitabview();
         });
     </script>
 </head>
