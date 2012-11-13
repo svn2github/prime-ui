@@ -2,30 +2,27 @@
 <html>
 
     <head>
-        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>  
-
-
-
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+        <title>Prime-UI Showcase</title>
         <link rel="stylesheet" href="demo/css/aristo/theme.css" />
         <link rel="stylesheet" href="demo/css/demo.css" />
-        <link rel="stylesheet" href="prime-ui/css/inputtext/inputtext.css" />
+        <link rel="stylesheet" href="prime-ui/css/accordion/accordion.css" />
         <link rel="stylesheet" href="prime-ui/css/tabview/tabview.css" />
         <script type="text/javascript" src="demo/js/jquery.js"></script>
         <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
         <script type="text/javascript" src="demo/js/demo.js"></script>
-        <script type="text/javascript" src="prime-ui/js/inputtext/inputtext.js"></script>
+        <script type="text/javascript" src="prime-ui/js/accordion/accordion.js"></script>
         <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
         <script type="text/javascript">
             $(function() {
-                $('#in').puiinputtext(); 
-            
+                $('#default').puiaccordion();
+           
+                $('#multiple').puiaccordion({multiple:true});
+                
                 $('#doc').puitabview();
             });
         </script>
-    </head>
-
     <body>
-
 
         <div id="header" class="ui-widget ui-widget-header">
             <div id="logo">
@@ -40,7 +37,7 @@
                     <a href="accordion.html" class="ui-state-default ui-corner-all widget-link">
                         Accordion
                     </a>
-                    <a href="inputtext.html" class="ui-state-default ui-state-highlight ui-corner-all widget-link">
+                    <a href="inputtext.html" class="ui-state-default ui-corner-all widget-link">
                         Inputtext
                     </a>
                     <a href="inputtextarea.html" class="ui-state-default ui-corner-all widget-link">
@@ -57,32 +54,15 @@
                     </a>
                 </div>
 
-
             </div>
 
             <div id="content">
 
-                <h2 class="title" style="margin-top: 0px;">Default</h2>
-
-                <input id="in" type="text" />
-
-                <h2 class="title" >Documentation</h2> 
-                <div id="doc">
-                    <ul>
-                        <li><a href="#doc-overview">Overview</a></li>
-                        <li><a href="#doc-options">Options</a></li>
-                        <li><a href="#doc-events">Events</a></li>
-                        <li><a href="#doc-methods">Methods</a></li>
-                        <li><a href="#doc-methods">Source</a></li>
-                    </ul>
-                    <div>
-                        <div id="doc-overview"></div>
-                        <div id="doc-options"></div>
-                        <div id="doc-events"></div>
-                        <div id="doc-methods"></div>
-                        <div id="doc-source"></div>
-                    </div>
-                </div>
+                <h2 class="ui-widget-header ui-corner-all" style="margin:0;padding:8px 20px">Welcome to PrimeUI</h2>
+                <p>PrimeUI is a collection of rich javascript widgets based on jQuery UI WidgetFactory. PrimeUI is a spin-off project
+                    from the popular JSF Component Suite, <a href="http://www.primefaces.org">PrimeFaces</a>.</p>
+                
+                <iframe src="http://player.vimeo.com/video/52463349?badge=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> <p>
             </div>
 
             <div style="clear: both;">&nbsp;</div>

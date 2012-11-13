@@ -90,3 +90,22 @@ body {
 .inputtextareaTitle {
     width: 400px;
 }
+
+a,
+a:visited,
+a:active{
+    text-decoration: none;
+}
+
+.doc-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.doc-table th,
+.doc-table td {
+    padding: 4px 10px;
+    border-color: inherit;
+    border-style: solid;
+    border-width: 1px;
+}

@@ -79,7 +79,7 @@ $(function() {
         select: function(index) {
             var panel = this.panels.eq(index);
 
-            this._trigger('change', null, panel);
+            this._trigger('change', panel);
             
             //update state
             if(this.options.multiple) 
