@@ -2,33 +2,38 @@
 <html>
 
     <head>
-        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-    <title>Prime-UI Showcase</title>
-    <link rel="stylesheet" href="demo/css/aristo/theme.css" />
-    <link rel="stylesheet" href="demo/css/demo.css" />
-    <link rel="stylesheet" href="demo/css/sh.css" />
-    <link rel="stylesheet" href="prime-ui/css/accordion/accordion.css" />
-    <script type="text/javascript" src="demo/js/sh.js"></script>
-    <link rel="stylesheet" href="prime-ui/css/tabview/tabview.css" />
-    <script type="text/javascript" src="demo/js/jquery.js"></script>
-    <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
-    <script type="text/javascript" src="demo/js/demo.js"></script>
-    <script type="text/javascript" src="prime-ui/js/accordion/accordion.js"></script>
-    <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            $('#default').puiaccordion();
-           
-            $('#multiple').puiaccordion({multiple:true});
-                
-            $('#doc').puitabview();
-        });
-    </script>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
+        <title>Prime-UI Showcase</title>
+        <link rel="stylesheet" href="demo/css/aristo/theme.css" />
+        <link rel="stylesheet" href="demo/css/demo.css" />
+        <link rel="stylesheet" href="demo/css/sh.css" />
+        <link rel="stylesheet" href="prime-ui/css/accordion/accordion.css" />
+        <script type="text/javascript" src="demo/js/sh.js"></script>
+        <link rel="stylesheet" href="prime-ui/css/tabview/tabview.css" />
+        <script type="text/javascript" src="demo/js/jquery.js"></script>
+        <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="demo/js/demo.js"></script>
+        <script type="text/javascript" src="prime-ui/js/accordion/accordion.js"></script>
+        <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('#default').puiaccordion();
+
+                $('#multiple').puiaccordion({multiple:true});
+
+                $('#doc').puitabview();
+            });
+        </script>
     <body>
 
     <div id="header" class="ui-widget ui-widget-header">
         <div id="logo">
             <img src="demo/images/logo.png" alt="Logo"/>
+        </div>
+        <div id="header-text" style="float: right">
+            Prime User Interface
         </div>
     </div>
 
@@ -64,7 +69,7 @@
             <div id="default">
                 <h3>Godfather 1</h3>
                 <div>
-                    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+                    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
                 </div>
 
                 <h3>Godfather 2</h3>
@@ -82,7 +87,7 @@
             <div id="multiple">
                 <h3>Godfather 1</h3>
                 <div>
-                    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+                    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
                 </div>
 
                 <h3>Godfather 2</h3>
@@ -203,6 +208,16 @@ $('#default').puiaccordion({
                                     <td>index: Index of the tab to unselect.</td>
                                     <td>Deactivates the tab with given index.</td>
                                 </tr>
+                                <tr class="ui-widget-content">
+                                    <td>option</td>
+                                    <td>name: Name of the option</td>
+                                    <td>Returns the value of the option.</td>
+                                </tr>
+                                <tr class="ui-widget-content">
+                                    <td>option</td>
+                                    <td>name: Name of the option, value: Value of the option</td>
+                                    <td>Set the value of the option.</td>
+                                </tr>
                             </tbody>
                         </table>
 
@@ -226,7 +241,7 @@ $('#default').puiaccordion('select', 1);
 &lt;div id="default"&gt;
     &lt;h3&gt;Godfather 1&lt;/h3&gt;
     &lt;div&gt;
-        The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+        The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
     &lt;/div&gt;
 
     &lt;h3&gt;Godfather 2&lt;/h3&gt;
@@ -243,7 +258,7 @@ $('#default').puiaccordion('select', 1);
 &lt;div id="multiple"&gt;
     &lt;h3&gt;Godfather 1&lt;/h3&gt;
     &lt;div&gt;
-        The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+        The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
     &lt;/div&gt;
 
     &lt;h3&gt;Godfather 2&lt;/h3&gt;
@@ -267,7 +282,7 @@ $('#default').puiaccordion('select', 1);
     </div>
 
     <div id="footer" class="ui-widget ui-widget-header ui-corner-bottom">
-        <p>Prime-UI, From the Producers of PrimeFaces. Copyright 2012 - <a href="http://www.prime.com.tr">Prime Teknoloji.</a></p>
+        <p>Prime-UI, From the Producers of <a href="http://www.primefaces.org">PrimeFaces</a>. Copyright 2012 - <a href="http://www.prime.com.tr">Prime Teknoloji.</a></p>
     </div>
 
     <script language="javascript">

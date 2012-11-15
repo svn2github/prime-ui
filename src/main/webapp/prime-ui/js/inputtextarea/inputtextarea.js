@@ -198,7 +198,7 @@ $(function() {
                         $this._clearTimeout();
 
                         if(overlayVisible) {
-                            $this.hide();
+                            $this._hide();
                         }
                     break;
 
@@ -207,7 +207,7 @@ $(function() {
 
                         if(overlayVisible) {
                             $this.items.filter('.ui-state-highlight').trigger('click');
-                            $this.hide();
+                            $this._hide();
                         }
                     break;
                 }
@@ -227,7 +227,7 @@ $(function() {
                     e.pageX > offset.left + $this.panel.width() ||
                     e.pageY < offset.top ||
                     e.pageY > offset.top + $this.panel.height()) {
-                    $this.hide();
+                    $this._hide();
                 }
             });
 
@@ -235,7 +235,7 @@ $(function() {
             var resizeNS = 'resize.' + this.id;
             $(window).unbind(resizeNS).bind(resizeNS, function() {
                 if($this.panel.is(':visible')) {
-                    $this.hide();
+                    $this._hide();
                 }
             });
         },
@@ -261,7 +261,7 @@ $(function() {
 
                 $this.element.insertText(insertValue, $this.element.getSelection().start, true);
 
-                $this.hide();
+                $this._hide();
                 
                 $this._trigger("itemselect", event, item);
             });
@@ -323,7 +323,7 @@ $(function() {
                 }
 
                 if(this.panel.is(':hidden')) {
-                    this.show();
+                    this._show();
                 } 
                 else {
                     this._alignPanel(); //with new items
@@ -346,13 +346,13 @@ $(function() {
                     });
         },
 
-        show: function() {
+        _show: function() {
             this._alignPanel();
 
             this.panel.show();
         },
 
-        hide: function() {        
+        _hide: function() {        
             this.panel.hide();
         },
 
