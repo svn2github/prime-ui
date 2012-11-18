@@ -23,10 +23,7 @@ body {
 
 #logo {
     text-align: left;
-}
-
-#logo img{
-    width: 380px;
+    padding-left: 20px;
 }
 
 #page {
@@ -36,14 +33,14 @@ body {
 
 /* Content */
 #content {
-	width: 70%;
+	width: 80%;
     float:left;
     padding-left:20px;
 }
 
 #sidebar {
 	float: left;
-	width: 25%;
+	width: 15%;
 	padding: 2px 10px 0px 10px;
 	margin-left: -1px;
     overflow: hidden;
@@ -72,6 +69,7 @@ body {
     margin-bottom: 5px;
     border-bottom:1px solid lightgrey;
     margin-top: 10px;
+    display: block;
 }
 
 .title-docs {
@@ -86,17 +84,14 @@ body {
     margin-bottom: 1px;
 }
 
-.ratingTitle {
-    width: 200px;
-    margin-top: 40px;
+.widget-title {
+    padding: 8px 20px;
+    text-align: center;
+    margin-top: 0px;
 }
 
-.spinnerTitle {
+.title-short {
     width: 200px;
-}
-
-.inputtextareaTitle {
-    width: 400px;
 }
 
 a,
