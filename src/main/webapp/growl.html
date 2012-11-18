@@ -54,8 +54,12 @@
             <div id="logo">
                 <img src="demo/images/logo.png" alt="Logo"/>
             </div>
-            <div id="header-text" style="float: right">
-                Prime User Interface
+            <div id="menu" class="ui-widget">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="http://www.primefacs.org/downloads.html" style="">Download</a></li>
+                    <li><a href="http://forum.primefaces.org/viewforum.php?f=16" style="">Forum</a></li>
+                </ul>
             </div>
         </div>
 
@@ -89,11 +93,11 @@
             </div>
 
             <div id="content">
-                
+
                 <h2 class="ui-widget-header widget-title ui-corner-all">Growl</h2>
 
                 <div id="default"></div>
-                
+
                 <button id="btn-info" type="button">Info</button>
                 <button id="btn-warn" type="button">Warn</button>
                 <button id="btn-error" type="button">Error</button>
@@ -111,7 +115,7 @@
                     <div>
                         <div id="doc-overview">
                             <p>Growl is a notification widget to display messages as an overlay.</p>
-                            
+
                             <pre name="code" class="jscript">
 //initialize
 $('#default').puigrowl();
@@ -208,7 +212,7 @@ $('#default').puigrowl('show', [{severity: 'info', summary: 'Message Summary', d
     });
 &lt;/script&gt;
                             </pre>
-                            
+
                             <pre name="code" class="xml">
 &lt;div id="default" /&gt;
                             </pre>
