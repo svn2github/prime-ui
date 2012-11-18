@@ -33,7 +33,7 @@ $(function() {
         },
         
         _renderMessage: function(msg) {
-            var markup = '<div class="pui-growl-item-container ui-state-highlight ui-corner-all ui-helper-hidden ui-shadow" aria-live="polite">';
+            var markup = '<div class="pui-growl-item-container ui-state-highlight ui-corner-all ui-helper-hidden pui-shadow" aria-live="polite">';
             markup += '<div class="pui-growl-item">';
             markup += '<div class="pui-growl-icon-close ui-icon ui-icon-closethick" style="display:none"></div>';
             markup += '<span class="pui-growl-image pui-growl-image-' + msg.severity + '" />';
