@@ -5,25 +5,42 @@
         <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
         <meta http-equiv="pragma" content="no-cache" />
         <meta http-equiv="expires" content="0" />
-        <title>Prime-UI Showcase</title>
         <link rel="stylesheet" href="demo/css/aristo/theme.css" />
         <link rel="stylesheet" href="demo/css/demo.css" />
-        <link rel="stylesheet" href="prime-ui/css/accordion/accordion.css" />
+        <link rel="stylesheet" href="demo/css/sh.css" />
+        <link rel="stylesheet" href="prime-ui/css/core/core.css" />
+        <link rel="stylesheet" href="prime-ui/css/button/button.css" />
         <link rel="stylesheet" href="prime-ui/css/tabview/tabview.css" />
+        <script type="text/javascript" src="demo/js/sh.js"></script>
         <script type="text/javascript" src="demo/js/jquery.js"></script>
         <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
         <script type="text/javascript" src="demo/js/demo.js"></script>
-        <script type="text/javascript" src="prime-ui/js/accordion/accordion.js"></script>
+        <script type="text/javascript" src="prime-ui/js/button/button.js"></script>
         <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
         <script type="text/javascript">
             $(function() {
-                $('#default').puiaccordion();
-           
-                $('#multiple').puiaccordion({multiple:true});
+                $('#default').puibutton(); 
                 
+                $('#left').puibutton({
+                    icon: 'ui-icon-check'
+                });
+                
+                $('#right').puibutton({
+                    icon: 'ui-icon-close'
+                    ,iconPos: 'right'
+                });
+                
+                $('#icononly').puibutton({
+                    icon: 'ui-icon-disk'
+                });
+                
+                $('#disabled').puibutton();
+        
                 $('#doc').puitabview();
             });
         </script>
+    </head>
+
     <body>
 
         <div id="header" class="ui-widget ui-widget-header">
@@ -46,7 +63,7 @@
                     <a href="accordion.html" class="ui-state-default ui-corner-all widget-link">
                         Accordion
                     </a>
-                    <a href="growl.html" class="ui-state-default ui-corner-all widget-link">
+                    <a href="growl.html" class="ui-state-default ui-state-highlight ui-corner-all widget-link">
                         Button
                     </a>
                     <a href="growl.html" class="ui-state-default ui-corner-all widget-link">
@@ -73,11 +90,62 @@
 
             <div id="content">
 
-                <h2 class="ui-widget-header ui-corner-all" style="margin:0;padding:8px 20px">Welcome to PrimeUI</h2>
-                <p>PrimeUI is a collection of rich javascript widgets based on jQuery UI WidgetFactory. PrimeUI is a spin-off project
-                    from the popular JSF Component Suite, <a href="http://www.primefaces.org">PrimeFaces</a>.</p>
+                <h2 class="ui-widget-header widget-title ui-corner-all">Button</h2>
+
+                <button id="default" type="button">Default</button>
                 
-                <iframe src="http://player.vimeo.com/video/52463349?badge=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> <p>
+                <button id="left" type="button">Left Icon</button>
+                
+                <button id="right" type="button">Right Icon</button>
+                
+                <button id="icononly" type="button"></button>
+                
+                <button id="disabled" type="button" disabled="disabled">Disabled</button>
+
+                <h2 class="title" style="margin-top: 40px;">Documentation</h2> 
+                <div id="doc">
+                    <ul>
+                        <li><a href="#doc-overview">Overview</a></li>
+                        <li><a href="#doc-options">Options</a></li>
+                        <li><a href="#doc-events">Events</a></li>
+                        <li><a href="#doc-methods">Methods</a></li>
+                        <li><a href="#doc-methods">Source</a></li>
+                    </ul>
+                    <div>
+                        <div id="doc-overview">
+                            <p>Button widget provides styling over native button elements.</p>
+
+                            <pre name="code" class="jscript">
+                            </pre>
+
+                            <pre name="code" class="jscript">
+   
+                            </pre>
+                        </div>
+
+                        <div id="doc-options">
+                            
+                        </div>
+
+                        <div id="doc-events">
+                            <h3>No events.</h3>
+                        </div>
+
+                        <div id="doc-methods">
+                           
+                        </div>
+
+                        <div id="doc-source">
+                            <pre name="code" class="jscript">
+
+                            </pre>
+
+                            <pre name="code" class="xml">
+
+                            </pre>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div style="clear: both;">&nbsp;</div>
@@ -86,6 +154,11 @@
         <div id="footer" class="ui-widget ui-widget-header ui-corner-bottom">
             <p>Prime-UI, From the Producers of <a href="http://www.primefaces.org">PrimeFaces</a>. Copyright 2012 - <a href="http://www.prime.com.tr">Prime Teknoloji.</a></p>
         </div>
+
+        <script language="javascript">
+            dp.SyntaxHighlighter.ClipboardSwf = '/demo/js/clipboard.swf';
+            dp.SyntaxHighlighter.HighlightAll('code');
+        </script>
 
     </body>
 </html>
