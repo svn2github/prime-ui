@@ -71,6 +71,7 @@
                                                 <include>${basedir}/src/main/resources/copyright.txt</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/core/core.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/accordion/accordion.js</include>
+                                                <include>${basedir}/src/main/webapp/prime-ui/js/button/button.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/growl/growl.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/inputtext/inputtext.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/inputtextarea/inputtextarea.js</include>
@@ -86,7 +87,7 @@
                                                 <include>${basedir}/src/main/resources/copyright.txt</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/core/core.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/autocomplete/autocomplete.css</include>
-                                                <include>${basedir}/src/main/webapp/prime-ui/css/accordion/accordion.css</include>
+                                                <include>${basedir}/src/main/webapp/prime-ui/css/button/button.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/growl/growl.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/inputtext/inputtext.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/inputtextarea/inputtextarea.css</include>
@@ -116,6 +117,7 @@
                                                 <include>${basedir}/src/main/resources/copyright.txt</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/core/core.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/accordion/accordion.js</include>
+                                                <include>${project.build.directory}/prime-ui/production/js/button/button.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/growl/growl.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/inputtext/inputtext.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/inputtextarea/inputtextarea.js</include>
@@ -132,6 +134,7 @@
                                                 <include>${project.build.directory}/prime-ui/production/css/core/core.css</include>
                                                 <include>${project.build.directory}/prime-ui/production/css/autocomplete/autocomplete.css</include>
                                                 <include>${project.build.directory}/prime-ui/production/css/accordion/accordion.css</include>
+                                                <include>${project.build.directory}/prime-ui/production/css/button/button.css</include>
                                                 <include>${project.build.directory}/prime-ui/production/css/growl/growl.css</include>
                                                 <include>${project.build.directory}/prime-ui/production/css/inputtext/inputtext.css</include>
                                                 <include>${project.build.directory}/prime-ui/production/css/inputtextarea/inputtextarea.css</include>
