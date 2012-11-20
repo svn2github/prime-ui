@@ -44,33 +44,52 @@ $(function() {
         },
         
         _bindEvents: function() {
-            var element = this.element;
+            var element = this.element,
+            $this = this;
             
-            element.mouseover(function(){
+            element.on('mouseover.puibutton', function(){
                 if(!element.prop('disabled')) {
                     element.addClass('ui-state-hover');
                 }
-            }).mouseout(function() {
+            }).on('mouseout.puibutton', function() {
                 $(this).removeClass('ui-state-active ui-state-hover');
-            }).mousedown(function() {
+            }).on('mousedown.puibutton', function() {
                 if(!element.hasClass('ui-state-disabled')) {
                     element.addClass('ui-state-active').removeClass('ui-state-hover');
                 }
-            }).mouseup(function() {
-                $(this).removeClass('ui-state-active').addClass('ui-state-hover');
-            }).focus(function() {
-                $(this).addClass('ui-state-focus');
-            }).blur(function() {
-                $(this).removeClass('ui-state-focus');
-            }).keydown(function(e) {
+            }).on('mouseup.puibutton', function(e) {
+                element.removeClass('ui-state-active').addClass('ui-state-hover');
+                
+                $this._trigger('click', e);
+            }).on('focus.puibutton', function() {
+                element.addClass('ui-state-focus');
+            }).on('blur.puibutton', function() {
+                element.removeClass('ui-state-focus');
+            }).on('keydown.puibutton',function(e) {
                 if(e.keyCode == $.ui.keyCode.SPACE || e.keyCode == $.ui.keyCode.ENTER || e.keyCode == $.ui.keyCode.NUMPAD_ENTER) {
-                    $(this).addClass('ui-state-active');
+                    element.addClass('ui-state-active');
                 }
-            }).keyup(function() {
-                $(this).removeClass('ui-state-active');
+            }).on('keyup.puibutton', function() {
+                element.removeClass('ui-state-active');
             });
 
             return this;
+        },
+        
+        _unbindEvents: function() {
+            this.element.off('mouseover.puibutton mouseout.puibutton mousedown.puibutton mouseup.puibutton focus.puibutton blur.puibutton keydown.puibutton keyup.puibutton');
+        },
+        
+        disable: function() {
+            this._unbindEvents();
+            
+            this.element.addClass('ui-state-disabled');
+        },
+        
+        enable: function() {
+            this._bindEvents();
+            
+            this.element.removeClass('ui-state-disabled');
         }
     });
 });
