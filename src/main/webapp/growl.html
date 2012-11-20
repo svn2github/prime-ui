@@ -9,12 +9,14 @@
         <link rel="stylesheet" href="demo/css/demo.css" />
         <link rel="stylesheet" href="demo/css/sh.css" />
         <link rel="stylesheet" href="prime-ui/css/core/core.css" />
+        <link rel="stylesheet" href="prime-ui/css/button/button.css" />
         <link rel="stylesheet" href="prime-ui/css/growl/growl.css" />
         <link rel="stylesheet" href="prime-ui/css/tabview/tabview.css" />
         <script type="text/javascript" src="demo/js/sh.js"></script>
         <script type="text/javascript" src="demo/js/jquery.js"></script>
         <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
         <script type="text/javascript" src="demo/js/demo.js"></script>
+        <script type="text/javascript" src="prime-ui/js/button/button.js"></script>
         <script type="text/javascript" src="prime-ui/js/growl/growl.js"></script>
         <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
         <script type="text/javascript">
@@ -44,6 +46,8 @@
                 addMessage = function(msg) {
                     $('#default').puigrowl('show', msg);
                 }
+                
+                $('#content button').puibutton();
             });
         </script>
     </head>
@@ -189,8 +193,6 @@ $('#default').puigrowl('show', [{severity: 'info', summary: 'Message Summary', d
     $(function() {
         $('#default').puigrowl();                
 
-        $('#doc').puitabview();
-
         $('#btn-info').click(function() {
             addMessage([{severity: 'info', summary: 'Message Title', detail: 'Message Detail here.'}]);
         });
@@ -212,6 +214,8 @@ $('#default').puigrowl('show', [{severity: 'info', summary: 'Message Summary', d
         addMessage = function(msg) {
             $('#default').puigrowl('show', msg);
         }
+
+        $('#content button').puibutton();
     });
 &lt;/script&gt;
                             </pre>
