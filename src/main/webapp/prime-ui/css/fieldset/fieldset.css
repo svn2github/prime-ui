@@ -5,6 +5,7 @@
 .pui-fieldset-toggleable .pui-fieldset-legend {
     padding: 0.5em 1em 0.5em 0.5em;
     cursor:pointer;
+    white-space: nowrap;
 }
 
 .pui-fieldset .pui-fieldset-toggler {
