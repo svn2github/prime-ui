@@ -22,8 +22,7 @@
                 $('#default').puifieldset();
                 
                 $('#toggle').puifieldset({
-                    toggleable: true,
-                    collapsed: true
+                    toggleable: true
                 });
         
                 $('#doc').puitabview();
@@ -114,42 +113,143 @@
                     </ul>
                     <div>
                         <div id="doc-overview">
-                            <p></p>
+                            <p>Fieldset is a grouping component providing a content toggle feature.</p>
 
                             <pre name="code" class="jscript">
-
+$('#default').puifieldset();
                             </pre>
 
                             <pre name="code" class="xml">
-
+&lt;fieldset id="default"&gt;
+    &lt;legend&gt;Title&gt;/legend&gt;
+    Content
+&lt;/fieldset&gt;
                             </pre>
                         </div>
 
                         <div id="doc-options">
-
+                            <table class="doc-table">
+                                <thead>
+                                <th class="ui-state-default">Name</th>
+                                <th class="ui-state-default">Type</th>
+                                <th class="ui-state-default">Default</th>
+                                <th class="ui-state-default">Description</th>
+                                </thead>
+                                <tbody>
+                                    <tr class="ui-widget-content">
+                                        <td>toggleable</td>
+                                        <td>Boolean</td>
+                                        <td>false</td>
+                                        <td>Defines if content of fieldset can be expanded and collapsed.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>toggleDuration</td>
+                                        <td>Number/String</td>
+                                        <td>normal</td>
+                                        <td>Defines the duration of the toggle effect, valid values are "slow", "normal", "fast" or a number in milliseconds.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>collapsed</td>
+                                        <td>Boolean</td>
+                                        <td>false</td>
+                                        <td>Displays the fieldset as collapsed initially.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
 
                         <div id="doc-events">
+                            <table class="doc-table">
+                            <thead>
+                            <th class="ui-state-default">Name</th>
+                            <th class="ui-state-default">Parameters</th>
+                            <th class="ui-state-default">Description</th>
+                            </thead>
+                            <tbody>
+                                <tr class="ui-widget-content">
+                                    <td>beforeToggle</td>
+                                    <td>event: puifieldsetbeforeToggle event
+                                    <td>Fired before toggling.</td>
+                                </tr>
+                                <tr class="ui-widget-content">
+                                    <td>afterToggle</td>
+                                    <td>event: puifieldsetafterToggle event
+                                    <td>Fired after toggling.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
                             <pre name="code" class="jscript">
-
+$('#default').puifieldset({
+    afterToggle: function(event) {
+        //...
+    }
+});
                             </pre>
                         </div>
 
                         <div id="doc-methods">
+                            <table class="doc-table">
+                                <thead>
+                                    <th class="ui-state-default">Name</th>
+                                    <th class="ui-state-default">Parameters</th>
+                                    <th class="ui-state-default">Description</th>
+                                </thead>
+                                <tbody>
+                                    <tr class="ui-widget-content">
+                                        <td>toggle</td>
+                                        <td>-</td>
+                                        <td>Toggles content.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>option</td>
+                                        <td>name: Name of the option</td>
+                                        <td>Returns the value of the option.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>option</td>
+                                        <td>name: Name of the option, value: Value of the option</td>
+                                        <td>Set the value of the option.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
                             <pre name="code" class="jscript">
-
+    $('#default').puifieldset('toggle');
                             </pre>
                         </div>
 
                         <div id="doc-source">
                             <pre name="code" class="jscript">
+&lt;script type="text/javascript"&gt;
+    $(function() {
+        $('#default').puifieldset();
 
+        $('#toggle').puifieldset({
+            toggleable: true
+        });
+    });
+&lt;/script&gt;
                             </pre>
 
                             <pre name="code" class="xml">
+&lt;fieldset id="default" style="margin-bottom:20px"&gt;
+    &lt;legend&gt;Default&lt;/legend&gt;
+    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
+    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+    kind and benevolent to those who give respect, 
+    but given to ruthless violence whenever anything stands against the good of the family.
+&lt;/fieldset&gt;
 
+&lt;fieldset id="toggle"&gt;
+    &lt;legend&gt;Toggleable&lt;/legend&gt;
+    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
+    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+    kind and benevolent to those who give respect, 
+    but given to ruthless violence whenever anything stands against the good of the family.
+&lt;/fieldset&gt;
                             </pre>
                         </div>
                     </div>

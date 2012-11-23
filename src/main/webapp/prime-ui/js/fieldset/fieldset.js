@@ -7,7 +7,7 @@ $(function() {
        
         options: {
             toggleable: false,
-            toggleSpeed: 'normal',
+            toggleDuration: 'normal',
             collapsed: false
         },
         
@@ -33,7 +33,6 @@ $(function() {
                     this.toggler.addClass('ui-icon-minusthick');
                 }
             }
-            
         },
         
         _bindEvents: function() {
