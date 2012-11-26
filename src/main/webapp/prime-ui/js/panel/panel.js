@@ -8,7 +8,9 @@ $(function() {
         options: {
             toggleable: false,
             toggleDuration: 'normal',
-            collapsed: false
+            toggleOrientation : 'vertical',
+            collapsed: false,
+            closeDuration: 'normal'
         },
         
         _create: function() {
@@ -29,20 +31,22 @@ $(function() {
             var $this = this;
             
             if(this.options.closable) {
-                this.closer = $('<a class="pui-panel-titlebar-icon ui-corner-all ui-state-default" href="#""><span class="ui-icon ui-icon-closethick"></span></a>')
+                this.closer = $('<a class="pui-panel-titlebar-icon ui-corner-all ui-state-default" href="#"><span class="ui-icon ui-icon-closethick"></span></a>')
                                 .appendTo(this.header)
-                                .on('click.puipanel', function() {
+                                .on('click.puipanel', function(e) {
                                     $this.close();
+                                    e.preventDefault();
                                 });
             }
             
             if(this.options.toggleable) {
                 var icon = this.options.collapsed ? 'ui-icon-plusthick' : 'ui-icon-minusthick';
                 
-                this.toggler = $('<a class="pui-panel-titlebar-icon ui-corner-all ui-state-default" href="#""><span class="ui-icon ' + icon + '"></span></a>')
+                this.toggler = $('<a class="pui-panel-titlebar-icon ui-corner-all ui-state-default" href="#"><span class="ui-icon ' + icon + '"></span></a>')
                                 .appendTo(this.header)
-                                .on('click.puipanel', function() {
+                                .on('click.puipanel', function(e) {
                                     $this.toggle();
+                                    e.preventDefault();
                                 });
                                 
                 if(this.options.collapsed) {
@@ -79,9 +83,42 @@ $(function() {
         },
         
         expand: function() {
-            this._trigger('beforeExpand');
             this.toggler.children('span.ui-icon').removeClass('ui-icon-plusthick').addClass('ui-icon-minusthick');
+            
+            if(this.options.toggleOrientation === 'vertical') {
+                this._slideDown();
+            } 
+            else if(this.options.toggleOrientation === 'horizontal') {
+                this._slideRight();
+            }
+        },
+
+        collapse: function() {
+            this.toggler.children('span.ui-icon').removeClass('ui-icon-minusthick').addClass('ui-icon-plusthick');
+            
+            if(this.options.toggleOrientation === 'vertical') {
+                this._slideUp();
+            } 
+            else if(this.options.toggleOrientation === 'horizontal') {
+                this._slideLeft();
+            }
+        },
+        
+        _slideUp: function() {        
             var $this = this;
+            
+            this._trigger('beforeCollapse');
+            
+            this.content.slideUp(this.options.toggleDuration, 'easeInOutCirc', function() {
+                $this._trigger('afterCollapse');
+                $this.options.collapsed = !$this.options.collapsed;
+            });
+        },
+
+        _slideDown: function() {  
+            var $this = this;
+            
+            this._trigger('beforeExpand');
             
             this.content.slideDown(this.options.toggleDuration, 'easeInOutCirc', function() {
                 $this._trigger('afterExpand');
@@ -89,14 +126,43 @@ $(function() {
             }); 
         },
 
-        collapse: function() {
-            this._trigger('beforeCollapse');
-            this.toggler.children('span.ui-icon').removeClass('ui-icon-minusthick').addClass('ui-icon-plusthick');
+        _slideLeft: function() {
             var $this = this;
-            
-            this.content.slideUp(this.options.toggleDuration, 'easeInOutCirc', function() {
-                $this._trigger('afterCollapse');
+
+            this.originalWidth = this.element.width();
+
+            this.title.hide();
+            this.toggler.hide();
+            this.content.hide();
+
+            this.element.animate({
+                width: '42px'
+            }, this.options.toggleSpeed, 'easeInOutCirc', function() {
+                $this.toggler.show();
+                $this.element.addClass('pui-panel-collapsed-h');
                 $this.options.collapsed = !$this.options.collapsed;
+            });
+        },
+
+        _slideRight: function() {
+            var $this = this,
+            expandWidth = this.originalWidth||'100%';
+
+            this.toggler.hide();
+
+            this.element.animate({
+                width: expandWidth
+            }, this.options.toggleSpeed, 'easeInOutCirc', function() {
+                $this.element.removeClass('pui-panel-collapsed-h');
+                $this.title.show();
+                $this.toggler.show();
+                $this.options.collapsed = !$this.options.collapsed;
+
+                $this.content.css({
+                    'visibility': 'visible'
+                    ,'display': 'block'
+                    ,'height': 'auto'
+                });
             });
         }
     });
