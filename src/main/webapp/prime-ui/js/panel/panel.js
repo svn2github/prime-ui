@@ -10,6 +10,7 @@ $(function() {
             toggleDuration: 'normal',
             toggleOrientation : 'vertical',
             collapsed: false,
+            closable: false,
             closeDuration: 'normal'
         },
         
