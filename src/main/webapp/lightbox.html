@@ -15,15 +15,28 @@
         <script type="text/javascript" src="demo/js/jquery.js"></script>
         <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
         <script type="text/javascript" src="demo/js/demo.js"></script>
+        <script type="text/javascript" src="prime-ui/js/core/core.js"></script>
         <script type="text/javascript" src="prime-ui/js/lightbox/lightbox.js"></script>
         <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
         <script type="text/javascript">
             $(function() {
-                $('.group').puilightbox();
+                $('#images').puilightbox();
+                
+                $('#inline').puilightbox();
+                
+                $('#external').puilightbox({
+                    iframe: true
+                });
                 
                 $('#doc').puitabview();
             });
         </script>
+        <style type="text/css">
+            .pui-lightbox-inline {
+                background-color: #ffffff;
+                text-align: center;
+            }
+        </style>
     </head>
 
     <body>
@@ -83,11 +96,37 @@
 
                 <h2 class="ui-widget-header widget-title ui-corner-all">Lightbox</h2>
 
-                <a class="group" href="./demo/images/sopranos/sopranos1.jpg">
-                    <img src="./demo/images/sopranos/sopranos1_small.jpg" alt="Sopranos 1"/>
-                </a>
-                <a class="group" href="./demo/images/sopranos/sopranos2.jpg">
-                    <img src="./demo/images/sopranos/sopranos2_small.jpg" alt="Sopranos 2"/>
+                <h3 class="title title-short" style="margin-top: 0px;">Images</h3>
+                <div id="images">
+                    <a href="./demo/images/sopranos/sopranos1.jpg">
+                        <img src="./demo/images/sopranos/sopranos1_small.jpg" alt="Sopranos 1"/>
+                    </a>
+                    <a href="./demo/images/sopranos/sopranos2.jpg">
+                        <img src="./demo/images/sopranos/sopranos2_small.jpg" alt="Sopranos 2"/>
+                    </a>
+                    <a href="./demo/images/sopranos/sopranos3.jpg">
+                        <img src="./demo/images/sopranos/sopranos3_small.jpg" alt="Sopranos 3"/>
+                    </a>
+                    <a href="./demo/images/sopranos/sopranos4.jpg">
+                        <img src="./demo/images/sopranos/sopranos4_small.jpg" alt="Sopranos 4"/>
+                    </a>
+                </div>
+                
+                <h3 class="title title-short">Inline</h3>
+                <div id="inline">
+                    <a class="group" href="#">
+                        View Content
+                    </a>
+                    
+                    <div class="ui-helper-hidden">
+                        <h2>PrimeUI</h2>
+                        <img src="./demo/images/logo.png" /> 
+                    </div>
+                </div>
+                
+                <h3 class="title title-short">IFrame</h3>
+                <a id="external" href="http://www.primefaces.org">
+                    PrimeFaces Home
                 </a>
 
                 <h2 class="title" style="margin-top: 40px;">Documentation</h2> 

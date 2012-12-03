@@ -3,6 +3,8 @@
  */
 PUI = {
     
+    zindex : 1000,
+        
     /**
      *  Aligns container scrollbar to keep item in container viewport, algorithm copied from jquery-ui menu widget
      */
