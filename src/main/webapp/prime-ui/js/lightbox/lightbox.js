@@ -6,7 +6,6 @@ $(function() {
     $.widget("prime-ui.puilightbox", {
        
         options: {
-            mode: 'image',
             iframeWidth: 640,
             iframeHeight: 480,
             iframe: false

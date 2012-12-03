@@ -140,36 +140,177 @@
                     </ul>
                     <div>
                         <div id="doc-overview">
-                            <p>.</p>
+                            <p>LightBox is a modal overlay component to display images, videos, inline html content and iframes.</p>
 
                             <pre name="code" class="jscript">
-
+$('#images').puilightbox();
                             </pre>
 
                             <pre name="code" class="xml">
-   
+&lt;div id="images"&gt;
+    &lt;a href="./demo/images/sopranos/sopranos1.jpg"&gt;
+        &lt;img src="./demo/images/sopranos/sopranos1_small.jpg" alt="Sopranos 1"/&gt;
+    &lt;/a&gt;
+    &lt;a href="./demo/images/sopranos/sopranos2.jpg"&gt;
+        &lt;img src="./demo/images/sopranos/sopranos2_small.jpg" alt="Sopranos 2"/&gt;
+    &lt;/a&gt;
+    &lt;a href="./demo/images/sopranos/sopranos3.jpg"&gt;
+        &lt;img src="./demo/images/sopranos/sopranos3_small.jpg" alt="Sopranos 3"/&gt;
+    &lt;/a&gt;
+    &lt;a href="./demo/images/sopranos/sopranos4.jpg"&gt;
+        &lt;img src="./demo/images/sopranos/sopranos4_small.jpg" alt="Sopranos 4"/&gt;
+    &lt;/a&gt;
+&lt;/div&gt;
                             </pre>
                         </div>
 
                         <div id="doc-options">
-                            
+                            <table class="doc-table">
+                                <thead>
+                                <th class="ui-state-default">Name</th>
+                                <th class="ui-state-default">Type</th>
+                                <th class="ui-state-default">Default</th>
+                                <th class="ui-state-default">Description</th>
+                                </thead>
+                                <tbody>
+                                    <tr class="ui-widget-content">
+                                        <td>iframe</td>
+                                        <td>boolean</td>
+                                        <td>false</td>
+                                        <td>Enables iframe mode to open target of link in an iframe.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>iframeWidth</td>
+                                        <td>integer</td>
+                                        <td>640</td>
+                                        <td>Width of the iframe.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>iframeHeight</td>
+                                        <td>integer</td>
+                                        <td>480</td>
+                                        <td>Height of the iframe.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
 
                         <div id="doc-events">
+                            <table class="doc-table">
+                                <thead>
+                                <th class="ui-state-default">Name</th>
+                                <th class="ui-state-default">Parameters</th>
+                                <th class="ui-state-default">Description</th>
+                                </thead>
+                                <tbody>
+                                    <tr class="ui-widget-content">
+                                        <td>show</td>
+                                        <td>event: puilightboxshow event
+                                        <td>Fired when lightbox is displayed.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>hide</td>
+                                        <td>event: puilightboxhide event
+                                        <td>Fired when lightbox is hidden.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                             
+                            <pre name="code" class="jscript">
+$('#images').puilightbox({
+    hide: function(event) {
+        //...
+    }
+});
+                            </pre>
                         </div>
 
                         <div id="doc-methods">
+                            <table class="doc-table">
+                                <thead>
+                                    <th class="ui-state-default">Name</th>
+                                    <th class="ui-state-default">Parameters</th>
+                                    <th class="ui-state-default">Description</th>
+                                </thead>
+                                <tbody>
+                                    <tr class="ui-widget-content">
+                                        <td>show</td>
+                                        <td>-</td>
+                                        <td>Shows lightbox.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>hide</td>
+                                        <td>-</td>
+                                        <td>Hides lightbox.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>center</td>
+                                        <td>-</td>
+                                        <td>Centers lightbox in viewport.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>showURL</td>
+                                        <td>cfg.src: Source url to show.
+                                            <br />
+                                            cfg.width: Width of the iframe.
+                                            <br />
+                                            cfg.height: Height of the iframe
+                                        </td>
+                                        <td>Shows a url in an iframe.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>option</td>
+                                        <td>name: Name of the option</td>
+                                        <td>Returns the value of the option.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>option</td>
+                                        <td>name: Name of the option, value: Value of the option</td>
+                                        <td>Set the value of the option.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                             
+                            <pre name="code" class="jscript">
+$('#images').puilightbox('show);
+                            </pre>
                         </div>
 
                         <div id="doc-source">
                             <pre name="code" class="jscript">
-
+$('#images').puilightbox('show');
                             </pre>
 
                             <pre name="code" class="xml">
+&lt;div id="images"&gt;
+    &lt;a href="./demo/images/sopranos/sopranos1.jpg"&gt;
+        &lt;img src="./demo/images/sopranos/sopranos1_small.jpg" alt="Sopranos 1"/&gt;
+    &lt;/a&gt;
+    &lt;a href="./demo/images/sopranos/sopranos2.jpg"&gt;
+        &lt;img src="./demo/images/sopranos/sopranos2_small.jpg" alt="Sopranos 2"/&gt;
+    &lt;/a&gt;
+    &lt;a href="./demo/images/sopranos/sopranos3.jpg"&gt;
+        &lt;img src="./demo/images/sopranos/sopranos3_small.jpg" alt="Sopranos 3"/&gt;
+    &lt;/a&gt;
+    &lt;a href="./demo/images/sopranos/sopranos4.jpg"&gt;
+        &lt;img src="./demo/images/sopranos/sopranos4_small.jpg" alt="Sopranos 4"/&gt;
+    &lt;/a&gt;
+&lt;/div&gt;
 
+&lt;div id="inline"&gt;
+    &lt;a class="group" href="#"&gt;
+        View Content
+    &lt;/a&gt;
+
+    &lt;div class="ui-helper-hidden"&gt;
+        &lt;h2&gt;PrimeUI&lt;/h2&gt;
+        &lt;img src="./demo/images/logo.png" /&gt; 
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;a id="external" href="http://www.primefaces.org"&gt;
+    PrimeFaces Home
+&lt;/a&gt;
                             </pre>
                         </div>
                     </div>
