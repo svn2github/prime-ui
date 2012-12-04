@@ -44,6 +44,7 @@ $(function() {
             this._bindCommonEvents();
             
             this.links.data('puilightbox-trigger', true).find('*').data('puilightbox-trigger', true);
+            this.closeIcon.data('puilightbox-trigger', true).find('*').data('puilightbox-trigger', true);
         },
         
         _bindCommonEvents: function() {
