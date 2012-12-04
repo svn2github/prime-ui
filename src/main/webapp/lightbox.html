@@ -281,7 +281,17 @@ $('#images').puilightbox('show);
 
                         <div id="doc-source">
                             <pre name="code" class="jscript">
-$('#images').puilightbox('show');
+&lt;script type="text/javascript"&gt;
+    $(function() {
+        $('#images').puilightbox();
+
+        $('#inline').puilightbox();
+
+        $('#external').puilightbox({
+            iframe: true
+        });
+    });
+&lt;/script&gt;
                             </pre>
 
                             <pre name="code" class="xml">
