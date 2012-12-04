@@ -14,7 +14,7 @@ $(function() {
         _create: function() { 
             this.options.mode = this.options.iframe ? 'iframe' : (this.element.children('div').length == 1) ? 'inline' : 'image';
             
-            var dom = '<div class="pui-lightbox ui-widget ui-helper-hidden ui-corner-all ui-shadow">';
+            var dom = '<div class="pui-lightbox ui-widget ui-helper-hidden ui-corner-all pui-shadow">';
             dom += '<div class="pui-lightbox-content-wrapper">';
             dom += '<a class="ui-state-default pui-lightbox-nav-left ui-corner-right ui-helper-hidden"><span class="ui-icon ui-icon-carat-1-w">go</span></a>';
             dom += '<div class="pui-lightbox-content ui-corner-all"></div>';

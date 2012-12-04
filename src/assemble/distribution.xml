@@ -27,6 +27,10 @@
             <directory>${project.build.directory}/prime-ui/production</directory>
             <outputDirectory>/production</outputDirectory>
         </fileSet>
+        <fileSet>
+            <directory>${basedir}/src/main/webapp/prime-ui/images</directory>
+            <outputDirectory>/production/images</outputDirectory>
+        </fileSet>
     </fileSets>
     
 </assembly>

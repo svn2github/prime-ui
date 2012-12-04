@@ -76,6 +76,7 @@
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/growl/growl.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/inputtext/inputtext.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/inputtextarea/inputtextarea.js</include>
+                                                <include>${basedir}/src/main/webapp/prime-ui/js/lightbox/lightbox.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/panel/panel.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/rating/rating.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/spinner/spinner.js</include>
@@ -94,6 +95,7 @@
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/growl/growl.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/inputtext/inputtext.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/inputtextarea/inputtextarea.css</include>
+                                                <include>${basedir}/src/main/webapp/prime-ui/css/lightbox/lightbox.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/panel/panel.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/rating/rating.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/spinner/spinner.css</include>
@@ -126,6 +128,7 @@
                                                 <include>${project.build.directory}/prime-ui/production/js/growl/growl.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/inputtext/inputtext.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/inputtextarea/inputtextarea.js</include>
+                                                <include>${project.build.directory}/prime-ui/production/js/lightbox/lightbox.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/panel/panel.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/rating/rating.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/spinner/spinner.js</include>
@@ -145,6 +148,7 @@
                                                 <include>${project.build.directory}/prime-ui/production/css/growl/growl.css</include>
                                                 <include>${project.build.directory}/prime-ui/production/css/inputtext/inputtext.css</include>
                                                 <include>${project.build.directory}/prime-ui/production/css/inputtextarea/inputtextarea.css</include>
+                                                <include>${project.build.directory}/prime-ui/production/css/lightbox/lightbox.css</include>
                                                 <include>${project.build.directory}/prime-ui/production/css/panel/panel.css</include>
                                                 <include>${project.build.directory}/prime-ui/production/css/rating/rating.css</include>
                                                 <include>${project.build.directory}/prime-ui/production/css/spinner/spinner.css</include>
