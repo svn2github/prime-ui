@@ -5,14 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.primefaces</groupId>
     <artifactId>prime-ui</artifactId>
-    <version>0.5-SNAPSHOT</version>
+    <version>0.6-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>prime-ui</name>
     <url>http://maven.apache.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
     </properties>
     
     <build>
