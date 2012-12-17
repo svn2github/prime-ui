@@ -17,7 +17,7 @@ $(function() {
             effect: 'fade',
             effectSpeed: 250,
             showCaption: true,
-            custom: false
+            customContent: false
         },
         
         _create: function() {
@@ -39,7 +39,7 @@ $(function() {
                 this._bindEvents();
             }
             
-            if(this.options.custom) {
+            if(this.options.customContent) {
                 this.panels.children('img').remove();
                 this.panels.children('div').addClass('pui-galleria-panel-content');
             }

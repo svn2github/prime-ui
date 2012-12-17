@@ -25,7 +25,7 @@
                 
                 $('#customcontent').puigalleria({
                     autoPlay: false,
-                    custom: true,
+                    customContent: true,
                     showCaption: false,
                     panelWidth: 360,
                     panelHeight: 200,
@@ -284,6 +284,12 @@ $('#images').puigalleria();
                                         <td>true</td>
                                         <td>Displays information retrieved from title and alt attributes of images in content caption.</td>
                                     </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>customContent</td>
+                                        <td>boolean</td>
+                                        <td>false</td>
+                                        <td>In custom content mode, galleria displays content next to the image element instead of the image itself.</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -360,7 +366,7 @@ $('#images').puigalleria('select', 1);
 
         $('#customcontent').puigalleria({
             autoPlay: false,
-            custom: true,
+            customContent: true,
             showCaption: false,
             panelWidth: 360,
             panelHeight: 200,
