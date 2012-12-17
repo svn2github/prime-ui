@@ -27,10 +27,7 @@ $(function() {
             this.panelWrapper.addClass('pui-galleria-panel-wrapper');
             this.panels = this.panelWrapper.children('li');
             this.panels.addClass('pui-galleria-panel ui-helper-hidden');
-            
-            var activePanel = this.panels.eq(this.options.activeIndex);
-            activePanel.removeClass('ui-helper-hidden');
-            
+                        
             this.element.width(this.options.panelWidth);
             this.panelWrapper.width(this.options.panelWidth).height(this.options.panelHeight);
             this.panels.width(this.options.panelWidth).height(this.options.panelHeight);
@@ -43,6 +40,13 @@ $(function() {
             if(this.options.customContent) {
                 this.panels.children('img').remove();
                 this.panels.children('div').addClass('pui-galleria-panel-content');
+            }
+            
+            //show first
+            var activePanel = this.panels.eq(this.options.activeIndex);
+            activePanel.removeClass('ui-helper-hidden');
+            if(this.options.showCaption) {
+                this._showCaption(activePanel);
             }
             
             this.element.css('visibility', 'visible');
@@ -143,7 +147,7 @@ $(function() {
         select: function(index, reposition) {
             if(index !== this.options.activeIndex) {
                 if(this.options.showCaption) {
-                    this.caption.slideUp(this.options.effectSpeed);
+                    this._hideCaption();
                 }
 
                 var oldPanel = this.panels.eq(this.options.activeIndex),
@@ -163,8 +167,7 @@ $(function() {
 
                 //caption
                 if(this.options.showCaption) {
-                    var image = newPanel.children('img');
-                    this.caption.html('<h4>' + image.attr('title') + '</h4><p>' + image.attr('alt') + '</p>').slideDown(this.options.effectSpeed);
+                    this._showCaption(newPanel);
                 }
 
                 //viewport
@@ -184,6 +187,15 @@ $(function() {
 
                 this.options.activeIndex = index;
             }
+        },
+        
+        _hideCaption: function() {
+            this.caption.slideUp(this.options.effectSpeed);
+        },
+        
+        _showCaption: function(panel) {
+            var image = panel.children('img');
+            this.caption.html('<h4>' + image.attr('title') + '</h4><p>' + image.attr('alt') + '</p>').slideDown(this.options.effectSpeed);
         },
 
         prev: function() {
