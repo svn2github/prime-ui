@@ -16,6 +16,7 @@ $(function() {
             transitionInterval: 4000,
             effect: 'fade',
             effectSpeed: 250,
+            effectOptions: {},
             showCaption: true,
             customContent: false
         },
@@ -151,8 +152,8 @@ $(function() {
                 newFrame = this.frames.eq(index);
 
                 //content
-                oldPanel.hide(this.options.effect, {}, this.options.effectSpeed);
-                newPanel.show(this.options.effect, {}, this.options.effectSpeed);
+                oldPanel.hide(this.options.effect, this.options.effectOptions, this.options.effectSpeed);
+                newPanel.show(this.options.effect, this.options.effectOptions, this.options.effectSpeed);
 
                 //frame
                 oldFrame.removeClass('pui-galleria-frame-active').css('opacity', '');
