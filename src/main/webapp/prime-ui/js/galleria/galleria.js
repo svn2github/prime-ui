@@ -151,8 +151,8 @@ $(function() {
                 newFrame = this.frames.eq(index);
 
                 //content
-                oldPanel.fadeOut(this.options.effectSpeed);
-                newPanel.fadeIn(this.options.effectSpeed);
+                oldPanel.show(this.options.effect, {}, this.options.effectSpeed);
+                newPanel.hide(this.options.effect, {}, this.options.effectSpeed);
 
                 //frame
                 oldFrame.removeClass('pui-galleria-frame-active').css('opacity', '');
