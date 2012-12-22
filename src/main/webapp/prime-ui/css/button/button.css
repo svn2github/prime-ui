@@ -22,20 +22,20 @@
 }
 
 .pui-button-text-only .pui-button-text { 
-    padding: .4em 1em; 
+    padding: .2em 1em; 
 }
 
 .pui-button-icon-only .pui-button-text { 
-    padding: .4em; 
+    padding: .2em; 
     text-indent: -9999999px; 
 }
 
 .pui-button-text-icon-left .pui-button-text { 
-    padding: .4em 1em .4em 2.1em; 
+    padding: .2em 1em .2em 2.1em; 
 }
 
 .pui-button-text-icon-right .pui-button-text { 
-    padding: .4em 2.1em .4em 1em; 
+    padding: .2em 2.1em .2em 1em; 
 }
 
 /*button icon element(s) */
