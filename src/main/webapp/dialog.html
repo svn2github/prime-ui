@@ -27,11 +27,11 @@
                     hideEffect: 'fade',
                     minimizable: true,
                     maximizable: true,
-                    width: '300px',
                     modal: true
                 });
                 
-                $('#btn-default').puibutton({
+                $('#btn-show').puibutton({
+                    icon: 'ui-icon-arrow-4-diag',
                     click: function() {
                         $('#dlg').puidialog('show');
                     }
@@ -108,13 +108,13 @@
 
                 <h2 class="ui-widget-header widget-title ui-corner-all">Dialog</h2>
                 
-                <button id="btn-default" type="button">Default</button>
+                <button id="btn-show" type="button">Show</button>
                 <div id="dlg" title="Godfather I">
-                    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+                    <p>The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
                     His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
                     Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
                     kind and benevolent to those who give respect, 
-                    but given to ruthless violence whenever anything stands against the good of the family.
+                    but given to ruthless violence whenever anything stands against the good of the family.</p>
                 </div>
                  
                 <h2 class="title" style="margin-top: 40px;">Documentation</h2> 

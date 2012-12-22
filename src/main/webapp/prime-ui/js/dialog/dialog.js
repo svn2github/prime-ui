@@ -10,9 +10,9 @@ $(function() {
             resizable: true,
             location: 'center',
             minWidth: 150,
-            minHeight: 20,
+            minHeight: 25,
             height: 'auto',
-            width: 'auto',
+            width: '300px',
             visible: false,
             modal: false,
             showEffect: null,
@@ -48,11 +48,11 @@ $(function() {
             }
             
             if(this.options.minimizable) {
-                this._renderHeaderIcon('pui-dialog-titlebar-minimize', 'ui-icon-minus');
+                this._renderHeaderIcon('pui-dialog-titlebar-maximize', 'ui-icon-extlink');
             }
             
             if(this.options.minimizable) {
-                this._renderHeaderIcon('pui-dialog-titlebar-maximize', 'ui-icon-extlink');
+                this._renderHeaderIcon('pui-dialog-titlebar-minimize', 'ui-icon-minus');
             }
             
             //icons
@@ -60,11 +60,9 @@ $(function() {
             this.closeIcon = this.titlebar.children('.pui-dialog-titlebar-close');
             this.minimizeIcon = this.titlebar.children('.pui-dialog-titlebar-minimize');
             this.maximizeIcon = this.titlebar.children('.pui-dialog-titlebar-maximize');
-            this.blockEvents = 'focus.puidialog mousedown.puidialog mouseup.puidialog keydown.puidialog keyup.puidialog';
             
-            if(this.options.width === 'auto' && PUI.isIE(7)) {
-                this.options.width = '300px';
-            }
+            this.blockEvents = 'focus.puidialog mousedown.puidialog mouseup.puidialog keydown.puidialog keyup.puidialog';            
+            this.parent = this.element.parent();
             
             //size
             this.element.css({'width': this.options.width, 'height': 'auto'});
@@ -230,8 +228,10 @@ $(function() {
         _bindEvents: function() {   
             var $this = this;
 
-            this.icons.hover(function() {
-                $(this).toggleClass('ui-state-hover');
+            this.icons.mouseover(function() {
+                $(this).addClass('ui-state-hover');
+            }).mouseout(function() {
+                $(this).removeClass('ui-state-hover');
             });
 
             this.closeIcon.on('click.puidialog', function(e) {
@@ -239,7 +239,7 @@ $(function() {
                 e.preventDefault();
             });
 
-            /*this.maximizeIcon.click(function(e) {
+            this.maximizeIcon.click(function(e) {
                 $this.toggleMaximize();
                 e.preventDefault();
             });
@@ -247,7 +247,7 @@ $(function() {
             this.minimizeIcon.click(function(e) {
                 $this.toggleMinimize();
                 e.preventDefault();
-            });*/
+            });
 
             if(this.options.closeOnEscape) {
                 $(document).on('keydown.dialog_' + this.element.attr('id'), function(e) {
@@ -337,18 +337,18 @@ $(function() {
             }
 
             if(this.maximized) {
-                this.jq.removeClass('ui-dialog-maximized');
-                this.restoreState();
+                this.element.removeClass('pui-dialog-maximized');
+                this._restoreState();
 
-                this.maximizeIcon.children('.ui-icon').removeClass('ui-icon-newwin').addClass('ui-icon-extlink');
+                this.maximizeIcon.removeClass('ui-state-hover').children('.ui-icon').removeClass('ui-icon-newwin').addClass('ui-icon-extlink');
                 this.maximized = false;
-            } 
+            }
             else {
-                this.saveState();
+                this._saveState();
 
                 var win = $(window);
 
-                this.jq.addClass('ui-dialog-maximized').css({
+                this.element.addClass('pui-dialog-maximized').css({
                     'width': win.width() - 6
                     ,'height': win.height()
                 }).offset({
@@ -364,141 +364,89 @@ $(function() {
 
                 this.maximizeIcon.removeClass('ui-state-hover').children('.ui-icon').removeClass('ui-icon-extlink').addClass('ui-icon-newwin');
                 this.maximized = true;
-
-                if(this.cfg.behaviors) {
-                    var maximizeBehavior = this.cfg.behaviors['maximize'];
-
-                    if(maximizeBehavior) {
-                        maximizeBehavior.call(this);
-                    }
-                }
+                this._trigger('maximize');
             }
         },
 
         toggleMinimize: function() {
             var animate = true,
-            dockingZone = $(document.body).children('.ui-dialog-docking-zone');
+            dockingZone = $(document.body).children('.pui-dialog-docking-zone');
 
             if(this.maximized) {
                 this.toggleMaximize();
                 animate = false;
             }
 
-            var _self = this;
+            var $this = this;
 
             if(this.minimized) {
-                this.jq.appendTo(this.parent).removeClass('ui-dialog-minimized').css({'position':'fixed', 'float':'none'});
-                this.restoreState();
+                this.element.appendTo(this.parent).removeClass('pui-dialog-minimized').css({'position':'fixed', 'float':'none'});
+                this._restoreState();
                 this.content.show();
                 this.minimizeIcon.removeClass('ui-state-hover').children('.ui-icon').removeClass('ui-icon-plus').addClass('ui-icon-minus');
                 this.minimized = false;
 
-                if(this.cfg.resizable)
+                if(this.options.resizable) {
                     this.resizers.show();
+                }
             }
             else {
-                this.saveState();
+                this._saveState();
 
                 if(animate) {
-                    this.jq.effect('transfer', {
+                    this.element.effect('transfer', {
                                     to: dockingZone
-                                    ,className: 'ui-dialog-minimizing'
+                                    ,className: 'pui-dialog-minimizing'
                                     }, 500, 
                                     function() {
-                                        _self.dock(dockingZone);
-                                        _self.jq.addClass('ui-dialog-minimized');
+                                        $this._dock(dockingZone);
+                                        $this.element.addClass('pui-dialog-minimized');
                                     });
                 } 
                 else {
-                    this.dock(dockingZone);
+                    this._dock(dockingZone);
                 }
             }
         },
 
-        dock: function(zone) {
-            this.jq.appendTo(zone).css('position', 'static');
-            this.jq.css({'height':'auto', 'width':'auto', 'float': 'left'});
+        _dock: function(zone) {
+            this.element.appendTo(zone).css('position', 'static');
+            this.element.css({'height':'auto', 'width':'auto', 'float': 'left'});
             this.content.hide();
             this.minimizeIcon.removeClass('ui-state-hover').children('.ui-icon').removeClass('ui-icon-minus').addClass('ui-icon-plus');
             this.minimized = true;
 
-            if(this.cfg.resizable) {
+            if(this.options.resizable) {
                 this.resizers.hide();
             }
+            
+            zone.css('z-index',++PUI.zindex);
 
-            if(this.cfg.behaviors) {
-                var minimizeBehavior = this.cfg.behaviors['minimize'];
-
-                if(minimizeBehavior) {
-                    minimizeBehavior.call(this);
-                }
-            }
+            this._trigger('minimize');
         },
 
-        saveState: function() {
+        _saveState: function() {
             this.state = {
-                width: this.jq.width()
-                ,height: this.jq.height()
+                width: this.element.width()
+                ,height: this.element.height()
             };
 
             var win = $(window);
-            this.state.offset = this.jq.offset();
+            this.state.offset = this.element.offset();
             this.state.windowScrollLeft = win.scrollLeft();
             this.state.windowScrollTop = win.scrollTop();
         },
 
-        restoreState: function(includeOffset) {
-            this.jq.width(this.state.width).height(this.state.height);
-
+        _restoreState: function() {
+            this.element.width(this.state.width).height(this.state.height);
+            
             var win = $(window);
-            this.jq.offset({
-            top: this.state.offset.top + (win.scrollTop() - this.state.windowScrollTop)
-            ,left: this.state.offset.left + (win.scrollLeft() - this.state.windowScrollLeft)
+            this.element.offset({
+                    top: this.state.offset.top + (win.scrollTop() - this.state.windowScrollTop)
+                    ,left: this.state.offset.left + (win.scrollLeft() - this.state.windowScrollLeft)
             });
         },
 
-        loadContents: function() {
-            var options = {
-                source: this.id,
-                process: this.id,
-                update: this.id
-            },
-            _self = this;
-
-            options.onsuccess = function(responseXML) {
-                var xmlDoc = $(responseXML.documentElement),
-                updates = xmlDoc.find("update");
-
-                for(var i=0; i < updates.length; i++) {
-                    var update = updates.eq(i),
-                    id = update.attr('id'),
-                    content = update.text();
-
-                    if(id == _self.id){
-                        _self.content.html(content);
-                        _self.loaded = true;
-                    }
-                    else {
-                        PrimeFaces.ajax.AjaxUtils.updateElement.call(this, id, content);
-                    }
-                }
-
-                PrimeFaces.ajax.AjaxUtils.handleResponse.call(this, xmlDoc);
-
-                return true;
-            };
-
-            options.oncomplete = function() {
-                _self.show();
-            };
-
-            options.params = [
-                {name: this.id + '_contentLoad', value: true}
-            ];
-
-            PrimeFaces.ajax.AjaxRequest(options);
-        },
-        
         _applyARIA: function() {
             this.element.attr({
                 'role': 'dialog'
