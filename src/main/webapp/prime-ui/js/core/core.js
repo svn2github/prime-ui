@@ -22,5 +22,9 @@ PUI = {
         else if((offset + itemHeight) > elementHeight) {
             container.scrollTop(scroll + offset - elementHeight + itemHeight);
         }
+    },
+    
+    isIE: function(version) {
+        return ($.browser.msie && parseInt($.browser.version, 10) == version);
     }
 };
