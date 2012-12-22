@@ -24,16 +24,32 @@ $(function() {
             closable: true,
             minimizable: false,
             maximizable: false,
-            appendTo: null
+            appendTo: null,
+            buttons: null
         },
         
         _create: function() {
-            //render
+            //container
             this.element.addClass('pui-dialog ui-widget ui-widget-content ui-helper-hidden ui-corner-all pui-shadow')
                         .contents().wrapAll('<div class="pui-dialog-content ui-widget-content" />');
-                                        
+                    
+            //header
             this.element.prepend('<div class="pui-dialog-titlebar ui-widget-header ui-helper-clearfix ui-corner-top">'
                                 + '<span id="' + this.element.attr('id') + '_label" class="pui-dialog-title">' + this.element.attr('title') + '</span>');
+            
+            //footer
+            if(this.options.buttons) {
+                this.footer = $('<div class="pui-dialog-buttonpane ui-widget-content ui-helper-clearfix"></div>').appendTo(this.element);
+                for(var i = 0; i < this.options.buttons.length; i++) {
+                    var buttonMeta = this.options.buttons[i],
+                    button = $('<button type="button"></button>').appendTo(this.footer);
+                    if(buttonMeta.text) {
+                        button.text(buttonMeta.text);
+                    }
+                    
+                    button.puibutton(buttonMeta);
+                }  
+            }
             
             if(this.options.rtl) {
                 this.element.addClass('pui-dialog-rtl');

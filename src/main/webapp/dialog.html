@@ -27,7 +27,22 @@
                     hideEffect: 'fade',
                     minimizable: true,
                     maximizable: true,
-                    modal: true
+                    modal: true,
+                    buttons: [{
+                            text: 'Yes',
+                            icon: 'ui-icon-check',
+                            click: function() {
+                                $('#dlg').puidialog('hide');
+                            }
+                        },
+                        {
+                            text: 'No',
+                            icon: 'ui-icon-close',
+                            click: function() {
+                                $('#dlg').puidialog('hide');
+                            }
+                        }
+                    ]
                 });
                 
                 $('#btn-show').puibutton({
