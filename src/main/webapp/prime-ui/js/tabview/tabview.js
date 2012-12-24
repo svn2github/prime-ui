@@ -35,19 +35,19 @@ $(function() {
 
             //Tab header events
             this.navContainer.children('li')
-                    .bind('mouseover.tabview', function(e) {
+                    .on('mouseover.tabview', function(e) {
                         var element = $(this);
-                        if(!element.hasClass('ui-state-disabled')) {
+                        if(!element.hasClass('ui-state-disabled')&&!element.hasClass('ui-state-active')) {
                             element.addClass('ui-state-hover');
                         }
                     })
-                    .bind('mouseout.tabview', function(e) {
+                    .on('mouseout.tabview', function(e) {
                         var element = $(this);
-                        if(!element.hasClass('ui-state-disabled')) {
+                        if(!element.hasClass('ui-state-disabled')&&!element.hasClass('ui-state-active')) {
                             element.removeClass('ui-state-hover');
                         }
                     })
-                    .bind('click.tabview', function(e) {
+                    .on('click.tabview', function(e) {
                         var element = $(this);
 
                         if($(e.target).is(':not(.ui-icon-close)')) {
@@ -63,7 +63,7 @@ $(function() {
 
             //Closable tabs
             this.navContainer.find('li .ui-icon-close')
-                .bind('click.tabview', function(e) {
+                .on('click.tabview', function(e) {
                     var index = $(this).parent().index();
 
                     $this.remove(index);
@@ -90,19 +90,19 @@ $(function() {
 
            if(this.options.effect) {
                 oldPanel.hide(this.options.effect.name, null, this.options.effect.duration, function() {
-                   oldHeader.removeClass('ui-state-focus pui-tabview-selected ui-state-active');
+                   oldHeader.removeClass('pui-tabview-selected ui-state-active');
 
-                   newHeader.addClass('ui-state-focus pui-tabview-selected ui-state-active');
+                   newHeader.removeClass('ui-state-hover').addClass('pui-tabview-selected ui-state-active');
                    newPanel.show($this.options.name, null, $this.options.effect.duration, function() {
                        $this._trigger('change', null, index);
                    });
                });
            }
            else {
-               oldHeader.removeClass('ui-state-focus pui-tabview-selected ui-state-active');
+               oldHeader.removeClass('pui-tabview-selected ui-state-active');
                oldPanel.hide();
 
-               newHeader.addClass('ui-state-focus pui-tabview-selected ui-state-active');
+               newHeader.removeClass('ui-state-hover').addClass('pui-tabview-selected ui-state-active');
                newPanel.show();
 
                this._trigger('change', null, index);
