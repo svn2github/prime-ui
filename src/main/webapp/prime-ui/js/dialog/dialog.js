@@ -35,7 +35,8 @@ $(function() {
                     
             //header
             this.element.prepend('<div class="pui-dialog-titlebar ui-widget-header ui-helper-clearfix ui-corner-top">'
-                                + '<span id="' + this.element.attr('id') + '_label" class="pui-dialog-title">' + this.element.attr('title') + '</span>');
+                                + '<span id="' + this.element.attr('id') + '_label" class="pui-dialog-title">' + this.element.attr('title') + '</span>')
+                                .removeAttr('title');
             
             //footer
             if(this.options.buttons) {
@@ -60,7 +61,7 @@ $(function() {
             this.titlebar = this.element.children('.pui-dialog-titlebar');
             
             if(this.options.closable) {
-                this._renderHeaderIcon('pui-dialog-titlebar-close', 'ui-icon-closethick');
+                this._renderHeaderIcon('pui-dialog-titlebar-close', 'ui-icon-close');
             }
             
             if(this.options.minimizable) {
@@ -405,6 +406,10 @@ $(function() {
                 if(this.options.resizable) {
                     this.resizers.show();
                 }
+                
+                if(this.footer) {
+                    this.footer.show();
+                }
             }
             else {
                 this._saveState();
@@ -434,6 +439,10 @@ $(function() {
 
             if(this.options.resizable) {
                 this.resizers.hide();
+            }
+            
+            if(this.footer) {
+                this.footer.hide();
             }
             
             zone.css('z-index',++PUI.zindex);
