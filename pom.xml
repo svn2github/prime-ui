@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.primefaces</groupId>
     <artifactId>prime-ui</artifactId>
-    <version>0.6-SNAPSHOT</version>
+    <version>0.7-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>prime-ui</name>
     <url>http://maven.apache.org</url>
@@ -173,9 +173,6 @@
                         <artifactId>maven-assembly-plugin</artifactId>
                         <version>2.3</version>
                         <configuration>
-                            <!--<filters>
-                              <filter>src/assemble/filter.properties</filter>
-                            </filters>-->
                             <descriptors>
                                 <descriptor>src/assemble/distribution.xml</descriptor>
                             </descriptors>
