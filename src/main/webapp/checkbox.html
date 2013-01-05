@@ -2,44 +2,32 @@
 <html>
 
     <head>
-        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>  
         <meta http-equiv="pragma" content="no-cache" />
         <meta http-equiv="expires" content="0" />
         <link rel="stylesheet" href="demo/css/jquery-ui.css" />
         <link rel="stylesheet" href="demo/css/aristo/theme.css" />
         <link rel="stylesheet" href="demo/css/demo.css" />
-        <link rel="stylesheet" href="prime-ui/css/inputtext/inputtext.css" />
-        <link rel="stylesheet" href="prime-ui/css/spinner/spinner.css" />
+        <link rel="stylesheet" href="prime-ui/css/checkbox/checkbox.css" />
         <link rel="stylesheet" href="prime-ui/css/tabview/tabview.css" />
         <link rel="stylesheet" href="demo/css/sh.css" />
         <script type="text/javascript" src="demo/js/sh.js"></script>
         <script type="text/javascript" src="demo/js/jquery.js"></script>
         <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
         <script type="text/javascript" src="demo/js/demo.js"></script>
-        <script type="text/javascript" src="prime-ui/js/inputtext/inputtext.js"></script>
-        <script type="text/javascript" src="prime-ui/js/spinner/spinner.js"></script>
+        <script type="text/javascript" src="prime-ui/js/checkbox/checkbox.js"></script>
         <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
         <script type="text/javascript">
             $(function() {
-                $('#basic').puispinner();
-                
-                $('#step').puispinner({step:0.25});
-                
-                $('#minmax').puispinner({
-                    min:0,
-                    max:100
-                });
-                
-                $('#prefix').puispinner({prefix:'$'});
-                
-                $('#disabled').puispinner();
-            
+                $(':checkbox').puicheckbox(); 
+
                 $('#doc').puitabview();
             });
         </script>
     </head>
 
     <body>
+
 
         <div id="header" class="ui-widget ui-widget-header">
             <div id="logo">
@@ -64,7 +52,7 @@
                     <a href="button.html" class="ui-state-default ui-corner-all widget-link">
                         Button
                     </a>
-                    <a href="checkbox.html" class="ui-state-default ui-corner-all widget-link">
+                     <a href="checkbox.html" class="ui-state-default ui-state-highlight ui-corner-all widget-link">
                         Checkbox
                     </a>
                     <a href="dialog.html" class="ui-state-default ui-corner-all widget-link">
@@ -94,7 +82,7 @@
                     <a href="rating.html" class="ui-state-default ui-corner-all widget-link">
                         Rating
                     </a>
-                    <a href="spinner.html" class="ui-state-default ui-state-highlight ui-corner-all widget-link">
+                    <a href="spinner.html" class="ui-state-default ui-corner-all widget-link">
                         Spinner
                     </a>
                     <a href="tabview.html" class="ui-state-default ui-corner-all widget-link">
@@ -102,27 +90,29 @@
                     </a>
                 </div>
 
-
             </div>
 
             <div id="content">
+                <h2 class="ui-widget-header widget-title ui-corner-all">Checkbox</h2>
                 
-                <h2 class="ui-widget-header widget-title ui-corner-all">Spinner</h2>
-
-                <h3 class="title title-short" style="margin-top: 0px;">Default</h2>
-                <input id="basic" type="text" />
-
-                <h3 class="title title-short" >Step</h3>
-                <input id="step" type="text" />
-
-                <h3 class="title title-short" >Min-Max</h3>
-                <input id="minmax" type="text" />
-
-                <h3 class="title title-short" >Prefix</h3>
-                <input id="prefix" type="text" value="$10"/>
-
-                <h3 class="title title-short" >Disabled</h3>
-                <input id="disabled" type="text" disabled="disabled"/>
+                <table>
+                    <tr>
+                        <td><input type="checkbox" name="chk" id="chk1" value="1"/></td>
+                        <td><label for="chk1">Option 1</label></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="chk" id="chk2" value="2"/></td>
+                        <td><label for="chk2">Option 2</label></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="chk" id="chk3" value="3" disabled="disabled"/></td>
+                        <td><label for="chk3">Option 3</label></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="chk" id="chk4" value="4"/></td>
+                        <td><label for="chk4">Option 4</label></td>
+                    </tr>
+                </table>
 
                 <h2 class="title" >Documentation</h2> 
                 <div id="doc">
@@ -135,38 +125,48 @@
                     </ul>
                     <div>
                         <div id="doc-overview">
-                            <p>Spinner is an input component to provide a numerical input via increment and decrement buttons.</p>
+
+                            <p>Checkbox is an extension to standard checkbox element with skinning capabilities.</p>
 
                             <pre name="code" class="jscript">
-$('#default').puispinner();
+&lt;input type="checkbox" name="chk" id="chk1" value="1"/&gt;
                             </pre>
 
-                            <pre name="code" class="xml">
-&lt;input id="default" type="text" /&gt;
+                            <pre name="code" class="jscript">
+$('#chk1').puicheckbox();
                             </pre>
+
                         </div>
 
                         <div id="doc-options">
+                            <h3>No options.</h3>
+                        </div>
+
+                        <div id="doc-events">
                             <table class="doc-table">
                                 <thead>
                                 <th class="ui-state-default">Name</th>
-                                <th class="ui-state-default">Type</th>
-                                <th class="ui-state-default">Default</th>
+                                <th class="ui-state-default">Parameters</th>
                                 <th class="ui-state-default">Description</th>
                                 </thead>
                                 <tbody>
                                     <tr class="ui-widget-content">
-                                        <td>step</td>
-                                        <td>Double</td>
-                                        <td>1.0</td>
-                                        <td>Step factor to increment/decrement.</td>
+                                        <td>change</td>
+                                        <td>event: puicheckboxchange event
+                                            <br />
+                                            checked: Boolean value of selected state.
+                                        </td>
+                                        <td>Fired when value changes.</td>
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
 
-                        <div id="doc-events">
-                            <h3>No events.</h3>
+                            <pre name="code" class="jscript">
+$(':checkbox').puicheckbox({
+    change: function(event, checked) {
+        //..
+}});
+                            </pre>
                         </div>
 
                         <div id="doc-methods">
@@ -177,6 +177,26 @@ $('#default').puispinner();
                                 <th class="ui-state-default">Description</th>
                                 </thead>
                                 <tbody>
+                                    <tr class="ui-widget-content">
+                                        <td>check()</td>
+                                        <td>-</td>
+                                        <td>Selects value.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>unselect()</td>
+                                        <td>-</td>
+                                        <td>Unselects value.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>toggle()</td>
+                                        <td>-</td>
+                                        <td>Toggles checked state.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>isChecked()</td>
+                                        <td>value: Boolean value representing checked state.</td>
+                                        <td>Returns checked state.</td>
+                                    </tr>
                                     <tr class="ui-widget-content">
                                         <td>option</td>
                                         <td>name: Name of the option</td>
@@ -189,40 +209,45 @@ $('#default').puispinner();
                                     </tr>
                                 </tbody>
                             </table>
+
+                            <pre name="code" class="jscript">
+$('#default').puicheckbox('check');  
+                            </pre>
                         </div>
 
                         <div id="doc-source">
+
                             <pre name="code" class="jscript">
 &lt;script type="text/javascript"&gt;
         $(function() {
-            $('#basic').puispinner();
-                
-            $('#step').puispinner({step:0.25});
-                
-            $('#minmax').puispinner({
-                min:0,
-                max:100
-            });
-                
-            $('#prefix').puispinner({prefix:'$'});
-                
-            $('#disabled').puispinner();
+            $(':checkbox').puicheckbox(); 
         });
-&lt;/script&gt;
+&lt;/script&gt; 
                             </pre>
 
                             <pre name="code" class="xml">
-&lt;input id="basic" type="text" /&gt;
-
-&lt;input id="step" type="text" /&gt;
-
-&lt;input id="minmax" type="text" /&gt;
-
-&lt;input id="prefix" type="text" value="$10"/&gt;
-
-&lt;input id="disabled" type="text" disabled="disabled"/&gt;
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;input type="checkbox" name="chk" id="chk1" value="1"/&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;label for="chk1"&gt;Option 1&lt;/label&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;input type="checkbox" name="chk" id="chk2" value="2"/&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;label for="chk2"&gt;Option 2&lt;/label&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;input type="checkbox" name="chk" id="chk3" value="3" disabled="disabled"/&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;label for="chk3"&gt;Option 3&lt;/label&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;input type="checkbox" name="chk" id="chk4" value="4"/&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;label for="chk4"&gt;Option 4&lt;/label&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
                             </pre>
+
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -235,7 +260,7 @@ $('#default').puispinner();
         </div>
 
         <script language="javascript">
-            dp.SyntaxHighlighter.ClipboardSwf = '/demo/js/clipboard.swf';
+            dp.SyntaxHighlighter.ClipboardSwf = '/demo/js/clipboadr.swf';
             dp.SyntaxHighlighter.HighlightAll('code');
         </script>
 

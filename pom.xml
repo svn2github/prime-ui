@@ -71,6 +71,7 @@
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/core/core.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/accordion/accordion.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/button/button.js</include>
+                                                <include>${basedir}/src/main/webapp/prime-ui/js/checkbox/checkbox.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/dialog/dialog.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/fieldset/fieldset.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/galleria/galleria.js</include>
@@ -92,6 +93,7 @@
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/core/core.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/autocomplete/autocomplete.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/button/button.css</include>
+                                                <include>${basedir}/src/main/webapp/prime-ui/css/checkbox/checkbox.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/dialog/dialog.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/fieldset/fieldset.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/galleria/galleria.css</include>
@@ -127,6 +129,7 @@
                                                 <include>${project.build.directory}/prime-ui/production/js/core/core.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/accordion/accordion.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/button/button.js</include>
+                                                <include>${project.build.directory}/prime-ui/production/js/checkbox/checkbox.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/dialog/dialog.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/fieldset/fieldset.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/galleria/galleria.js</include>
@@ -149,6 +152,7 @@
                                                 <include>${project.build.directory}/prime-ui/production/css/autocomplete/autocomplete.css</include>
                                                 <include>${project.build.directory}/prime-ui/production/css/accordion/accordion.css</include>
                                                 <include>${project.build.directory}/prime-ui/production/css/button/button.css</include>
+                                                <include>${project.build.directory}/prime-ui/production/css/checkbox/checkbox.css</include>
                                                 <include>${project.build.directory}/prime-ui/production/css/dialog/dialog.css</include>
                                                 <include>${project.build.directory}/prime-ui/production/css/fieldset/fieldset.css</include>
                                                 <include>${project.build.directory}/prime-ui/production/css/galleria/galleria.css</include>
