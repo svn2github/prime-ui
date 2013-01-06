@@ -3,7 +3,7 @@
  */
 $(function() {
 
-    $.widget("prime-ui.puigalleria", {
+    $.widget("primeui.puigalleria", {
        
         options: {
             panelWidth: 600,

@@ -3,7 +3,7 @@
  */
 $(function() {
 
-    $.widget("prime-ui.puigrowl", {
+    $.widget("primeui.puigrowl", {
        
         options: {
             sticky: false,

@@ -3,7 +3,7 @@
  */
 $(function() {
 
-    $.widget("prime-ui.puicheckbox", {
+    $.widget("primeui.puicheckbox", {
        
         _create: function() {
             this.element.wrap('<div class="pui-chkbox ui-widget"><div class="ui-helper-hidden-accessible"></div></div>');

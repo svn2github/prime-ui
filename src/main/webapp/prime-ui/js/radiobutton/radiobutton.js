@@ -5,7 +5,7 @@ $(function() {
 
     var checkedRadios = {};
 
-    $.widget("prime-ui.puiradiobutton", {
+    $.widget("primeui.puiradiobutton", {
        
         _create: function() {
             this.element.wrap('<div class="pui-radiobutton ui-widget"><div class="ui-helper-hidden-accessible"></div></div>');

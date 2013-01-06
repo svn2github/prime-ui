@@ -3,7 +3,7 @@
  */
 $(function() {
 
-    $.widget("prime-ui.puiaccordion", {
+    $.widget("primeui.puiaccordion", {
        
         options: {
              activeIndex: 0,

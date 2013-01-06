@@ -3,7 +3,7 @@
  */
 $(function() {
 
-    $.widget("prime-ui.puibutton", {
+    $.widget("primeui.puibutton", {
        
         options: {
             icon: null

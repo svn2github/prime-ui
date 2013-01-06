@@ -1,9 +1,9 @@
 /**
- * PrimeUI Spinner widget
+ * PrimeUI spinner widget
  */
 $(function() {
 
-    $.widget("prime-ui.puispinner", {
+    $.widget("primeui.puispinner", {
        
         options: {
             step: 1.0

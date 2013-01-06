@@ -3,7 +3,7 @@
  */
 $(function() {
 
-    $.widget("prime-ui.puiinputtext", {
+    $.widget("primeui.puiinputtext", {
        
         _create: function() {
             var input = this.element,

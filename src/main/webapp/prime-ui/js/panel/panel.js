@@ -3,7 +3,7 @@
  */
 $(function() {
 
-    $.widget("prime-ui.puipanel", {
+    $.widget("primeui.puipanel", {
        
         options: {
             toggleable: false,

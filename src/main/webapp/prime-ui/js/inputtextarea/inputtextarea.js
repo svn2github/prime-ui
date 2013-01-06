@@ -3,7 +3,7 @@
  */
 $(function() {
 
-    $.widget("prime-ui.puiinputtextarea", {
+    $.widget("primeui.puiinputtextarea", {
        
         options: {
              autoResize: false

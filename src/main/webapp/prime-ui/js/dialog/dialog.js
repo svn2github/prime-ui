@@ -3,7 +3,7 @@
  */
 $(function() {
 
-    $.widget("prime-ui.puidialog", {
+    $.widget("primeui.puidialog", {
        
         options: {
             draggable: true,

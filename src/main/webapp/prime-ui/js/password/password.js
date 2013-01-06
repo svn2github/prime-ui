@@ -3,7 +3,7 @@
  */
 $(function() {
 
-    $.widget("prime-ui.puipassword", {
+    $.widget("primeui.puipassword", {
         
         options: {
             promptLabel: 'Please enter a password',

@@ -1,9 +1,9 @@
 /**
- * PrimeUI Spinner widget
+ * PrimeUI rating widget
  */
 $(function() {
 
-    $.widget("prime-ui.puirating", {
+    $.widget("primeui.puirating", {
        
         options: {
             stars: 5,

@@ -1,9 +1,9 @@
 /**
- * PrimeUI TabView widget
+ * PrimeUI tabview widget
  */
 $(function() {
 
-    $.widget("prime-ui.puitabview", {
+    $.widget("primeui.puitabview", {
        
         options: {
              activeIndex:0

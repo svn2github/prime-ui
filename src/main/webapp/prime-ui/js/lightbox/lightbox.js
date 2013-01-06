@@ -3,7 +3,7 @@
  */
 $(function() {
 
-    $.widget("prime-ui.puilightbox", {
+    $.widget("primeui.puilightbox", {
        
         options: {
             iframeWidth: 640,
