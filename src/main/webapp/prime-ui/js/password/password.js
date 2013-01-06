@@ -40,7 +40,7 @@ $(function() {
             this.panel.remove();
         },
         
-        _bindEvents: function() {
+        _bindEvents: function() {
             var $this = this;
             
             this.element.on('focus.puipassword', function() {
