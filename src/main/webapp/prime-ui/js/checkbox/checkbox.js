@@ -33,8 +33,7 @@ $(function() {
                     $this.box.addClass('ui-state-hover');
             })
             .on('mouseout.puicheckbox', function() {
-                if(!$this.isChecked())
-                    $this.box.removeClass('ui-state-hover');
+                $this.box.removeClass('ui-state-hover');
             })
             .on('click.puicheckbox', function() {
                 $this.toggle();

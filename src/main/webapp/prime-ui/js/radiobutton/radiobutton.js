@@ -82,7 +82,7 @@ $(function() {
 
                 checkedRadios[name] = $this.box;
                 
-                this._trigger('change', null);
+                $this._trigger('change', null);
             });
         },
         
