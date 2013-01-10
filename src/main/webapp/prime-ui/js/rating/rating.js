@@ -46,7 +46,7 @@ $(function() {
             this.stars.click(function() {
                 var value = $this.stars.index(this) + 1;   //index starts from zero
 
-                $this._setValue(value);
+                $this.setValue(value);
             });
 
             this.container.children('.pui-rating-cancel').hover(function() {
@@ -61,15 +61,17 @@ $(function() {
             this.element.val('');
         
             this.stars.filter('.pui-rating-star-on').removeClass('pui-rating-star-on');
+            
+            this._trigger('cancel', null);
         },
         
-        _getValue: function() {
+        getValue: function() {
             var inputVal = this.element.val();
 
             return inputVal == '' ? null : parseInt(inputVal);
         },
 
-        _setValue: function(value) {
+        setValue: function(value) {
             this.element.val(value);
 
             //update visuals
