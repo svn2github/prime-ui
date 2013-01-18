@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="demo/css/aristo/theme.css" />
         <link rel="stylesheet" href="demo/css/demo.css" />
         <link rel="stylesheet" href="prime-ui/css/inputtext/inputtext.css" />
-        <link rel="stylesheet" href="prime-ui/css/inputtextarea/inputtextarea.css" />
+        <link rel="stylesheet" href="prime-ui/css/button/button.css" />
         <link rel="stylesheet" href="prime-ui/css/autocomplete/autocomplete.css" />
         <link rel="stylesheet" href="prime-ui/css/tabview/tabview.css" />
         <link rel="stylesheet" href="demo/css/sh.css" />
@@ -18,23 +18,34 @@
         <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
         <script type="text/javascript" src="demo/js/demo.js"></script>
         <script type="text/javascript" src="prime-ui/js/core/core.js"></script>
-        <script type="text/javascript" src="prime-ui/plugins/rangyinput.js"></script>
-        <script type="text/javascript" src="prime-ui/plugins/cursorposition.js"></script>
         <script type="text/javascript" src="prime-ui/js/inputtext/inputtext.js"></script>
-        <script type="text/javascript" src="prime-ui/js/inputtextarea/inputtextarea.js"></script>
+        <script type="text/javascript" src="prime-ui/js/button/button.js"></script>
+        <script type="text/javascript" src="prime-ui/js/autocomplete/autocomplete.js"></script>
         <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
         <script type="text/javascript">
             $(function() {
-                $('#basic').puiinputtextarea();
-
-                $('#resize').puiinputtextarea({autoResize:true});
-
-                $('#counter').puiinputtextarea({counter:$('#display'), counterTemplate:'{0} characters remaining.', maxlength:10});
-
-                $('#ac').puiinputtextarea({
-                    autoComplete:true
-                    ,scrollHeight:150
-                    ,completeSource:function(request, response) {
+                var cities = ['New York','Los Angeles','Chicago','Houston','Philadelphia','Phoenix','San Antonio','San Diego','Dallas','San Jose'
+                                    ,'Jacksonville','Indianapolis','Austin','San Francisco'];
+                
+                $('#basic').puiautocomplete({
+                    completeSource: cities
+                });
+                
+                $('#dropdown').puiautocomplete({
+                    completeSource: cities,
+                    dropdown: true,
+                    scrollHeight: 200
+                });
+                
+                $('#multiple').puiautocomplete({
+                    completeSource: cities,
+                    multiple: true
+                });
+                
+                $('#remote').puiautocomplete({
+                    effect: 'fade',
+                    effectSpeed: 'fast',
+                    completeSource:function(request, response) {
                         $.ajax({
                             type: "GET",
                             url: './autocomplete',
@@ -75,7 +86,7 @@
                     <a href="accordion.html" class="ui-state-default ui-corner-all widget-link">
                         Accordion
                     </a>
-                    <a href="autocomplete.html" class="ui-state-default ui-corner-all widget-link">
+                    <a href="autocomplete.html" class="ui-state-default ui-state-highlight ui-corner-all widget-link">
                         AutoComplete
                     </a>
                     <a href="button.html" class="ui-state-default ui-corner-all widget-link">
@@ -99,7 +110,7 @@
                     <a href="inputtext.html" class="ui-state-default ui-corner-all widget-link">
                         Inputtext
                     </a>
-                    <a href="inputtextarea.html" class="ui-state-default ui-state-highlight ui-corner-all widget-link">
+                    <a href="inputtextarea.html" class="ui-state-default ui-corner-all widget-link">
                         Inputtextarea
                     </a>
                     <a href="lightbox.html" class="ui-state-default ui-corner-all widget-link">
@@ -127,28 +138,21 @@
             </div>
 
             <div id="content">
-                <h2 class="ui-widget-header widget-title ui-corner-all">InputTextarea</h2>
+                <h2 class="ui-widget-header widget-title ui-corner-all">AutoComplete</h2>
                 
-                <h3 class="title title-short" style="margin-top: 0px;">Default</h3>
-                <textarea id="basic" rows="5" cols="30"></textarea>
+                <h3 class="title title-short" style="margin-top: 0px;">Basic</h3>
+                <input id="basic" name="basic" type="text"/>
+                
+                <h3 class="title title-short">Dropdown</h3>
+                <input id="dropdown" name="dropdown" type="text"/>
+                
+                <h3 class="title title-short">Multiple</h3>
+                <input id="multiple" name="multiple" type="text"/>
+                
+                <h3 class="title title-short">Remote</h3>
+                <input id="remote" name="remote" type="text"/>
 
-                <br /><br />
-
-                <h3 class="title title-short">AutoResize</h3>
-                <textarea id="resize" rows="5" cols="30"></textarea>
-
-                <br /><br />
-
-                <h3 class="title title-short">Maxlength with Remaining Chars</h3>
-                <textarea id="counter" rows="5" cols="30"></textarea>
-                <span id="display"></span>
-
-                <br /><br />
-
-                <h3 class="title title-short">AutoComplete</h3>
-                <textarea id="ac" rows="5" cols="30"></textarea>
-
-                <h2 class="title title-short" >Documentation</h2> 
+                <h2 class="title title-short">Documentation</h2> 
                 <div id="doc">
                     <ul>
                         <li><a href="#doc-overview">Overview</a></li>
@@ -160,102 +164,30 @@
                     <div>
                         <div id="doc-overview">
 
-                            <p>Inputtextarea provides autoComplete, autoResize, remaining characters counter features.</p>
+                            <p>AutoComplete is an input widget providing real-time suggestions as being typed.</p>
 
                             <pre name="code" class="jscript">
-$('#default').puiinputtextarea();
+
                             </pre>
 
                             <pre name="code" class="jscript">
-&lt;textarea id="default" &gt;&lt;/textarea&gt;
+
                             </pre>
 
                         </div>
 
                         <div id="doc-options">
 
-                            <table class="doc-table">
-                                <thead>
-                                <th class="ui-state-default">Name</th>
-                                <th class="ui-state-default">Type</th>
-                                <th class="ui-state-default">Default</th>
-                                <th class="ui-state-default">Description</th>
-                                </thead>
-                                <tbody>
-                                    <tr class="ui-widget-content">
-                                        <td>autoResize</td>
-                                        <td>Boolean</td>
-                                        <td>false</td>
-                                        <td>Defines if textarea increase its size automatically.</td>
-                                    </tr>
-                                    <tr class="ui-widget-content">
-                                        <td>autoComplete</td>
-                                        <td>Boolean</td>
-                                        <td>false</td>
-                                        <td>Defines if textarea auto complete words.</td>
-                                    </tr>
-                                    <tr class="ui-widget-content">
-                                        <td>maxlength</td>
-                                        <td>Integer</td>
-                                        <td>null</td>
-                                        <td>Determines the maximum letters in textarea.</td>
-                                    </tr>
-                                    <tr class="ui-widget-content">
-                                        <td>counter</td>
-                                        <td>Integer</td>
-                                        <td>null</td>
-                                        <td>Determines total length of letters.</td>
-                                    </tr>
-                                    <tr class="ui-widget-content">
-                                        <td>counterTemplate</td>
-                                        <td>String</td>
-                                        <td>'{0}'</td>
-                                        <td>Template the string which shows, how many letters left.</td>
-                                    </tr>
-                                    <tr class="ui-widget-content">
-                                        <td>minQueryLength</td>
-                                        <td>Integer</td>
-                                        <td>3</td>
-                                        <td>Number of characters to be typed to run a query.</td>
-                                    </tr>
-                                    <tr class="ui-widget-content">
-                                        <td>queryDelay</td>
-                                        <td>Integer</td>
-                                        <td>700</td>
-                                        <td>Delay in ms before sending each query.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            
 
                         </div>
 
                         <div id="doc-events">
 
-                            <table class="doc-table">
-                                <thead>
-                                <th class="ui-state-default">Name</th>
-                                <th class="ui-state-default">Parameters</th>
-                                <th class="ui-state-default">Description</th>
-                                </thead>
-                                <tbody>
-                                    <tr class="ui-widget-content">
-                                        <td>itemselect</td>
-                                        <td>
-                                            event: puitextareaitemselect event
-                                            <br />
-                                            item: selected item from callback.
-                                        </td>
-                                        <td>Fired when suggested item select. Autocomplete option must be true for run.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            
 
                             <pre name="code" class="jscript">
-$('#default').puiinputtextarea({
-    itemselect: function(event, item) {
-        //...
-    }
-});
+
                             </pre>
 
                         </div>
@@ -288,7 +220,7 @@ $('#default').puiinputtextarea({
                             </table>
 
                             <pre name="code" class="jscript">
-$('#default').puiinputtextarea('hide');
+
                             </pre>
 
 
@@ -297,43 +229,10 @@ $('#default').puiinputtextarea('hide');
                         <div id="doc-source">
 
                             <pre name="code" class="jscript">
-&lt;script type="text/javascript"&gt;
-        $(function() {
-            $('#basic').puiinputtextarea();
-                
-            $('#resize').puiinputtextarea({autoResize:true});
-                
-            $('#counter').puiinputtextarea({counter:$('#display'), counterTemplate:'{0} characters remaining.', maxlength:10});
-                
-            $('#ac').puiinputtextarea({
-                autoComplete:true
-                ,scrollHeight:150
-                ,completeSource:function(request, response) {
-                    $.ajax({
-                        type: "GET",
-                        url: './autocomplete',
-                        data: {query: request.query},
-                        dataType: "json",
-                        context: this,
-                        success: function(data) {
-                            response.call(this, data);
-                        }
-                    });
-                }
-            });
-
-        });
-&lt;/script&gt;
                             </pre>
 
                             <pre name="code" class="jscript">
-&lt;textarea id="basic" rows="5" cols="30"&gt;&lt;/textarea&gt;
 
-&lt;textarea id="resize" rows="5" cols="30"&gt;&lt;/textarea&gt;
-
-&lt;textarea id="counter" rows="5" cols="30"&gt;&lt;/textarea&gt;
-
-&lt;textarea id="ac" rows="5" cols="30"&gt;&lt;/textarea&gt;
                             </pre>
 
                         </div>

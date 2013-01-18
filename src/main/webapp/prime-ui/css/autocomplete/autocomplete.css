@@ -48,7 +48,7 @@
 }
 
 /* Multiple Selection */
-.pui-autocomplete-multiple-container {
+.pui-autocomplete-multiple {
     clear: left;
     cursor: text;
     list-style-type: none;
@@ -56,10 +56,7 @@
     min-height: 1px;
     overflow: hidden;
     width: 400px;
-}
-
-.pui-autocomplete-multiple-container.ui-inputfield {
-    padding:0;
+    padding: 0px;
 }
 
 .pui-autocomplete-token {
@@ -92,20 +89,12 @@
     padding: 0;
 }
 
-.pui-autocomplete-input-token input {
+.pui-autocomplete-input-token .pui-inputtext {
     border: 0 none;
     width: 140px;
     outline: medium none;
     background-color: transparent;
-    margin:2px;
-}
-
-.pui-autocomplete-itemtip-content {
-    display:none;
-}
-
-.pui-autocomplete-itemtip {
-    position: absolute;
-    display: none;
-    padding: 0.4em;
+    margin: 0px;
+    padding: 4px;
+    box-shadow: none;
 }

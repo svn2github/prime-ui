@@ -26,5 +26,13 @@ PUI = {
     
     isIE: function(version) {
         return ($.browser.msie && parseInt($.browser.version, 10) == version);
+    },
+    
+    escapeRegExp: function(text) {
+        return text.replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
+    },
+
+    escapeHTML: function(value) {
+        return value.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
 };
