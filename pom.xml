@@ -70,6 +70,7 @@
                                                 <include>${basedir}/src/main/resources/copyright.txt</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/core/core.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/accordion/accordion.js</include>
+                                                <include>${basedir}/src/main/webapp/prime-ui/js/autocomplete/autocomplete.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/button/button.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/checkbox/checkbox.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/dialog/dialog.js</include>
@@ -132,6 +133,7 @@
                                                 <include>${basedir}/src/main/resources/copyright.txt</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/core/core.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/accordion/accordion.js</include>
+                                                <include>${project.build.directory}/prime-ui/production/js/autocomplete/autocomplete.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/button/button.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/checkbox/checkbox.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/dialog/dialog.js</include>
