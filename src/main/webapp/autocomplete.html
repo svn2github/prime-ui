@@ -8,8 +8,10 @@
         <link rel="stylesheet" href="demo/css/jquery-ui.css" />
         <link rel="stylesheet" href="demo/css/aristo/theme.css" />
         <link rel="stylesheet" href="demo/css/demo.css" />
+        <link rel="stylesheet" href="prime-ui/css/core/core.css" />
         <link rel="stylesheet" href="prime-ui/css/inputtext/inputtext.css" />
         <link rel="stylesheet" href="prime-ui/css/button/button.css" />
+        <link rel="stylesheet" href="prime-ui/css/growl/growl.css" />
         <link rel="stylesheet" href="prime-ui/css/autocomplete/autocomplete.css" />
         <link rel="stylesheet" href="prime-ui/css/tabview/tabview.css" />
         <link rel="stylesheet" href="demo/css/sh.css" />
@@ -20,12 +22,14 @@
         <script type="text/javascript" src="prime-ui/js/core/core.js"></script>
         <script type="text/javascript" src="prime-ui/js/inputtext/inputtext.js"></script>
         <script type="text/javascript" src="prime-ui/js/button/button.js"></script>
+        <script type="text/javascript" src="prime-ui/js/growl/growl.js"></script>
         <script type="text/javascript" src="prime-ui/js/autocomplete/autocomplete.js"></script>
         <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
         <script type="text/javascript">
             $(function() {
                 var cities = ['New York','Los Angeles','Chicago','Houston','Philadelphia','Phoenix','San Antonio','San Diego','Dallas','San Jose'
-                                    ,'Jacksonville','Indianapolis','Austin','San Francisco'];
+                                    ,'Jacksonville','Indianapolis','Austin','San Francisco','Memphis', 'Boston','Seattle','Denver','Milwakuee','Las Vegas'
+                                    ,'Kansas City', 'Charlotte','Detroit','Washington D.C.','Atlanta'];
                 
                 $('#basic').puiautocomplete({
                     completeSource: cities
@@ -36,10 +40,16 @@
                     dropdown: true,
                     scrollHeight: 200
                 });
-                
+                                
                 $('#multiple').puiautocomplete({
                     completeSource: cities,
-                    multiple: true
+                    multiple: true,
+                    select: function(event, item) {
+                        $('#growl').puigrowl('show', [{severity: 'info', summary: 'City Selected', detail: item.data('item-label')}]);
+                    },
+                    unselect: function(event, item) {
+                        $('#growl').puigrowl('show', [{severity: 'info', summary: 'City Unselected', detail: item.data('item-label')}]);
+                    }
                 });
                 
                 $('#remote').puiautocomplete({
@@ -59,6 +69,8 @@
                     }
                 });
 
+                $('#growl').puigrowl(); 
+                
                 $('#doc').puitabview();
             });
         </script>
@@ -145,12 +157,14 @@
                 
                 <h3 class="title title-short">Dropdown</h3>
                 <input id="dropdown" name="dropdown" type="text"/>
-                
+                                
                 <h3 class="title title-short">Multiple</h3>
                 <input id="multiple" name="multiple" type="text"/>
                 
                 <h3 class="title title-short">Remote</h3>
                 <input id="remote" name="remote" type="text"/>
+                
+                <div id="growl"></div>
 
                 <h2 class="title title-short">Documentation</h2> 
                 <div id="doc">
@@ -167,27 +181,113 @@
                             <p>AutoComplete is an input widget providing real-time suggestions as being typed.</p>
 
                             <pre name="code" class="jscript">
-
+$('#input').puiautocomplete({
+    completeSource: //array or a function
+});
                             </pre>
 
-                            <pre name="code" class="jscript">
-
+                            <pre name="code" class="xml">
+&lt;input id="basic" name="basic" type="text"/&gt;
                             </pre>
 
                         </div>
 
                         <div id="doc-options">
 
-                            
+                            <table class="doc-table">
+                                <thead>
+                                <th class="ui-state-default">Name</th>
+                                <th class="ui-state-default">Type</th>
+                                <th class="ui-state-default">Default</th>
+                                <th class="ui-state-default">Description</th>
+                                </thead>
+                                <tbody>
+                                    <tr class="ui-widget-content">
+                                        <td>delay</td>
+                                        <td>integer</td>
+                                        <td>300</td>
+                                        <td>Delay in milliseconds before doing a search.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>minQueryLength</td>
+                                        <td>Integer</td>
+                                        <td>1</td>
+                                        <td>Minimum length of input value to run a query.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>multiple</td>
+                                        <td>boolean</td>
+                                        <td>false</td>
+                                        <td>Enables multiple selection mode.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>dropdown</td>
+                                        <td>boolean</td>
+                                        <td>false</td>
+                                        <td>Displays a dropdown button next to the input field to search all items.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>scrollHeight</td>
+                                        <td>integer</td>
+                                        <td>null</td>
+                                        <td>Maximum height of the suggestions panel.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>forceSelection</td>
+                                        <td>boolean</td>
+                                        <td>false</td>
+                                        <td>When enabled, input value is restricted only with suggested items.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>effect</td>
+                                        <td>string</td>
+                                        <td>null</td>
+                                        <td>Name of effect to display when showing suggestions.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>effectSpeed</td>
+                                        <td>int/string</td>
+                                        <td>normal</td>
+                                        <td>Duration in milliseconds or keywords like slow, normal and fast.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>effectOptions</td>
+                                        <td>object</td>
+                                        <td>null</td>
+                                        <td>Additional options for effect, refer to jQuery UI effect api.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
                         </div>
 
                         <div id="doc-events">
 
-                            
+                            <table class="doc-table">
+                                <thead>
+                                <th class="ui-state-default">Name</th>
+                                <th class="ui-state-default">Parameters</th>
+                                <th class="ui-state-default">Description</th>
+                                </thead>
+                                <tbody>
+                                    <tr class="ui-widget-content">
+                                        <td>select</td>
+                                        <td>
+                                            event: puiautocompleteselect event
+                                            <br />
+                                            item: selected item from callback.
+                                        </td>
+                                        <td>Fired when suggested item is selected.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
                             <pre name="code" class="jscript">
-
+$('#basic').puiautocomplete({
+    select: function(event, item) {
+        //...
+    }
+});
                             </pre>
 
                         </div>
@@ -203,8 +303,8 @@
                                 <tbody>
                                     <tr class="ui-widget-content">
                                         <td>search</td>
-                                        <td>query: String that wanted to search in textarea.</td>
-                                        <td>Search the string in textarea.</td>
+                                        <td>query: Query string to search.</td>
+                                        <td>Initiates a search with given query.</td>
                                     </tr>
                                     <tr class="ui-widget-content">
                                         <td>option</td>
@@ -220,19 +320,80 @@
                             </table>
 
                             <pre name="code" class="jscript">
-
+$('#basic').puiautocomplete('search', 'A');
                             </pre>
-
 
                         </div>
 
                         <div id="doc-source">
 
                             <pre name="code" class="jscript">
+&lt;script type="text/javascript"&gt;
+    $(function() {
+        var cities = ['New York','Los Angeles','Chicago','Houston','Philadelphia','Phoenix','San Antonio','San Diego','Dallas','San Jose'
+                            ,'Jacksonville','Indianapolis','Austin','San Francisco','Memphis', 'Boston','Seattle','Denver','Milwakuee','Las Vegas'
+                            ,'Kansas City', 'Charlotte','Detroit','Washington D.C.','Atlanta'];
+
+        $('#basic').puiautocomplete({
+            completeSource: cities
+        });
+
+        $('#dropdown').puiautocomplete({
+            completeSource: cities,
+            dropdown: true,
+            scrollHeight: 200
+        });
+
+        $('#multiple').puiautocomplete({
+            completeSource: cities,
+            multiple: true,
+            select: function(event, item) {
+                $('#growl').puigrowl('show', [{severity: 'info', summary: 'City Selected', detail: item.data('item-label')}]);
+            },
+            unselect: function(event, item) {
+                $('#growl').puigrowl('show', [{severity: 'info', summary: 'City Unselected', detail: item.data('item-label')}]);
+            }
+        });
+
+        $('#remote').puiautocomplete({
+            effect: 'fade',
+            effectSpeed: 'fast',
+            completeSource:function(request, response) {
+                $.ajax({
+                    type: "GET",
+                    url: './autocomplete',
+                    data: {query: request.query},
+                    dataType: "json",
+                    context: this,
+                    success: function(data) {
+                        response.call(this, data);
+                    }
+                });
+            }
+        });
+
+        $('#growl').puigrowl(); 
+    });
+&lt;/script&gt;
                             </pre>
 
-                            <pre name="code" class="jscript">
+                            <pre name="code" class="xml">
+&lt;h3 class="title title-short" style="margin-top: 0px;"&gt;Basic&lt;/h3&gt;
+&lt;input id="basic" name="basic" type="text"/&gt;
 
+&lt;h3 class="title title-short"&gt;Dropdown&lt;/h3&gt;
+&lt;input id="dropdown" name="dropdown" type="text"/&gt;
+
+&lt;h3 class="title title-short"&gt;Callback&lt;/h3&gt;
+&lt;input id="callback" name="callback" type="text"/&gt;
+
+&lt;h3 class="title title-short"&gt;Multiple&lt;/h3&gt;
+&lt;input id="multiple" name="multiple" type="text"/&gt;
+
+&lt;h3 class="title title-short"&gt;Remote&lt;/h3&gt;
+&lt;input id="remote" name="remote" type="text"/&gt;
+
+&lt;div id="growl"&gt;&lt;/div&gt;
                             </pre>
 
                         </div>

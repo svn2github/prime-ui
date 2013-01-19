@@ -252,12 +252,19 @@ $(function() {
                 var item = $(this);
                 
                 if($this.options.multiple) {
-                    var tokenMarkup = '<li data-token-value="' + item.attr('data-item-value') + '"class="pui-autocomplete-token ui-state-active ui-corner-all ui-helper-hidden">';
+                    var tokenMarkup = '<li class="pui-autocomplete-token ui-state-active ui-corner-all ui-helper-hidden">';
                     tokenMarkup += '<span class="pui-autocomplete-token-icon ui-icon ui-icon-close" />';
                     tokenMarkup += '<span class="pui-autocomplete-token-label">' + item.attr('data-item-label') + '</span></li>';
 
-                    $(tokenMarkup).insertBefore($this.inputContainer).fadeIn().children('.pui-autocomplete-token-icon').on('click.pui-autocomplete', function() {
-                        $this._removeItem($(this).parent());
+                    $(tokenMarkup).data({
+                            'item-label': item.data('item-label'),
+                            'item-value': item.data('item-value')
+                        })
+                        .insertBefore($this.inputContainer).fadeIn()
+                        .children('.pui-autocomplete-token-icon').on('click.pui-autocomplete', function(e) {
+                            var token = $(this).parent();
+                            $this._removeItem(token);
+                            $this._trigger('unselect', e, token);
                     });
                     
                     $this.element.val('').trigger('focus');
@@ -266,6 +273,7 @@ $(function() {
                     $this.element.val(item.text()).focus();
                 }
 
+                $this._trigger('select', event, item);
                 $this.hide();
             });
         },
@@ -333,8 +341,8 @@ $(function() {
 
                 if(this.options.forceSelection) {
                     this.cachedResults = [];
-                    this.items.each(function(i, item) {
-                        $this.cachedResults.push($(item).text());
+                    this.data.each(function(i, item) {
+                        $this.cachedResults.push(item.label);
                     });
                 }
 
