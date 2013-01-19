@@ -14,12 +14,13 @@ $(function() {
             forceSelection: false,
             effect:null,
             effectOptions: {},
-            effectSpeed: 'normal'
+            effectSpeed: 'normal',
+            content: null
         },
 
         _create: function() {
             this.element.puiinputtext();
-            this.panel = $('<div class="pui-autocomplete-panel ui-widget-content ui-corner-all ui-helper-hidden ui-shadow"></div>').appendTo('body');
+            this.panel = $('<div class="pui-autocomplete-panel ui-widget-content ui-corner-all ui-helper-hidden pui-shadow"></div>').appendTo('body');
             
             if(this.options.multiple) {
                 this.element.wrap('<ul class="pui-autocomplete-multiple ui-widget pui-inputtext ui-state-default ui-corner-all">' + 
@@ -267,7 +268,7 @@ $(function() {
                     $this.element.val('').trigger('focus');
                 }
                 else {
-                    $this.element.val(item.text()).focus();
+                    $this.element.val(item.data('label')).focus();
                 }
 
                 $this._trigger('select', event, item);
@@ -311,12 +312,17 @@ $(function() {
             for(var i = 0; i < data.length; i++) {
                 var item = $('<li class="pui-autocomplete-item pui-autocomplete-list-item ui-corner-all"></li>');
                 item.data(data[i]);
-                item.text(data[i].label);
-
+                
+                if(this.options.content)
+                    item.html(this.options.content.call(this, data[i]));
+                else
+                    item.text(data[i].label);
+                
                 this.listContainer.append(item);
             }
             
             this.items = this.listContainer.children('.pui-autocomplete-item');
+            
             this._bindDynamicEvents();
 
             if(this.items.length > 0) {
@@ -324,7 +330,7 @@ $(function() {
                 hidden = this.panel.is(':hidden');
                 firstItem.addClass('ui-state-highlight');
 
-                if($this.query.length > 0) {
+                if($this.query.length > 0 && !$this.options.content) {
                     $this.items.each(function() {
                         var item = $(this),
                         text = item.html(),
