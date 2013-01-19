@@ -10,7 +10,7 @@ $(function() {
             minQueryLength: 1,
             multiple: false,
             dropdown: false,
-            scrollHeight: null,
+            scrollHeight: 200,
             forceSelection: false,
             effect:null,
             effectOptions: {},
