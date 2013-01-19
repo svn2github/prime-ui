@@ -254,12 +254,9 @@ $(function() {
                 if($this.options.multiple) {
                     var tokenMarkup = '<li class="pui-autocomplete-token ui-state-active ui-corner-all ui-helper-hidden">';
                     tokenMarkup += '<span class="pui-autocomplete-token-icon ui-icon ui-icon-close" />';
-                    tokenMarkup += '<span class="pui-autocomplete-token-label">' + item.attr('data-item-label') + '</span></li>';
+                    tokenMarkup += '<span class="pui-autocomplete-token-label">' + item.data('label') + '</span></li>';
 
-                    $(tokenMarkup).data({
-                            'item-label': item.data('item-label'),
-                            'item-value': item.data('item-value')
-                        })
+                    $(tokenMarkup).data(item.data())
                         .insertBefore($this.inputContainer).fadeIn()
                         .children('.pui-autocomplete-token-icon').on('click.pui-autocomplete', function(e) {
                             var token = $(this).parent();
@@ -313,8 +310,7 @@ $(function() {
 
             for(var i = 0; i < data.length; i++) {
                 var item = $('<li class="pui-autocomplete-item pui-autocomplete-list-item ui-corner-all"></li>');
-                item.attr('data-item-value', data[i].value);
-                item.attr('data-item-label', data[i].label);
+                item.data(data[i]);
                 item.text(data[i].label);
 
                 this.listContainer.append(item);

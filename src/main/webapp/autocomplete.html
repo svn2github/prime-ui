@@ -58,10 +58,10 @@
                     completeSource: countries,
                     multiple: true,
                     select: function(event, item) {
-                        $('#growl').puigrowl('show', [{severity: 'info', summary: 'City Selected', detail: item.data('item-label')}]);
+                        $('#growl').puigrowl('show', [{severity: 'info', summary: 'City Selected', detail: item.data('label')}]);
                     },
                     unselect: function(event, item) {
-                        $('#growl').puigrowl('show', [{severity: 'info', summary: 'City Unselected', detail: item.data('item-label')}]);
+                        $('#growl').puigrowl('show', [{severity: 'info', summary: 'City Unselected', detail: item.data('label')}]);
                     }
                 });
                 
@@ -358,10 +358,10 @@ $('#basic').puiautocomplete('search', 'A');
             completeSource: countries,
             multiple: true,
             select: function(event, item) {
-                $('#growl').puigrowl('show', [{severity: 'info', summary: 'City Selected', detail: item.data('item-label')}]);
+                $('#growl').puigrowl('show', [{severity: 'info', summary: 'City Selected', detail: item.data('label')}]);
             },
             unselect: function(event, item) {
-                $('#growl').puigrowl('show', [{severity: 'info', summary: 'City Unselected', detail: item.data('item-label')}]);
+                $('#growl').puigrowl('show', [{severity: 'info', summary: 'City Unselected', detail: item.data('label')}]);
             }
         });
 
