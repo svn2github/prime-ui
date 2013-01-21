@@ -8,7 +8,9 @@ $(function() {
         options: {
             position: 'top',
             visible: false,
-            effect: 'slide'
+            animate: true,
+            effectSpeed: 'normal',
+            easing: 'swing'
         },
         
         _create: function() {
@@ -33,25 +35,41 @@ $(function() {
         },
         
         show: function(content) {
+            var $this = this;
+            
             if(content) {
                 this.update(content);
             }
             
-            if(this.options.effect === 'slide')
-                this.element.slideDown();
-            else if(this.options.effect === 'fade')
-                this.element.fadeIn();
-            else if(this.options.effect === 'none')
+            this.element.css('z-index',++PUI.zindex);
+            
+            this._trigger('beforeShow');
+            
+            if(this.options.animate) {
+                this.element.slideDown(this.options.effectSpeed, this.options.easing, function() {
+                    $this._trigger('afterShow');
+                });
+            }
+            else {
                 this.element.show();
+                $this._trigger('afterShow');
+            }
         },
 
         hide: function() {
-            if(this.options.effect === 'slide')
-                this.element.slideUp();
-            else if(this.options.effect === 'fade')
-                this.element.fadeOut();
-            else if(this.options.effect === 'none')
+            var $this = this;
+            
+            this._trigger('beforeHide');
+            
+            if(this.options.animate) {
+                this.element.slideUp(this.options.effectSpeed, this.options.easing, function() {
+                    $this._trigger('afterHide');
+                });
+            }
+            else {
                 this.element.hide();
+                $this._trigger('afterHide');
+            }
         },
         
         update: function(content) {
@@ -59,58 +77,3 @@ $(function() {
         }
     });
 });
-
-/**
- * PrimeFaces NotificationBar Widget
-
-PrimeFaces.widget.NotificationBar = PrimeFaces.widget.BaseWidget.extend({
-    
-    init: function(cfg) {
-        this._super(cfg);
-        
-        var _self = this;
-	
-        //relocate
-        this.jq.css(this.cfg.position, '0').appendTo($('body'));
-
-        //display initially
-        if(this.cfg.autoDisplay) {
-            $(this.jq).css('display','block')
-        }
-
-        //bind events
-        this.jq.children('.ui-notificationbar-close').click(function() {
-            _self.hide();
-        });
-    },
-    
-    show: function() {
-        if(this.cfg.effect === 'slide')
-            $(this.jq).slideDown(this.cfg.effect);
-        else if(this.cfg.effect === 'fade')
-            $(this.jq).fadeIn(this.cfg.effect);
-        else if(this.cfg.effect === 'none')
-            $(this.jq).show();
-    },
-    
-    hide: function() {
-        if(this.cfg.effect === 'slide')
-            $(this.jq).slideUp(this.cfg.effect);
-        else if(this.cfg.effect === 'fade')
-            $(this.jq).fadeOut(this.cfg.effect);
-        else if(this.cfg.effect === 'none')
-            $(this.jq).hide();
-    },
-    
-    isVisible: function() {
-        return this.jq.is(':visible');
-    },
-
-    toggle: function() {
-        if(this.isVisible())
-            this.hide();
-        else
-            this.show();
-    }
-    
-});*/
