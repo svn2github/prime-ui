@@ -86,6 +86,7 @@
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/rating/rating.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/spinner/spinner.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/tabview/tabview.js</include>
+                                                <include>${basedir}/src/main/webapp/prime-ui/js/tooltip/tooltip.js</include>
                                             </includes>
                                         </aggregation>
 
@@ -110,6 +111,7 @@
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/rating/rating.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/spinner/spinner.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/tabview/tabview.css</include>
+                                                <include>${basedir}/src/main/webapp/prime-ui/css/tooltip/tooltip.css</include>
                                             </includes>
                                         </aggregation>
                                     </aggregations>
@@ -149,6 +151,7 @@
                                                 <include>${project.build.directory}/prime-ui/production/js/rating/rating.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/spinner/spinner.js</include>
                                                 <include>${project.build.directory}/prime-ui/production/js/tabview/tabview.js</include>
+                                                <include>${project.build.directory}/prime-ui/production/js/tooltip/tooltip.js</include>
                                             </includes>
                                         </aggregation>
 
@@ -174,6 +177,7 @@
                                                 <include>${project.build.directory}/prime-ui/production/css/rating/rating.css</include>
                                                 <include>${project.build.directory}/prime-ui/production/css/spinner/spinner.css</include>
                                                 <include>${project.build.directory}/prime-ui/production/css/tabview/tabview.css</include>
+                                                <include>${project.build.directory}/prime-ui/production/css/tooltip/tooltip.css</include>
                                             </includes>
                                         </aggregation>
                                     </aggregations>
