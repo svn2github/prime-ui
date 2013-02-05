@@ -15,7 +15,8 @@ $(function() {
             effect:null,
             effectOptions: {},
             effectSpeed: 'normal',
-            content: null
+            content: null,
+            caseSensitive: false
         },
 
         _create: function() {
@@ -277,10 +278,10 @@ $(function() {
         },
         
         search: function(q) {            
-            this.query = q;
+            this.query = this.options.caseSensitive ? q : q.toLowerCase();
 
             var request = {
-                query: q 
+                query: this.query
             };
 
             if(this.options.completeSource) {
@@ -290,10 +291,16 @@ $(function() {
                     emptyQuery = ($.trim(q) === '');
                     
                     for(var i = 0 ; i < sourceArr.length; i++) {
-                        var item = sourceArr[i];
+                        var item = sourceArr[i],
+                        itemLabel = item.label||item;
+                        
+                        if(!this.options.caseSensitive) {
+                            itemLabel = itemLabel.toLowerCase();
+                        }
 
-                        if(emptyQuery||item.indexOf(q) === 0)
-                            data.push({label:sourceArr[i]});
+                        if(emptyQuery||itemLabel.indexOf(this.query) === 0) {
+                            data.push({label:sourceArr[i], value: item});
+                        }
                     }
 
                     this._handleData(data);
