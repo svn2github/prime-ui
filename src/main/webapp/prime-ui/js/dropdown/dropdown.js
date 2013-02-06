@@ -47,10 +47,10 @@ $(function() {
             this.optGroupsSize = this.itemsContainer.children('li.puiselectonemenu-item-group').length;
             
             if(this.options.filter) {
-                this.filterContainer = $('<div class="pui-dropdown-filter-container"><input type="text" autocomplete="off" ' 
-                        + 'class="pui-dropdown-filter pui-inputtext ui-widget ui-state-default ui-corner-all" role="textbox">' + 
-                        + '<span class="ui-icon ui-icon-search"></span></div>').prependTo(this.panel);
-                this.filterInput = this.filterContainer.children(this.filterContainer.children('input'));
+                this.filterContainer = $('<div class="pui-dropdown-filter-container" />').prependTo(this.panel);
+                this.filterInput = $('<input type="text" autocomplete="off" class="pui-dropdown-filter pui-inputtext ui-widget ui-state-default ui-corner-all" />')
+                                            .appendTo(this.filterContainer);
+                this.filterContainer.append('<span class="ui-icon ui-icon-search"></span>');
             }
 
             this._generateItems();
