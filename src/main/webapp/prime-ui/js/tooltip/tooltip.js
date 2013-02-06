@@ -43,7 +43,7 @@ $(function() {
                                 $this.container.text(title);
                                 $this.globalTitle = title;
                                 $this.target = target;
-                                target.removeAttr('title');
+                                target.attr('title', '');
                                 $this.show();
                             }
                         })
