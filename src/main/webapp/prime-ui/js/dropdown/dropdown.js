@@ -528,15 +528,15 @@ $(function() {
             return null;
         },
 
-        _getSelectedValue: function() {
+        getSelectedValue: function() {
             return this.element.val();
         },
 
-        _getSelectedLabel: function() {
+        getSelectedLabel: function() {
             return this.choices.filter(':selected').text();
         },
         
-        _selectValue : function(value) {
+        selectValue : function(value) {
             var option = this.choices.filter('[value="' + value + '"]');
 
             this._selectItem(this.items.eq(option.index()), true);

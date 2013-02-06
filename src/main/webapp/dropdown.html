@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="demo/css/demo.css" />
         <link rel="stylesheet" href="prime-ui/css/core/core.css" />
         <link rel="stylesheet" href="prime-ui/css/inputtext/inputtext.css" />
-        <link rel="stylesheet" href="prime-ui/css/growl/growl.css" />
         <link rel="stylesheet" href="prime-ui/css/dropdown/dropdown.css" />
         <link rel="stylesheet" href="prime-ui/css/tabview/tabview.css" />
         <link rel="stylesheet" href="demo/css/sh.css" />
@@ -19,7 +18,6 @@
         <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
         <script type="text/javascript" src="demo/js/demo.js"></script>
         <script type="text/javascript" src="prime-ui/js/core/core.js"></script>
-        <script type="text/javascript" src="prime-ui/js/growl/growl.js"></script>
         <script type="text/javascript" src="prime-ui/js/inputtext/inputtext.js"></script>
         <script type="text/javascript" src="prime-ui/js/dropdown/dropdown.js"></script>
         <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
@@ -46,8 +44,6 @@
                 $('#filter').puidropdown({
                     filter: true
                 });
-
-                $('#growl').puigrowl(); 
                 
                 $('#doc').puitabview();
             });
@@ -173,8 +169,6 @@
                     <option value="6">Paris</option>
                     <option value="7">Rome</option>
                 </select>
-                
-                <div id="growl"></div>
 
                 <h2 class="title">Documentation</h2> 
                 <div id="doc">
@@ -191,11 +185,16 @@
                             <p>Dropdown is an advanced widget to select an item from a collection.</p>
 
                             <pre name="code" class="jscript">
-
+$('#basic').puidropdown();
                             </pre>
 
                             <pre name="code" class="xml">
-
+&lt;select id="basic" name="basic"&gt;
+    &lt;option value="0"&gt;Select One&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option 2&lt;/option&gt;
+    &lt;option value="3"&gt;Option 3&lt;/option&gt;
+&lt;/select&gt;
                             </pre>
 
                         </div>
@@ -211,46 +210,10 @@
                                 </thead>
                                 <tbody>
                                     <tr class="ui-widget-content">
-                                        <td>delay</td>
-                                        <td>integer</td>
-                                        <td>300</td>
-                                        <td>Delay in milliseconds before doing a search.</td>
-                                    </tr>
-                                    <tr class="ui-widget-content">
-                                        <td>minQueryLength</td>
-                                        <td>Integer</td>
-                                        <td>1</td>
-                                        <td>Minimum length of input value to run a query.</td>
-                                    </tr>
-                                    <tr class="ui-widget-content">
-                                        <td>multiple</td>
-                                        <td>boolean</td>
-                                        <td>false</td>
-                                        <td>Enables multiple selection mode.</td>
-                                    </tr>
-                                    <tr class="ui-widget-content">
-                                        <td>dropdown</td>
-                                        <td>boolean</td>
-                                        <td>false</td>
-                                        <td>Displays a dropdown button next to the input field to search all items.</td>
-                                    </tr>
-                                    <tr class="ui-widget-content">
-                                        <td>scrollHeight</td>
-                                        <td>integer</td>
-                                        <td>200</td>
-                                        <td>Maximum height of the suggestions panel in pixels.</td>
-                                    </tr>
-                                    <tr class="ui-widget-content">
-                                        <td>forceSelection</td>
-                                        <td>boolean</td>
-                                        <td>false</td>
-                                        <td>When enabled, input value is restricted only with suggested items.</td>
-                                    </tr>
-                                    <tr class="ui-widget-content">
                                         <td>effect</td>
                                         <td>string</td>
-                                        <td>null</td>
-                                        <td>Name of effect to display when showing suggestions.</td>
+                                        <td>fade</td>
+                                        <td>Animation to run on displaying the options overlay, refer to jQuery UI effect api for valid values.</td>
                                     </tr>
                                     <tr class="ui-widget-content">
                                         <td>effectSpeed</td>
@@ -259,22 +222,47 @@
                                         <td>Duration in milliseconds or keywords like slow, normal and fast.</td>
                                     </tr>
                                     <tr class="ui-widget-content">
-                                        <td>effectOptions</td>
-                                        <td>object</td>
+                                        <td>filter</td>
+                                        <td>boolean</td>
+                                        <td>false</td>
+                                        <td>Adds a filter input at options panel when enabled.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>filterMatchMode</td>
+                                        <td>string</td>
+                                        <td>startsWith</td>
+                                        <td>Mode of filter, valid values are startsWith, contains, endsWith and custom.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>caseSensitiveFilter</td>
+                                        <td>false</td>
+                                        <td>boolean</td>
+                                        <td>Defines case sensitivity on filtering.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>filterFunction</td>
+                                        <td>function</td>
                                         <td>null</td>
-                                        <td>Additional options for effect, refer to jQuery UI effect api.</td>
+                                        <td>Function to be used in custom filtering, this function gets option as parameter and needs to return a boolean.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>source</td>
+                                        <td>array</td>
+                                        <td>null</td>
+                                        <td>An array of items to populate dropdown dynamically. Objects in this array can be simple types or object with
+                                        label-value fields like {label:'Option 1', value:1}</td>
                                     </tr>
                                     <tr class="ui-widget-content">
                                         <td>content</td>
-                                        <td>function</td>
+                                        <td>string</td>
                                         <td>null</td>
-                                        <td>Function that returns string as html content of an item for customizable suggestions.</td>
+                                        <td>Content template of an item in overlay.</td>
                                     </tr>
                                     <tr class="ui-widget-content">
-                                        <td>caseSensitive</td>
-                                        <td>boolean</td>
-                                        <td>false</td>
-                                        <td>Defines if search on a local datasource should be case sensitive.</td>
+                                        <td>scrollHeight</td>
+                                        <td>integer</td>
+                                        <td>200</td>
+                                        <td>Maximum height boundary of overlay panel in pixels, if total height of items exceed this value, scrollbar is displayed.</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -291,21 +279,14 @@
                                 </thead>
                                 <tbody>
                                     <tr class="ui-widget-content">
-                                        <td>select</td>
+                                        <td>change</td>
                                         <td>
-                                            event: puiautocompleteselect event
-                                            <br />
-                                            item: selected item from callback.
+                                            event: puidropdownchange event
                                         </td>
-                                        <td>Fired when suggested item is selected.</td>
+                                        <td>Fired on value change.</td>
                                     </tr>
                                 </tbody>
                             </table>
-
-                            <pre name="code" class="jscript">
-
-                            </pre>
-
                         </div>
 
                         <div id="doc-methods">
@@ -318,9 +299,19 @@
                                 </thead>
                                 <tbody>
                                     <tr class="ui-widget-content">
-                                        <td>search</td>
-                                        <td>query: Query string to search.</td>
-                                        <td>Initiates a search with given query.</td>
+                                        <td>getSelectedValue</td>
+                                        <td>-.</td>
+                                        <td>Returns value of current value.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>getSelectedLabel</td>
+                                        <td>-.</td>
+                                        <td>Returns label of current option.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>selectValue</td>
+                                        <td>value: Value to select.</td>
+                                        <td>Updates the current value with given parameter.</td>
                                     </tr>
                                     <tr class="ui-widget-content">
                                         <td>option</td>
@@ -336,7 +327,7 @@
                             </table>
 
                             <pre name="code" class="jscript">
-
+$('#basic').puidropdown('selectValue', 1);
                             </pre>
 
                         </div>
@@ -344,11 +335,68 @@
                         <div id="doc-source">
 
                             <pre name="code" class="jscript">
+&lt;script type="text/javascript"&gt;
+    $(function() {
+        var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
+        'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+        'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+        'ui-darkness', 'ui-lightness', 'vader');
 
+        $('#basic').puidropdown();
+
+        $('#editable').puidropdown({
+            editable: true
+        });
+
+        $('#custom').puidropdown({
+            source: themes,
+            content: function(option) {
+                return '&lt;img src="demo/images/themes/' + option + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option + '&lt;/span&gt;';
+            }
+        });
+
+        $('#filter').puidropdown({
+            filter: true
+        });
+    });
+&lt;/script&gt;
                             </pre>
 
                             <pre name="code" class="xml">
+&lt;h3 class="title title-short" style="margin-top: 0px;"&gt;Basic&lt;/h3&gt;
+&lt;select id="basic" name="basic"&gt;
+    &lt;option value="0"&gt;Select One&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option 2&lt;/option&gt;
+    &lt;option value="3"&gt;Option 3&lt;/option&gt;
+&lt;/select&gt;
 
+&lt;h3 class="title title-short"&gt;Editable&lt;/h3&gt;
+&lt;select id="editable" name="editable"&gt;
+    &lt;option value="0"&gt;Select a City&lt;/option&gt;
+    &lt;option value="1"&gt;Barcelona&lt;/option&gt;
+    &lt;option value="2"&gt;Berlin&lt;/option&gt;
+    &lt;option value="3"&gt;Istanbul&lt;/option&gt;
+    &lt;option value="4"&gt;London&lt;/option&gt;
+    &lt;option value="5"&gt;New York&lt;/option&gt;
+    &lt;option value="6"&gt;Paris&lt;/option&gt;
+    &lt;option value="7"&gt;Rome&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;h3 class="title title-short"&gt;Custom Content&lt;/h3&gt;
+&lt;select id="custom" name="custom"&gt;&lt;/select&gt;
+
+&lt;h3 class="title title-short"&gt;Filter&lt;/h3&gt;
+&lt;select id="filter" name="filter"&gt;
+    &lt;option value="0"&gt;Select a City&lt;/option&gt;
+    &lt;option value="1"&gt;Barcelona&lt;/option&gt;
+    &lt;option value="2"&gt;Berlin&lt;/option&gt;
+    &lt;option value="3"&gt;Istanbul&lt;/option&gt;
+    &lt;option value="4"&gt;London&lt;/option&gt;
+    &lt;option value="5"&gt;New York&lt;/option&gt;
+    &lt;option value="6"&gt;Paris&lt;/option&gt;
+    &lt;option value="7"&gt;Rome&lt;/option&gt;
+&lt;/select&gt;
                             </pre>
 
                         </div>
@@ -360,7 +408,7 @@
         </div>
 
         <div id="footer" class="ui-widget ui-widget-header ui-corner-bottom">
-            <p>Prime-UI, From the Producers of <a href="http://www.primefaces.org">PrimeFaces</a>. Copyright 2012 - <a href="http://www.prime.com.tr">Prime Teknoloji.</a></p>
+            <p>PrimeUI, From the Producers of <a href="http://www.primefaces.org">PrimeFaces</a>. Copyright 2012-2013 - PrimeTek.</p>
         </div>
 
         <script language="javascript">
