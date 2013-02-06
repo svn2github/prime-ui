@@ -27,7 +27,7 @@ $(function() {
         },
         
         _bindEvents: function() {
-            var $this = this;
+            var $this = this;
             
             this.closeIcon.on('click.puinotify', function() {
                 $this.hide();
