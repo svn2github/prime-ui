@@ -354,17 +354,7 @@ $(function() {
 
         _hide: function() {        
             this.panel.hide();
-        },
-
-        // called when created, and later when changing options
-        _refresh: function() {
-            
-        },
-
-        _destroy: function() {
-            alert('destroy');
         }
-        
     });
     
 });
