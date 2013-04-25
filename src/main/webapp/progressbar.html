@@ -147,14 +147,14 @@
                     <div>
                         <div id="doc-overview">
 
-                            <p>Password displays strength indicator for password fields.</p>
+                            <p>ProgressBar is a process status indicator.</p>
 
                             <pre name="code" class="jscript">
-$('#default').puipassword();
+$('#default').puiprogressbar();
                             </pre>
 
                             <pre name="code" class="jscript">
-&lt;input id="default" name="default" type="password" /&gt;
+&lt;div id="default" /&gt;
                             </pre>
 
                         </div>
@@ -169,41 +169,56 @@ $('#default').puipassword();
                                 </thead>
                                 <tbody>
                                     <tr class="ui-widget-content">
-                                        <td>inline</td>
+                                        <td>value</td>
+                                        <td>number</td>
+                                        <td>0</td>
+                                        <td>Progress Bar value</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>labelTemplate</td>
+                                        <td>string</td>
+                                        <td>{value}%</td>
+                                        <td>Progress Bar label template</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>showLabel</td>
                                         <td>boolean</td>
-                                        <td>false</td>
-                                        <td>Inline mode displays suggestions panel next to the field, not in a popup.</td>
-                                    </tr>
-                                    <tr class="ui-widget-content">
-                                        <td>promptLabel</td>
-                                        <td>string</td>
-                                        <td>Please enter a password</td>
-                                        <td>Text to prompt password entry.</td>
-                                    </tr>
-                                    <tr class="ui-widget-content">
-                                        <td>weakLabel</td>
-                                        <td>string</td>
-                                        <td>Weak</td>
+                                        <td>true</td>
                                         <td>Text for a weak password.</td>
                                     </tr>
                                     <tr class="ui-widget-content">
-                                        <td>mediumLabel</td>
+                                        <td>effectSpeed</td>
                                         <td>string</td>
-                                        <td>Medium</td>
-                                        <td>Text for a medium password.</td>
-                                    </tr>
-                                    <tr class="ui-widget-content">
-                                        <td>strongLabel</td>
-                                        <td>string</td>
-                                        <td>Strong</td>
-                                        <td>Text for a strong password.</td>
+                                        <td>normal</td>
+                                        <td>Speed of effect</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
 
                         <div id="doc-events">
-                            <h3>No events.</h3>
+                            <table class="doc-table">
+                                <thead>
+                                <th class="ui-state-default">Name</th>
+                                <th class="ui-state-default">Parameters</th>
+                                <th class="ui-state-default">Description</th>
+                                </thead>
+                                <tbody>
+                                    <tr class="ui-widget-content">
+                                        <td>complete</td>
+                                        <td>-</td>
+                                        <td>Fired when value equals 100</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <pre name="code" class="jscript">
+$('#default').puiprogressbar({
+    complete: function() {
+        //...
+    }
+});
+                            </pre>
                         </div>
 
                         <div id="doc-methods">
@@ -214,21 +229,6 @@ $('#default').puipassword();
                                 <th class="ui-state-default">Description</th>
                                 </thead>
                                 <tbody>
-                                    <tr class="ui-widget-content">
-                                        <td>show</td>
-                                        <td>-</td>
-                                        <td>Shows the panel.</td>
-                                    </tr>
-                                    <tr class="ui-widget-content">
-                                        <td>hide</td>
-                                        <td>-</td>
-                                        <td>Hides the panel.</td>
-                                    </tr>
-                                    <tr class="ui-widget-content">
-                                        <td>align</td>
-                                        <td>-</td>
-                                        <td>Aligns popup position with input.</td>
-                                    </tr>
                                     <tr class="ui-widget-content">
                                         <td>option</td>
                                         <td>name: Name of the option</td>
@@ -247,18 +247,23 @@ $('#default').puipassword();
 
                             <pre name="code" class="jscript">
 &lt;script type="text/javascript"&gt;
-        $(function() {
-            $('#p1').puipassword();
+         $('#pb1').puiprogressbar();
                 
-            $('#p2').puipassword({inline:true}); 
-        });
+         $('#pb2').puiprogressbar({
+              value: 50
+         });                
+         
+         setInterval(function() {
+              var val = $('#pb1').puiprogressbar('option', 'value') + 10;
+              $('#pb1').puiprogressbar('option', 'value', val);
+         }, 1000);
 &lt;/script&gt; 
                             </pre>
 
                             <pre name="code" class="xml">
-&lt;input id="p1" name="p1" type="password" /&gt;
+&lt;div id="pb1"&gt&lt;/div&gt;
 
-&lt;input id="p2" name="p2" type="password" /&gt;
+&lt;div id="pb2"&gt&lt;/div&gt;
                             </pre>
 
                         </div>
