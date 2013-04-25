@@ -20,6 +20,8 @@ $(function() {
             this.legend = this.element.children('legend.pui-fieldset-legend');
             this.content = this.element.children('div.pui-fieldset-content');
             
+            this.legend.prependTo(this.element);
+            
             if(this.options.toggleable) {
                 this.element.addClass('pui-fieldset-toggleable');
                 this.toggler = $('<span class="pui-fieldset-toggler ui-icon" />').prependTo(this.legend);
