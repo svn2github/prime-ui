@@ -83,13 +83,16 @@ $(function() {
         disable: function() {
             this._unbindEvents();
             
-            this.element.addClass('ui-state-disabled');
+            this.element.attr({
+                'disabled':'disabled',
+                'aria-disabled': true
+            }).addClass('ui-state-disabled');
         },
         
         enable: function() {
             this._bindEvents();
             
-            this.element.removeClass('ui-state-disabled');
+            this.element.removeAttr('disabled').attr('aria-disabled', false).removeClass('ui-state-disabled');
         }
     });
 });
