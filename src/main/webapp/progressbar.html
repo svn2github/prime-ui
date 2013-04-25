@@ -184,13 +184,19 @@ $('#default').puiprogressbar();
                                         <td>showLabel</td>
                                         <td>boolean</td>
                                         <td>true</td>
-                                        <td>Text for a weak password.</td>
+                                        <td>Shows label on ProgressBar</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>easing</td>
+                                        <td>string</td>
+                                        <td>swing</td>
+                                        <td>Optional easing to use in animation.</td>
                                     </tr>
                                     <tr class="ui-widget-content">
                                         <td>effectSpeed</td>
-                                        <td>string</td>
+                                        <td>int/string</td>
                                         <td>normal</td>
-                                        <td>Speed of effect</td>
+                                        <td>Speed in milliseconds or keywords like slow, normal and fast.</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -206,7 +212,7 @@ $('#default').puiprogressbar();
                                 <tbody>
                                     <tr class="ui-widget-content">
                                         <td>complete</td>
-                                        <td>-</td>
+                                        <td>event: puiprogressbarcomplete event</td>
                                         <td>Fired when value equals 100</td>
                                     </tr>
                                 </tbody>
@@ -214,7 +220,7 @@ $('#default').puiprogressbar();
 
                             <pre name="code" class="jscript">
 $('#default').puiprogressbar({
-    complete: function() {
+    complete: function(event) {
         //...
     }
 });
