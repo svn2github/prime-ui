@@ -44,7 +44,7 @@ $(function() {
             });
 
             //hide overlay on document click
-            $(document.body).on('click.ui-menu', function (e) {
+            $(document.body).on('click.pui-menu', function (e) {
                 var popup = $this.element.parent();
                 if(popup.is(":hidden")) {
                     return;
@@ -148,4 +148,174 @@ $(function() {
             }   
         }
     });
+});
+
+/*
+ * PrimeUI TieredMenu
+ */
+$(function() {
+
+    $.widget("primeui.puitieredmenu", $.primeui.puibasemenu, {
+        
+        options: {
+         autoDisplay:true    
+        },
+        
+        _create: function() {
+            this.element.addClass('pui-menu-list ui-helper-reset').
+                    wrap('<div class="pui-tieredmenu pui-menu ui-widget ui-widget-content ui-corner-all ui-helper-clearfix" />');
+          
+            
+            this.element.find('li').each(function() {
+                    var listItem = $(this),
+                    menuitemLink = listItem.children('a'),
+                    icon = menuitemLink.data('icon');
+                    
+                    menuitemLink.addClass('pui-menuitem-link ui-corner-all').contents().wrap('<span class="ui-menuitem-text" />');
+                    
+                    if(icon) {
+                        menuitemLink.prepend('<span class="pui-menuitem-icon ui-icon ' + icon + '"></span>');
+                    }
+                    
+                    listItem.addClass('pui-menuitem ui-widget ui-corner-all');
+                    if(listItem.children('ul').length > 0) {
+                        listItem.addClass('pui-menu-parent');
+                        listItem.children('ul').addClass('ui-widget-content pui-menu-list ui-corner-all ui-helper-clearfix pui-menu-child ui-shadow');
+                        menuitemLink.prepend('<span class="ui-icon ui-icon-triangle-1-e"></span>');
+                    }
+                
+            
+        });
+            this.menuitemLinks = this.element.find('.pui-menuitem-link:not(.ui-state-disabled)');
+
+            this._bindEvents();
+            
+            this._super();
+        },
+                
+        _bindEvents: function() {        
+            this._bindItemEvents();
+        
+            this._bindDocumentHandler();
+        },
+    
+        _bindItemEvents: function() {
+            var _self = this;
+
+            this.menuitemLinks.on('mouseenter.pui-menu',function() {
+                var link = $(this),
+                menuitem = link.parent(),
+                autoDisplay = _self.options.autoDisplay;
+
+                var activeSibling = menuitem.siblings('.pui-menuitem-active');
+                if(activeSibling.length == 1) {
+                    _self._deactivate(activeSibling);
+                }
+
+                if(autoDisplay||_self.active) {
+                    if(menuitem.hasClass('pui-menuitem-active')) {
+                        _self._reactivate(menuitem);
+                    }
+                    else {
+                        _self._activate(menuitem);
+                    }  
+                }
+                else {
+                    _self._highlight(menuitem);
+                }
+            });
+
+            if(this.options.autoDisplay == false) {
+                this.rootLinks = this.element.find('> .pui-menuitem > .pui-menuitem-link');
+                this.rootLinks.on('click.pui-menu',function(e) {
+                    var link = $(this),
+                    menuitem = link.parent(),
+                    submenu = menuitem.children('ul.pui-menu-child');
+
+                    if(submenu.length == 1) {
+                        if(submenu.is(':visible')) {
+                            _self.active = false;
+                            _self._deactivate(menuitem);
+                        }
+                        else {                                        
+                            _self.active = true;
+                            _self._highlight(menuitem);
+                            _self._showSubmenu(menuitem, submenu);
+                        }
+                    }
+                });
+            }
+            this.element.find('ul.pui-menu-list').on('mouseleave.pui-menu',function(e) {
+           if(_self.activeitem) {
+               _self._deactivate(_self.activeitem);
+           }
+           
+           e.stopPropagation();
+        });
+        },
+       
+         _bindDocumentHandler: function() {
+            var _self = this;
+
+            $(document.body).on('click.pui-menu',function(e) {
+                _self.active = false;
+
+                _self.element.find('li.pui-menuitem-active').each(function() {
+                    _self._deactivate($(this), true);
+                });
+            });
+        },
+    
+        
+        
+        _deactivate: function(menuitem, animate) {
+            this.activeitem = null;
+            menuitem.children('a.pui-menuitem-link').removeClass('ui-state-hover');
+            menuitem.removeClass('pui-menuitem-active');
+
+            if(animate)
+                menuitem.children('ul.pui-menu-child:visible').fadeOut('fast');
+            else
+                menuitem.children('ul.pui-menu-child:visible').hide();
+        },
+
+        _activate: function(menuitem) {
+            this._highlight(menuitem);
+
+            var submenu = menuitem.children('ul.pui-menu-child');
+            if(submenu.length == 1) {
+                this._showSubmenu(menuitem, submenu);
+            }
+        },
+
+        _reactivate: function(menuitem) {
+            this.activeitem = menuitem;
+            var submenu = menuitem.children('ul.pui-menu-child'),
+            activeChilditem = submenu.children('li.pui-menuitem-active:first'),
+            _self = this;
+
+            if(activeChilditem.length == 1) {
+                _self._deactivate(activeChilditem);
+            }
+        },
+
+        _highlight: function(menuitem) {
+            this.activeitem = menuitem;
+            menuitem.children('a.pui-menuitem-link').addClass('ui-state-hover');
+            menuitem.addClass('pui-menuitem-active');
+        },
+
+        _showSubmenu: function(menuitem, submenu) {
+
+            submenu.css({
+                'left': menuitem.outerWidth()
+                ,'top': 0
+                ,'z-index': ++PUI.zindex
+            });
+
+            submenu.show();
+        }
+            
+    });
+
 });

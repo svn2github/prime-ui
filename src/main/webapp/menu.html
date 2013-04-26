@@ -32,6 +32,18 @@
                 
                 $('button').puibutton();
 
+                $('#ptm1').puitieredmenu({
+                    autoDisplay:false
+                });
+                
+                $('#ptm2').puitieredmenu({
+                    popup: true,
+                    autoDisplay:true,
+                    trigger: $('#ptm2trigger')
+                });
+                
+                $('button').puibutton();
+
                 $('#doc').puitabview();
             });
         </script>
@@ -144,6 +156,54 @@
                     <li><h3>Edit</h3></li>
                     <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
                     <li><a data-icon="ui-icon-arrowreturnthick-1-e">Redo</a></li>
+                </ul>
+                
+                <ul id="ptm1">
+                    <li><a data-icon="ui-icon-document">New</a>
+                        <ul>
+                            <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
+                            <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
+                            <li><a data-icon="ui-icon-document">New</a>
+                        <ul>
+                            <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
+                            <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
+                            <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
+                        </ul>
+                    </li>
+                        </ul>
+                    </li>
+                    <li><a data-icon="ui-icon-folder-open">Open</a></li>
+                    <li><a>Edit</a> 
+                        <ul>
+                    <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
+                    <li><a data-icon="ui-icon-arrowreturnthick-1-e">Redo</a></li>
+                    </ul>
+                    </li>
+                </ul>
+                
+                <button id="ptm2trigger" style="margin-top:10px">Show</button>
+                
+                <ul id="ptm2">
+                    <li><a data-icon="ui-icon-document">New</a>
+                        <ul>
+                            <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
+                            <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
+                            <li><a data-icon="ui-icon-document">New</a>
+                        <ul>
+                            <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
+                            <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
+                            <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
+                        </ul>
+                    </li>
+                        </ul>
+                    </li>
+                    <li><a data-icon="ui-icon-folder-open">Open</a></li>
+                    <li><a>Edit</a> 
+                        <ul>
+                    <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
+                    <li><a data-icon="ui-icon-arrowreturnthick-1-e">Redo</a></li>
+                    </ul>
+                    </li>
                 </ul>
                 
                 <h2 class="title" >Documentation</h2>
