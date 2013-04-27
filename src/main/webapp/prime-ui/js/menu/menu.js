@@ -345,39 +345,11 @@ $(function() {
         },
         
         _create: function() {
-            
             this._super();
+            this.element.parent().removeClass('pui-tieredmenu').
+                    addClass('pui-menubar');
         },
-        
-        _render: function() {
-            this.element.addClass('pui-menu-list ui-helper-reset').
-                    wrap('<div class="pui-menubar pui-menu ui-widget ui-widget-content ui-corner-all ui-helper-clearfix" />');
-            
-            this.element.parent().uniqueId();
-            this.options.id = this.element.parent().attr('id');
-          
-            this.element.find('li').each(function() {
-                    var listItem = $(this),
-                    menuitemLink = listItem.children('a'),
-                    icon = menuitemLink.data('icon');
-                    
-                    menuitemLink.addClass('pui-menuitem-link ui-corner-all').contents().wrap('<span class="ui-menuitem-text" />');
-                    
-                    if(icon) {
-                        menuitemLink.prepend('<span class="pui-menuitem-icon ui-icon ' + icon + '"></span>');
-                    }
-                    
-                    listItem.addClass('pui-menuitem ui-widget ui-corner-all');
-                    if(listItem.children('ul').length > 0) {
-                        listItem.addClass('pui-menu-parent');
-                        listItem.children('ul').addClass('ui-widget-content pui-menu-list ui-corner-all ui-helper-clearfix pui-menu-child ui-shadow');
-                        menuitemLink.prepend('<span class="ui-icon ui-icon-triangle-1-e"></span>');
-                    }
-                
-            
-            });
-        },
-                
+              
         _showSubmenu: function(menuitem, submenu) {
             submenu.css('z-index', ++PUI.zindex);
 
