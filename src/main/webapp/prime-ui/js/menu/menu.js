@@ -150,6 +150,35 @@ $(function() {
     });
 });
 
+/**
+ * PrimeUI BreadCrumb Widget
+ */
+$(function() {
+
+    $.widget("primeui.puibreadcrumb", {
+        
+        _create: function() {
+            this.element.wrap('<div class="pui-breadcrumb ui-module ui-widget ui-widget-header ui-helper-clearfix ui-corner-all" role="menu">');
+            
+            this.element.children('li').each(function(index) {
+                var listItem = $(this);
+                
+                listItem.attr('role', 'menuitem');
+                var menuitemLink = listItem.children('a');
+                menuitemLink.addClass('pui-menuitem-link ui-corner-all').contents().wrap('<span class="ui-menuitem-text" />');
+                    
+                if(index > 0)
+                    listItem.before('<li class="pui-breadcrumb-chevron ui-icon ui-icon-triangle-1-e"></li>');
+                else
+                    menuitemLink.addClass('ui-icon ui-icon-home');
+            });
+        }
+    });
+});
+
+
+
+
 /*
  * PrimeUI TieredMenu Widget
  */
