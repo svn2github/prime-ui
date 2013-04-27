@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>  
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
+        <link rel="stylesheet" href="demo/css/jquery-ui.css" />
+        <link rel="stylesheet" href="demo/css/aristo/theme.css" />
+        <link rel="stylesheet" href="demo/css/demo.css" />
+        <link rel="stylesheet" href="prime-ui/css/core/core.css" />
+        <link rel="stylesheet" href="prime-ui/css/button/button.css" />
+        <link rel="stylesheet" href="prime-ui/css/menu/menu.css" />
+        <link rel="stylesheet" href="prime-ui/css/tabview/tabview.css" />
+        <link rel="stylesheet" href="demo/css/sh.css" />
+        <script type="text/javascript" src="demo/js/sh.js"></script>
+        <script type="text/javascript" src="demo/js/jquery.js"></script>
+        <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="demo/js/demo.js"></script>
+        <script type="text/javascript" src="prime-ui/js/core/core.js"></script>
+        <script type="text/javascript" src="prime-ui/js/button/button.js"></script>
+        <script type="text/javascript" src="prime-ui/js/menu/menu.js"></script>
+        <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('#bc1').puibreadcrumb();
+                
+                $('#doc').puitabview();
+            });
+        </script>
+    </head>
+
+    <body>
+
+
+        <div id="header" class="ui-widget ui-widget-header">
+            <div id="logo">
+                <img src="demo/images/logo.png" alt="Logo"/>
+            </div>
+            <div id="menu" class="ui-widget">
+                <ul>
+                    <li><a style="background:url('demo/images/home.png') no-repeat center left;" href="index.html">Home</a></li>
+                    <li><a style="background:url('demo/images/download.png') no-repeat center left;" href="http://www.primefaces.org/downloads.html" style="">Download</a></li>
+                    <li><a style="background:url('demo/images/forum.png') no-repeat center left;" href="http://forum.primefaces.org/viewforum.php?f=16" style="">Forum</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="page" class="ui-widget">
+            <div id="sidebar" class="ui-widget-content ui-corner-bottom ui-helper-clearfix ui-shadow">
+
+                <div class="ui-widget submenu-content">
+                    <a href="accordion.html" class="ui-state-default ui-corner-all widget-link">
+                        Accordion
+                    </a>
+                    <a href="autocomplete.html" class="ui-state-default ui-corner-all widget-link">
+                        AutoComplete
+                    </a>
+                    <a href="button.html" class="ui-state-default ui-corner-all widget-link">
+                        Button
+                    </a>
+                    <a href="checkbox.html" class="ui-state-default ui-corner-all widget-link">
+                        Checkbox
+                    </a>
+                    <a href="dialog.html" class="ui-state-default ui-corner-all widget-link">
+                        Dialog
+                    </a>
+                    <a href="dropdown.html" class="ui-state-default ui-corner-all widget-link">
+                        Dropdown
+                    </a>
+                    <a href="fieldset.html" class="ui-state-default ui-corner-all widget-link">
+                        Fieldset
+                    </a>
+                    <a href="galleria.html" class="ui-state-default ui-corner-all widget-link">
+                        Galleria
+                    </a>
+                    <a href="growl.html" class="ui-state-default ui-corner-all widget-link">
+                        Growl
+                    </a>
+                    <a href="inputtext.html" class="ui-state-default ui-corner-all widget-link">
+                        Inputtext
+                    </a>
+                    <a href="inputtextarea.html" class="ui-state-default ui-corner-all widget-link">
+                        Inputtextarea
+                    </a>
+                    <a href="lightbox.html" class="ui-state-default ui-corner-all widget-link">
+                        Lightbox
+                    </a>
+                    <a href="notify.html" class="ui-state-default ui-corner-all widget-link">
+                        Notify
+                    </a>
+                    <a href="panel.html" class="ui-state-default ui-corner-all widget-link">
+                        Panel
+                    </a>
+                    <a href="password.html" class="ui-state-default ui-corner-all widget-link">
+                        Password
+                    </a>
+                    <a href="progressbar.html" class="ui-state-default ui-state-highlight ui-corner-all widget-link">
+                        ProgressBar
+                    </a>
+                    <a href="radiobutton.html" class="ui-state-default ui-corner-all widget-link">
+                        RadioButton
+                    </a>
+                    <a href="rating.html" class="ui-state-default ui-corner-all widget-link">
+                        Rating
+                    </a>
+                    <a href="spinner.html" class="ui-state-default ui-corner-all widget-link">
+                        Spinner
+                    </a>
+                    <a href="tabview.html" class="ui-state-default ui-corner-all widget-link">
+                        Tabview
+                    </a>
+                    <a href="tooltip.html" class="ui-state-default ui-corner-all widget-link">
+                        Tooltip
+                    </a>
+                </div>
+
+            </div>
+
+            <div id="content">
+                <h2 class="ui-widget-header widget-title ui-corner-all">Breadcrumb</h2>
+                
+                <ul id="bc1">
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Sports</a></li>
+                    <li><a href="#">Football</a></li>
+                    <li><a href="#">Countries</a></li>
+                    <li><a href="#">Spain</a></li>
+                    <li><a href="#">F.C. Barcelona</a></li>
+                    <li><a href="#">Squad</a></li>
+                    <li><a href="#">Lionel Messi</a></li>
+                </ul>
+                <p/>
+                <h2 class="title" >Documentation</h2>
+                
+                <div id="doc">
+                    <ul>
+                        <li><a href="#doc-overview">Overview</a></li>
+                        <li><a href="#doc-methods">Source</a></li>
+                    </ul>
+                    
+                    <div>
+                        <div id="doc-overview">
+
+                            <p>Breadcrumb provides contextual information about page hierarchy.</p>
+
+                            <pre name="code" class="jscript">
+$('#default').puibreadcrumb();
+                            </pre>
+
+                            <pre name="code" class="jscript">
+&lt;div id="default" /&gt;
+                            </pre>
+
+                        </div>
+
+                        <div id="doc-source">
+
+                            <pre name="code" class="jscript">
+&lt;script type="text/javascript"&gt;
+         $('#pm1').puibreadcrumb();
+&lt;/script&gt; 
+                            </pre>
+
+                            <pre name="code" class="xml">
+&lt;ul id="bc1"&gt
+    &lt;li&gt;&lt;a href="#"&gt;Categories&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Sports&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Football&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Countries&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Spain&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;F.C. Barcelona&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Squad&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Lionel Messi&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+                            </pre>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                
+            </div>
+
+            <div style="clear: both;">&nbsp;</div>
+        </div>
+
+        <div id="footer" class="ui-widget ui-widget-header ui-corner-bottom">
+            <p>PrimeUI, From the Producers of <a href="http://www.primefaces.org">PrimeFaces</a>. Copyright 2012-2013 - PrimeTek.</p>
+        </div>
+
+        <script language="javascript">
+            dp.SyntaxHighlighter.ClipboardSwf = '/demo/js/clipboadr.swf';
+            dp.SyntaxHighlighter.HighlightAll('code');
+        </script>
+
+    </body>
+</html>
