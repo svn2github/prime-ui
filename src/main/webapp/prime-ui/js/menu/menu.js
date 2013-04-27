@@ -331,3 +331,112 @@ $(function() {
     });
 
 });
+
+/**
+ * PrimeFaces Menubar Widget
+ */
+
+$(function() {
+
+    $.widget("primeui.puimenubar", $.primeui.puitieredmenu, {
+        
+        options: {
+            autoDisplay: true    
+        },
+        
+        _create: function() {
+            
+            this._super();
+        },
+        
+        _render: function() {
+            this.element.addClass('pui-menu-list ui-helper-reset').
+                    wrap('<div class="pui-menubar pui-menu ui-widget ui-widget-content ui-corner-all ui-helper-clearfix" />');
+            
+            this.element.parent().uniqueId();
+            this.options.id = this.element.parent().attr('id');
+          
+            this.element.find('li').each(function() {
+                    var listItem = $(this),
+                    menuitemLink = listItem.children('a'),
+                    icon = menuitemLink.data('icon');
+                    
+                    menuitemLink.addClass('pui-menuitem-link ui-corner-all').contents().wrap('<span class="ui-menuitem-text" />');
+                    
+                    if(icon) {
+                        menuitemLink.prepend('<span class="pui-menuitem-icon ui-icon ' + icon + '"></span>');
+                    }
+                    
+                    listItem.addClass('pui-menuitem ui-widget ui-corner-all');
+                    if(listItem.children('ul').length > 0) {
+                        listItem.addClass('pui-menu-parent');
+                        listItem.children('ul').addClass('ui-widget-content pui-menu-list ui-corner-all ui-helper-clearfix pui-menu-child ui-shadow');
+                        menuitemLink.prepend('<span class="ui-icon ui-icon-triangle-1-e"></span>');
+                    }
+                
+            
+            });
+        },
+                
+        _showSubmenu: function(menuitem, submenu) {
+            submenu.css('z-index', ++PUI.zindex);
+
+            if(menuitem.parent().hasClass('pui-menu-child')) {    //submenu menuitem
+                var win = $(window),
+                offset = menuitem.offset(),
+                menuitemTop = offset.top,
+                submenuHeight = submenu.outerHeight(),
+                menuitemHeight = menuitem.outerHeight(),
+                top = (menuitemTop + submenuHeight) > (win.height() + win.scrollTop()) ? (-1 * submenuHeight) + menuitemHeight : 0;  //viewport check
+
+                submenu.css({
+                    'left': menuitem.outerWidth(),
+                    'top': top,
+                    'z-index': ++PUI.zindex
+                }).show();
+            } 
+            else {  
+                submenu.css({                                    //root menuitem         
+                    'left': 0
+                    ,'top': menuitem.outerHeight()
+                });
+
+            }
+
+            submenu.show();
+    }        
+    });
+
+});
+/*
+PrimeFaces.widget.Menubar = PrimeFaces.widget.TieredMenu.extend({
+    
+    showSubmenu: function(menuitem, submenu) {
+        submenu.css('z-index', ++PrimeFaces.zindex);
+
+        if(menuitem.parent().hasClass('ui-menu-child')) {    //submenu menuitem
+            var win = $(window),
+            offset = menuitem.offset(),
+            menuitemTop = offset.top,
+            submenuHeight = submenu.outerHeight(),
+            menuitemHeight = menuitem.outerHeight(),
+            top = (menuitemTop + submenuHeight) > (win.height() + win.scrollTop()) ? (-1 * submenuHeight) + menuitemHeight : 0;  //viewport check
+
+            submenu.css({
+                'left': menuitem.outerWidth(),
+                'top': top,
+                'z-index': ++PrimeFaces.zindex
+            }).show();
+        } 
+        else {  
+            submenu.css({                                    //root menuitem         
+                'left': 0
+                ,'top': menuitem.outerHeight()
+            });
+            
+        }
+
+        submenu.show();
+    }
+});
+*/
