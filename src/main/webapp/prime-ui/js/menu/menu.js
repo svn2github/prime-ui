@@ -91,7 +91,7 @@ $(function() {
 });
 
 /**
- * PrimeUI BaseMenu widget
+ * PrimeUI Menu widget
  */
 $(function() {
 
@@ -151,21 +151,33 @@ $(function() {
 });
 
 /*
- * PrimeUI TieredMenu
+ * PrimeUI TieredMenu Widget
  */
 $(function() {
 
     $.widget("primeui.puitieredmenu", $.primeui.puibasemenu, {
         
         options: {
-         autoDisplay:true    
+            autoDisplay: true    
         },
         
         _create: function() {
+            this._render();
+            
+            this.links = this.element.find('.pui-menuitem-link:not(.ui-state-disabled)');
+
+            this._bindEvents();
+            
+            this._super();
+        },
+                
+        _render: function() {
             this.element.addClass('pui-menu-list ui-helper-reset').
                     wrap('<div class="pui-tieredmenu pui-menu ui-widget ui-widget-content ui-corner-all ui-helper-clearfix" />');
-          
             
+            this.element.parent().uniqueId();
+            this.options.id = this.element.parent().attr('id');
+          
             this.element.find('li').each(function() {
                     var listItem = $(this),
                     menuitemLink = listItem.children('a'),
@@ -185,12 +197,7 @@ $(function() {
                     }
                 
             
-        });
-            this.menuitemLinks = this.element.find('.pui-menuitem-link:not(.ui-state-disabled)');
-
-            this._bindEvents();
-            
-            this._super();
+            });
         },
                 
         _bindEvents: function() {        
@@ -200,74 +207,80 @@ $(function() {
         },
     
         _bindItemEvents: function() {
-            var _self = this;
+            var $this = this;
 
-            this.menuitemLinks.on('mouseenter.pui-menu',function() {
+            this.links.on('mouseenter.pui-menu',function() {
                 var link = $(this),
                 menuitem = link.parent(),
-                autoDisplay = _self.options.autoDisplay;
+                autoDisplay = $this.options.autoDisplay;
 
                 var activeSibling = menuitem.siblings('.pui-menuitem-active');
-                if(activeSibling.length == 1) {
-                    _self._deactivate(activeSibling);
+                if(activeSibling.length === 1) {
+                    $this._deactivate(activeSibling);
                 }
 
-                if(autoDisplay||_self.active) {
+                if(autoDisplay||$this.active) {
                     if(menuitem.hasClass('pui-menuitem-active')) {
-                        _self._reactivate(menuitem);
+                        $this._reactivate(menuitem);
                     }
                     else {
-                        _self._activate(menuitem);
+                        $this._activate(menuitem);
                     }  
                 }
                 else {
-                    _self._highlight(menuitem);
+                    $this._highlight(menuitem);
                 }
             });
 
-            if(this.options.autoDisplay == false) {
+            if(this.options.autoDisplay === false) {
                 this.rootLinks = this.element.find('> .pui-menuitem > .pui-menuitem-link');
-                this.rootLinks.on('click.pui-menu',function(e) {
+                this.rootLinks.data('primeui-tieredmenu-rootlink', this.options.id).find('*').data('primeui-tieredmenu-rootlink', this.options.id)
+
+                this.rootLinks.on('click.pui-menu', function(e) {
                     var link = $(this),
                     menuitem = link.parent(),
                     submenu = menuitem.children('ul.pui-menu-child');
 
-                    if(submenu.length == 1) {
+                    if(submenu.length === 1) {
                         if(submenu.is(':visible')) {
-                            _self.active = false;
-                            _self._deactivate(menuitem);
+                            $this.active = false;
+                            $this._deactivate(menuitem);
                         }
                         else {                                        
-                            _self.active = true;
-                            _self._highlight(menuitem);
-                            _self._showSubmenu(menuitem, submenu);
+                            $this.active = true;
+                            $this._highlight(menuitem);
+                            $this._showSubmenu(menuitem, submenu);
                         }
                     }
                 });
             }
-            this.element.find('ul.pui-menu-list').on('mouseleave.pui-menu',function(e) {
-           if(_self.activeitem) {
-               _self._deactivate(_self.activeitem);
-           }
+            
+            this.element.find('ul.pui-menu-list').on('mouseleave.pui-menu', function(e) {
+                if($this.activeitem) {
+                    $this._deactivate($this.activeitem);
+                }
            
-           e.stopPropagation();
-        });
+                e.stopPropagation();
+            });
         },
        
-         _bindDocumentHandler: function() {
-            var _self = this;
+        _bindDocumentHandler: function() {
+            var $this = this;
 
-            $(document.body).on('click.pui-menu',function(e) {
-                _self.active = false;
+            $(document.body).on('click.pui-menu', function(e) {
+                var target = $(e.target);
+                if(target.data('primeui-tieredmenu-rootlink') === $this.options.id) {
+                    return;
+                }
+                    
+                $this.active = false;
 
-                _self.element.find('li.pui-menuitem-active').each(function() {
-                    _self._deactivate($(this), true);
+                $this.element.find('li.pui-menuitem-active').each(function() {
+                    $this._deactivate($(this), true);
                 });
             });
         },
     
-        
-        
         _deactivate: function(menuitem, animate) {
             this.activeitem = null;
             menuitem.children('a.pui-menuitem-link').removeClass('ui-state-hover');
@@ -283,7 +296,7 @@ $(function() {
             this._highlight(menuitem);
 
             var submenu = menuitem.children('ul.pui-menu-child');
-            if(submenu.length == 1) {
+            if(submenu.length === 1) {
                 this._showSubmenu(menuitem, submenu);
             }
         },
@@ -294,7 +307,7 @@ $(function() {
             activeChilditem = submenu.children('li.pui-menuitem-active:first'),
             _self = this;
 
-            if(activeChilditem.length == 1) {
+            if(activeChilditem.length === 1) {
                 _self._deactivate(activeChilditem);
             }
         },
@@ -304,9 +317,8 @@ $(function() {
             menuitem.children('a.pui-menuitem-link').addClass('ui-state-hover');
             menuitem.addClass('pui-menuitem-active');
         },
-
+                
         _showSubmenu: function(menuitem, submenu) {
-
             submenu.css({
                 'left': menuitem.outerWidth()
                 ,'top': 0
