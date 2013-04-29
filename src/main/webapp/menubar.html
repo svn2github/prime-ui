@@ -22,9 +22,11 @@
         <script type="text/javascript">
             $(function() {
                 $('#mb1').puimenubar();
+
                 $('#mb2').puimenubar({
                     autoDisplay: false
                 });
+
                 $('#doc').puitabview();
             });
         </script>
@@ -88,9 +90,9 @@
 
                         <div id="content-demo">
                             <p>Menubar brings the desktop application menubars to JSF. Using menuitems, it is very easy to execute ajax, non-ajax and navigations.</p>
-                                
+
                             <h3 class="title title-short" style="margin-top: 0px;">Default Menubar</h3>
-                            
+
                             <ul id="mb1">
                                 <li> <a data-icon="ui-icon-document">File</a>
                                     <ul> 
@@ -125,9 +127,9 @@
                                                 <li><a>File</a></li>
                                             </ul>
                                         </li>
-                                            
+
                                     </ul>
-                                    
+
                                 </li>
                                 <li>
                                     <a data-icon="ui-icon-gear">Actions</a>
@@ -149,7 +151,7 @@
                                     <a data-icon="ui-icon-close">Quit</a>
                                 </li>
                             </ul>
-                            
+
                             <p />
                             <h3 class="title title-short" style="margin-top: 0px;">Click Trigger</h3>
                             <ul id="mb2">
@@ -186,9 +188,9 @@
                                                 <li><a>File</a></li>
                                             </ul>
                                         </li>
-                                            
+
                                     </ul>
-                                    
+
                                 </li>
                                 <li>
                                     <a data-icon="ui-icon-gear">Actions</a>
@@ -210,12 +212,12 @@
                                     <a data-icon="ui-icon-close">Quit</a>
                                 </li>
                             </ul>
-                            
-                            
-                            
-                            
-                            
-                            
+
+
+
+
+
+
                             <h3 class="subtitle">Documentation</h3>
                             <div id="doc">
                                 <ul>
@@ -227,49 +229,136 @@
                                 </ul>
 
                                 <div>
+
+
+
+
+
                                     <div id="doc-overview">
 
                                         <pre name="code" class="jscript">
-        $('#default').puibreadcrumb();
+                $('#mb1').puimenubar();
+                
+                $('#mb2').puimenubar({
+                    autoDisplay: false
+                });
                                         </pre>
 
-                                        <pre name="code" class="jscript">
-        &lt;div id="default" /&gt;
+                                        <pre name="code" class="xml">
+        &lt;ul id="mb1" /&gt;
+        &lt;ul id="mb2" /&gt;
                                         </pre>
 
                                     </div>
 
                                     <div id="doc-options">
-                                        <h3>No options.</h3>
+                                        <table class="doc-table">
+                                            <thead>
+                                                <th class="ui-state-default">Name</th>
+                                                <th class="ui-state-default">Type</th>
+                                                <th class="ui-state-default">Default</th>
+                                                <th class="ui-state-default">Description</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="ui-widget-content">
+                                                    <td>autoDisplay</td>
+                                                    <td>boolean</td>
+                                                    <td>true</td>
+                                                    <td>Displays without the mouse click</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
 
                                     <div id="doc-events">
                                         <h3>No events.</h3>
                                     </div>
-                                    
+
                                     <div id="doc-methods">
                                         <h3>No methods.</h3>
                                     </div>
-                                    
+
                                     <div id="doc-source">
 
                                         <pre name="code" class="jscript">
         &lt;script type="text/javascript"&gt;
-                 $('#pm1').puibreadcrumb();
+                $('#mb1').puimenubar();
+                
+                $('#mb2').puimenubar({
+                    autoDisplay: false
+                });
         &lt;/script&gt; 
                                         </pre>
 
+
+
+
+
+
                                         <pre name="code" class="xml">
-        &lt;ul id="bc1"&gt
-            &lt;li&gt;&lt;a href="#"&gt;Categories&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Sports&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Football&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Countries&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Spain&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;F.C. Barcelona&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Squad&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;Lionel Messi&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
+        &ltul id="mb1"&gt
+    &ltli&gt &lta data-icon="ui-icon-document"&gtFile&lt/a&gt
+        &ltul&gt 
+            &ltli&gt&lta data-icon="ui-icon-contact"&gtNew&lt/a&gt
+                &ltul&gt
+                    &ltli&gt&lta&gtProject&lt/a&gt&lt/li&gt
+                    &ltli&gt&lta&gtOther&lt/a&gt&lt/li&gt
+                &lt/ul&gt
+            &lt/li&gt 
+            &ltli&gt&lta&gtOpen&lt/a&gt&lt/li&gt 
+            &ltli&gt&lta&gtQuit&lt/a&gt&lt/li&gt 
+        &lt/ul&gt
+    &lt/li&gt
+    &ltli&gt &lta data-icon="ui-icon-pencil"&gtEdit&lt/a&gt
+        &ltul&gt
+            &ltli&gt&lta data-icon="ui-icon-arrowreturnthick-1-w"&gtUndo&lt/a&gt&lt/li&gt
+            &ltli&gt&lta data-icon="ui-icon-arrowreturnthick-1-e"&gtRedo&lt/a&gt&lt/li&gt
+        &lt/ul&gt
+    &lt/li&gt
+    &ltli&gt
+        &lta data-icon="ui-icon-help"&gtHelp&lt/a&gt
+        &ltul&gt
+            &ltli&gt&lta&gtContents&lt/a&gt&lt/li&gt
+            &ltli&gt
+                &lta data-icon="ui-icon-search"&gtSearch&lt/a&gt
+                &ltul&gt
+                    &ltli&gt&lta&gtText&lt/a&gt
+                        &ltul&gt
+                            &ltli&gt&lta&gtWorkspace&lt/a&gt&lt/li&gt
+                        &lt/ul&gt
+                    &lt/li&gt
+                    &ltli&gt&lta&gtFile&lt/a&gt&lt/li&gt
+                &lt/ul&gt
+            &lt/li&gt
+
+        &lt/ul&gt
+
+    &lt/li&gt
+    &ltli&gt
+        &lta data-icon="ui-icon-gear"&gtActions&lt/a&gt
+        &ltul&gt
+            &ltli&gt&lta data-icon="ui-icon-refresh"&gtAjax&lt/a&gt
+                &ltul&gt
+                    &ltli&gt&lta data-icon="ui-icon-disk"&gtSave&lt/a&gt&lt/li&gt
+                    &ltli&gt&lta data-icon="ui-icon-arrowrefresh-1-w"&gtUpdate&lt/a&gt&lt/li&gt
+                &lt/ul&gt
+            &lt/li&gt
+            &ltli&gt&lta data-icon="ui-icon-document"&gtNon-Ajax&lt/a&gt
+                &ltul&gt
+                    &ltli&gt&lta data-icon="ui-icon-close"&gtDelete&lt/a&gt&lt/li&gt
+                &lt/ul&gt
+            &lt/li&gt
+        &lt/ul&gt
+    &lt/li&gt
+    &ltli&gt
+        &lta data-icon="ui-icon-close"&gtQuit&lt/a&gt
+    &lt/li&gt
+    &lt/ul&gt
+
+    &ltul id="mb2"&gt
+        //same content as default menubar
+    &lt/ul&gt    
+
                                         </pre>
 
                                     </div>
