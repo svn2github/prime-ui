@@ -30,8 +30,6 @@
                     autoDisplay: false
                 });
 
-                $('#ip1').puiinputtext();
-
                 $('#bt1').puibutton({
                      icon: 'ui-icon-extlink'
                 });
@@ -290,11 +288,16 @@
                 $('#mb2').puimenubar({
                     autoDisplay: false
                 });
+
+                $('#bt1').puibutton({
+                     icon: 'ui-icon-extlink'
+                });
+
         &lt;/script&gt; 
                                         </pre>
 
                                         <pre name="code" class="xml">
-        &ltul id="mb1"&gt
+&ltul id="mb1"&gt
     &ltli&gt &lta data-icon="ui-icon-document"&gtFile&lt/a&gt
         &ltul&gt 
             &ltli&gt&lta data-icon="ui-icon-contact"&gtNew&lt/a&gt
@@ -351,11 +354,10 @@
     &ltli&gt
         &lta data-icon="ui-icon-close"&gtQuit&lt/a&gt
     &lt/li&gt
-    &lt/ul&gt
-
-    &ltul id="mb2"&gt
-        //same content as default menubar
-    &lt/ul&gt    
+    &ltli style="float: right"&gt
+        &ltbutton id="bt1" type="button" data-icon="ui-icon-extlink"&gtLogout&lt/button&gt 
+    &lt/li&gt
+&lt/ul&gt    
                                         </pre>
 
                                     </div>
