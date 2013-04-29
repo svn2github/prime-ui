@@ -43,7 +43,7 @@
     display: none;
 }
 
-.content-block h3 {
+.content-block h3.pui-accordion-header {
     margin: auto;
 	font: inherit;
 	color: inherit;
