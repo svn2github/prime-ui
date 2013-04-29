@@ -417,51 +417,36 @@ $(function() {
 $(function() {
 
     $.widget("primeui.puislidemenu", $.primeui.puibasemenu, {
-        
-        options: {
-            width:null
-        },
-        
+                
         _create: function() {
-            this._encode();
+            this._super();
+            
+            this._render();
         
             //elements
-            this.submenus = this.element.find('ul.pui-menu-list');
-            this.wrapper = this.element.children('div.pui-slidemenu-wrapper');
-            this.content = this.wrapper.children('div.pui-slidemenu-content');
-            this.rootList = this.content.children('ul.pui-menu-list');
+            this.rootList = this.element;
+            this.content = this.element.parent();
+            this.wrapper = this.content.parent();
+            this.container = this.wrapper.parent();
+            this.submenus = this.container.find('ul.pui-menu-list');
+            
             this.links = this.element.find('a.pui-menuitem-link:not(.ui-state-disabled)');
             this.backward = this.wrapper.children('div.pui-slidemenu-backward');
 
             //config
             this.stack = [];
-            this.jqWidth = this.options.width;
+            this.jqWidth = this.container.width();
 
             var $this = this;
 
             if(!this.element.hasClass('pui-menu-dynamic')) {
-
-                if(this.element.is(':not(:visible)')) {
-                    var hiddenParent = this.element.parents('.ui-hidden-container:first'),
-                    hiddenParentWidget = hiddenParent.data('widget');
-
-                    if(hiddenParentWidget) {
-                        hiddenParentWidget.addOnshowHandler(function() {
-                            return $this._render();
-                        });
-                    }
-                }
-                else {
-                    this._render();
-                }
+                this._applyDimensions();
             }
 
             this._bindEvents();
-
-            this._super();
         },
         
-        _encode: function() {
+        _render: function() {
             this.element.addClass('pui-menu-list ui-helper-reset').
                     wrap('<div class="pui-menu pui-slidemenu ui-widget ui-widget-content ui-corner-all ui-helper-clearfix"/>').
                     wrap('<div class="pui-slidemenu-wrapper" />').
@@ -571,8 +556,8 @@ $(function() {
             return this.stack.length;
         },
 
-       _render: function() {
-            this.submenus.width(this.element.width());
+       _applyDimensions: function() {
+            this.submenus.width(this.container.width());
             this.wrapper.height(this.rootList.outerHeight(true) + this.backward.outerHeight(true));
             this.content.height(this.rootList.outerHeight(true));
             this.rendered = true;
