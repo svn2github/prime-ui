@@ -22,7 +22,7 @@ $(function() {
         _initPopup: function() {
             var $this = this;
 
-            this.element.parent().addClass('pui-menu-dynamic pui-shadow').appendTo(document.body);
+            this.element.closest('.pui-menu').addClass('pui-menu-dynamic pui-shadow').appendTo(document.body);
 
             this.positionConfig = {
                 my: this.options.my
@@ -45,7 +45,7 @@ $(function() {
 
             //hide overlay on document click
             $(document.body).on('click.pui-menu', function (e) {
-                var popup = $this.element.parent();
+                var popup = $this.element.closest('.pui-menu');
                 if(popup.is(":hidden")) {
                     return;
                 }
@@ -69,7 +69,7 @@ $(function() {
 
             //Hide overlay on resize
             $(window).on('resize.pui-menu', function() {
-                if($this.element.parent().is(':visible')) {
+                if($this.element.closest('.pui-menu').is(':visible')) {
                     $this.align();
                 }
             });
@@ -77,15 +77,15 @@ $(function() {
                 
         show: function() {
             this.align();
-            this.element.parent().css('z-index', ++PUI.zindex).show();
+            this.element.closest('.pui-menu').css('z-index', ++PUI.zindex).show();
         },
 
         hide: function() {
-            this.element.parent().fadeOut('fast');
+            this.element.closest('.pui-menu').fadeOut('fast');
         },
 
         align: function() {
-            this.element.parent().css({left:'', top:''}).position(this.positionConfig);
+            this.element.closest('.pui-menu').css({left:'', top:''}).position(this.positionConfig);
         }
     });
 });
@@ -419,7 +419,6 @@ $(function() {
     $.widget("primeui.puislidemenu", $.primeui.puibasemenu, {
                 
         _create: function() {
-            this._super();
             
             this._render();
         
@@ -442,6 +441,7 @@ $(function() {
             if(!this.element.hasClass('pui-menu-dynamic')) {
                 this._applyDimensions();
             }
+            this._super();
 
             this._bindEvents();
         },
@@ -563,12 +563,12 @@ $(function() {
             this.rendered = true;
         },
 
-       _show: function() {                
-            this._align();
-            this.element.css('z-index', ++PUI.zindex).show();
+       show: function() {                
+            this.align();
+            this.container.css('z-index', ++PUI.zindex).show();
 
             if(!this.rendered) {
-                this._render();
+                this._applyDimensions();
             }
         }        
     });
