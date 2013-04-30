@@ -8,19 +8,30 @@
         <link rel="stylesheet" type="text/css" href="http://www.primefaces.org/css/all.css" />
         <link rel="stylesheet" type="text/css" href="demo/css/demo.css" />
         <link rel="stylesheet" href="demo/css/jquery-ui.css" />
+        <link rel="stylesheet" href="prime-ui/css/button/button.css" />
         <link rel="stylesheet" href="demo/css/aristo/theme.css" />
         <link rel="stylesheet" href="demo/css/sh.css" />
-        <link rel="stylesheet" href="${WIDGET-CSS}" />
+        <link rel="stylesheet" href="prime-ui/css/menu/menu.css" />
         <link rel="stylesheet" href="prime-ui/css/tabview/tabview.css" />
         <script type="text/javascript" src="demo/js/sh.js"></script>
+        <script type="text/javascript" src="prime-ui/js/core/core.js"></script>
         <script type="text/javascript" src="demo/js/jquery.js"></script>
         <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
         <script src="http://www.primefaces.org/script/common.js"></script>
-        <script type="text/javascript" src="${WIDGET-JS}"></script>
+        <script type="text/javascript" src="prime-ui/js/button/button.js"></script>
+        <script type="text/javascript" src="prime-ui/js/inputtext/inputtext.js"></script>
+        <script type="text/javascript" src="prime-ui/js/menu/menu.js"></script>
         <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
         <script type="text/javascript">
             $(function() {
-                //${WIDGET-SCRIPT-INVOCATION}
+                $('#pm1').puimenu();
+                
+                $('#pm2').puimenu({
+                    popup: true,
+                    trigger: $('#pm2trigger')
+                });
+                
+                $('button').puibutton();
 
                 $('#doc').puitabview();
             });
@@ -44,7 +55,7 @@
                 <div class="content-section">
                     <div class="heading">
                         <h2>PrimeUI</h2>
-                        <h2 class="widget-title">${WIDGET-TITLE}</h2>
+                        <h2 class="widget-title">Menu</h2>
                     </div>
                     <div class="content-block">					
                         <div id="sidebar">
@@ -73,7 +84,7 @@
                                 <li><a href="menu.html">Menu</a></li>
                                 <li><a href="slidemenu.html">Slide Menu</a></li>
                                 <li><a href="tieredmenu.html">Tiered Menu</a></li>
-                                <li><a href="menubar.html">MenuBar</a></li>
+                                <li><a href="menubar.html">Menubar</a></li>
                                 <li><a href="notify.html">Notify</a></li>
                                 <li><a href="panel.html">Panel</a></li>
                                 <li><a href="password.html">Password</a></li>
@@ -87,16 +98,113 @@
                         </div>
 
                         <div id="content-demo">
-                            <p>${WIDGET-DESCRIPTION}.</p>
+                            <p>Menu is a highly customizable navigation/command component that supports dynamic and static positioning.</p>
 
-                            ${WIDGET-DEMO}
-                            
-                            ${WIDGET-DOC}
+                            <h3 class="title title-short" style="margin-top: 0px;">Plain Menu</h3>
+
+                            <ul id="pm1">
+                                <li><h3>File</h3></li>
+                                <li><a data-icon="ui-icon-document">New</a></li>
+                                <li><a data-icon="ui-icon-folder-open">Open</a></li>
+                                <li><h3>Edit</h3></li>
+                                <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
+                                <li><a data-icon="ui-icon-arrowreturnthick-1-e">Redo</a></li>
+                            </ul>
+
+                            <p />
+                            <h3 class="title title-short" style="margin-top: 0px;">Click Trigger</h3>
+                           <button id="pm2trigger" style="margin-top:0px">Show</button>
+                                <ul id="pm2">
+                                    <li><h3>File</h3></li>
+                                    <li><a data-icon="ui-icon-document">New</a></li>
+                                    <li><a data-icon="ui-icon-folder-open">Open</a></li>
+                                    <li><h3>Edit</h3></li>
+                                    <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
+                                    <li><a data-icon="ui-icon-arrowreturnthick-1-e">Redo</a></li>
+                                </ul>
+                            <h3 class="subtitle">Documentation</h3>
+                            <div id="doc">
+                                <ul>
+                                    <li><a href="#doc-overview">Overview</a></li>
+                                    <li><a href="#doc-options">Options</a></li>
+                                    <li><a href="#doc-events">Events</a></li>
+                                    <li><a href="#doc-methods">Methods</a></li>
+                                    <li><a href="#doc-methods">Source</a></li>
+                                </ul>
+
+                                <div>
+
+                                    <div id="doc-overview">
+
+                                        <pre name="code" class="jscript">
+                $('#pm1').puimenu();
+                
+                                        </pre>
+
+                                        <pre name="code" class="xml">
+        &lt;ul id="pm1" &gt;
+         &lt;li /&gt;
+         &lt;li /&gt;
+         &lt;li /&gt;
+        &lt;/ul &gt;
+
+                                        </pre>
+
+                                    </div>
+
+                                    <div id="doc-options">
+                                        <h3>No options.</h3>
+                                    </div>
+
+                                    <div id="doc-events">
+                                        <h3>No events.</h3>
+                                    </div>
+
+                                    <div id="doc-methods">
+                                        <h3>No methods.</h3>
+                                    </div>
+
+                                    <div id="doc-source">
+
+                                        <pre name="code" class="jscript">
+        &lt;script type="text/javascript"&gt;
+                $('#pm1').puimenu();
+                
+                $('#pm2').puimenu({
+                    popup: true,
+                    trigger: $('#pm2trigger')
+                });
+                
+                $('button').puibutton();
+
+        &lt;/script&gt; 
+                                        </pre>
+
+                                        <pre name="code" class="xml">
+
+&ltul id="pm1"&gt
+    &ltli&gt&lth3&gtFile&lt/h3&gt&lt/li&gt
+    &ltli&gt &lta data-icon="ui-icon-document">New&lt/a&gt&lt/li&gt
+    &ltli&gt &lta data-icon="ui-icon-folder-open">Open&lt/a&gt&lt/li&gt
+    &ltli&gt&lth3&gtEdit&lt/h3&gt&lt/li&gt
+    &ltli&gt &lta data-icon="ui-icon-arrowreturnthick-1-w">Undo&lt/a&gt&lt/li&gt
+    &ltli&gt &lta data-icon="ui-icon-arrowreturnthick-1-e">Redo&lt/a&gt&lt/li&gt
+&lt/ul&gt
+
+                                        </pre>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
                         </div>
 
                         <div style="clear: both" />
                     </div>
                 </div>
+                </div>    
                 <div id="footer">
                     <div class="footer-block">
                         <div class="box-section">

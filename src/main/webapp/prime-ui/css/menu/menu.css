@@ -268,36 +268,36 @@
 }
 
 /** PanelMenu **/
-.ui-panelmenu { 
+.pui-panelmenu { 
     width: auto; 
 }
 
-.ui-panelmenu .ui-panelmenu-panel { 
+.pui-panelmenu .pui-panelmenu-panel { 
     padding: 0;
     margin: 0;
 }
 
-.ui-panelmenu .ui-panelmenu-header { 
+.pui-panelmenu .pui-panelmenu-header { 
     cursor: pointer; 
     position: relative; 
     margin: 0;
     zoom: 1; 
 }
 
-.ui-panelmenu .ui-panelmenu-header a { 
+.pui-panelmenu .pui-panelmenu-header a { 
     display: block;
     font-size: 1em;
     padding: .5em .5em .5em 2.2em; 
 }
 
-.ui-panelmenu .ui-panelmenu-header .ui-icon { 
+.pui-panelmenu .pui-panelmenu-header .ui-icon { 
     position: absolute;
     left: .5em;
     top: 50%;
     margin-top: -8px;
 }
 
-.ui-panelmenu .ui-panelmenu-content { 
+.pui-panelmenu .pui-panelmenu-content { 
     padding: 0.2em 0 0.2em 0.2em;
     border-top: 0; 
     margin-top: -2px; 
@@ -307,16 +307,16 @@
     zoom: 1; 
 }
 
-.ui-panelmenu .ui-panelmenu-header.ui-state-disabled, 
-.ui-panelmenu .ui-panelmenu-header.ui-state-disabled a { 
+.pui-panelmenu .pui-panelmenu-header.ui-state-disabled, 
+.pui-panelmenu .pui-panelmenu-header.ui-state-disabled a { 
     cursor: default; 
 }
 
-.ui-panelmenu .pui-menu-list { 
+.pui-panelmenu .pui-menu-list { 
     position: static; 
 }
 
-.ui-panelmenu .pui-menuitem {
+.pui-panelmenu .pui-menuitem {
     width:100%;
     float:left;
     clear:both;
@@ -324,7 +324,7 @@
     padding:0;
 }
 
-.ui-panelmenu .pui-menuitem-link {
+.pui-panelmenu .pui-menuitem-link {
     display:block;
     width:92%;
     outline:none;
@@ -337,32 +337,32 @@
     cursor: pointer;
 }
 
-.ui-panelmenu .ui-icon {
+.pui-panelmenu .ui-icon {
     display:inline-block;
     float:left;
 }
 
-.ui-panelmenu .pui-menuitem-text {
+.pui-panelmenu .pui-menuitem-text {
     float:left;
 }
 
-.ui-panelmenu .pui-menu-parent .pui-menu-list {
+.pui-panelmenu .pui-menu-parent .pui-menu-list {
     display: none;
     margin-left: 20px;
 }
 
 /** TabMenu **/
-.ui-tabmenu { 
+.pui-tabmenu { 
     position: relative; 
     zoom: 1; 
 }
 
-.ui-tabmenu .ui-tabmenu-nav { 
+.pui-tabmenu .pui-tabmenu-nav { 
     margin: 0;
     padding: .2em .2em 0; 
 }
 
-.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem { 
+.pui-tabmenu .pui-tabmenu-nav .pui-tabmenuitem { 
     list-style: none; 
     float: left; 
     position: relative; 
@@ -374,17 +374,17 @@
     top: 1px; 
 }
 
-.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem a { 
+.pui-tabmenu .pui-tabmenu-nav .pui-tabmenuitem a { 
     float: left; 
     padding: 0.5em 1em;
     text-decoration: none; 
 }
 
-.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem-hasicon a { 
+.pui-tabmenu .pui-tabmenu-nav .pui-tabmenuitem-hasicon a { 
     padding: 0.5em 1em 0.5em 0.2em;
 }
 
-.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem .ui-icon { 
+.pui-tabmenu .pui-tabmenu-nav .pui-tabmenuitem .ui-icon { 
     float: left; 
     cursor: pointer; 
 }

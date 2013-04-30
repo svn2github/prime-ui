@@ -30,10 +30,6 @@
                     autoDisplay: false
                 });
 
-                $('#bt1').puibutton({
-                     icon: 'ui-icon-extlink'
-                });
-
                 $('#doc').puitabview();
             });
         </script>
@@ -157,9 +153,6 @@
                                 <li>
                                     <a data-icon="ui-icon-close">Quit</a>
                                 </li>
-                                <li style="float: right">
-                                    <button id="bt1" type="button" data-icon="ui-icon-extlink">Logout</button> 
-                                </li>
                             </ul>
 
                             <p />
@@ -240,14 +233,20 @@
                                         <pre name="code" class="jscript">
                 $('#mb1').puimenubar();
                 
-                $('#mb2').puimenubar({
-                    autoDisplay: false
-                });
                                         </pre>
 
                                         <pre name="code" class="xml">
-        &lt;ul id="mb1" /&gt;
-        &lt;ul id="mb2" /&gt;
+        &lt;ul id="mb1" &gt;
+         &lt;li &gt;
+            &lt;ul &gt;
+                &lt;li /&gt;
+                &lt;li /&gt;
+            &lt;/ul &gt;
+         &lt;/li &gt;
+         &lt;li /&gt;
+         &lt;li /&gt;
+        &lt;/ul &gt;
+
                                         </pre>
 
                                     </div>
@@ -287,10 +286,6 @@
                 
                 $('#mb2').puimenubar({
                     autoDisplay: false
-                });
-
-                $('#bt1').puibutton({
-                     icon: 'ui-icon-extlink'
                 });
 
         &lt;/script&gt; 
@@ -353,9 +348,6 @@
     &lt/li&gt
     &ltli&gt
         &lta data-icon="ui-icon-close"&gtQuit&lt/a&gt
-    &lt/li&gt
-    &ltli style="float: right"&gt
-        &ltbutton id="bt1" type="button" data-icon="ui-icon-extlink"&gtLogout&lt/button&gt 
     &lt/li&gt
 &lt/ul&gt    
                                         </pre>
