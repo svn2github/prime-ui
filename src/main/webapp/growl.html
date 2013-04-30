@@ -27,19 +27,19 @@
 
                 $('#doc').puitabview();
 
-                $('#btn-info').click(function() {
+                $('#btn-info').puibutton().click(function() {
                     addMessage([{severity: 'info', summary: 'Message Title', detail: 'Message Detail here.'}]);
                 });
 
-                $('#btn-warn').click(function() {
+                $('#btn-warn').puibutton().click(function() {
                     addMessage([{severity: 'warn', summary: 'Message Title', detail: 'Message Detail here.'}]);
                 });
 
-                $('#btn-error').click(function() {
+                $('#btn-error').puibutton().click(function() {
                     addMessage([{severity: 'error', summary: 'Message Title', detail: 'Message Detail here.'}]);
                 });
 
-                $('#btn-multiple').click(function() {
+                $('#btn-multiple').puibutton().click(function() {
                     addMessage([{severity: 'info', summary: 'Message Title', detail: 'Message Detail here.'}
                         , {severity: 'warn', summary: 'Message Title', detail: 'Message Detail here.'}
                         , {severity: 'error', summary: 'Message Title', detail: 'Message Detail here.'}]);
@@ -71,7 +71,6 @@
                 <div class="content-section">
                     <div class="heading">
                         <h2>PrimeUI</h2>
-                        <h2 class="widget-title">Growl</h2>
                     </div>
                     <div class="content-block">					
                         <div id="sidebar">
@@ -115,6 +114,7 @@
                         </div>
 
                         <div id="content-demo">
+                            <h1 class="widget-title">Growl</h1>
                             <p>Growl is a notification widget to display messages as an overlay.</p>
 
 

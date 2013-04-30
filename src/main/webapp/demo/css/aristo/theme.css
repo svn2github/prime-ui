@@ -1224,22 +1224,22 @@ a {
     box-shadow: 0px 0px 5px #85b2cb, inset 0 2px 2px #8f8f8f;
 }
 
-.ui-menu, .ui-menu .ui-menu-child {
+.pui-menu, .pui-menu .pui-menu-child {
     background: #c4c4c4 url(ui-bg_highlight-hard_80_c4c4c4_1x100.png) top repeat-x;
     background: #c4c4c4 linear-gradient(top, rgba(255,255,255,0.8), rgba(255,255,255,0));
     background: #c4c4c4 -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.8)), to(rgba(255,255,255,0)));
     background: #c4c4c4 -moz-linear-gradient(top, rgba(255,255,255,0.8), rgba(255,255,255,0));
 }
 
-*html .ui-menu .ui-menu-list {
+*html .pui-menu .pui-menu-list {
     background: none;
 }
 
-*html .ui-menubar .ui-menu-child {
+*html .pui-menubar .pui-menu-child {
     background: #ffffff;
 }
 
-*html .ui-menu .ui-menuitem-link {
+*html .pui-menu .pui-menuitem-link {
     border-color: #c4c4c4;
     filter: chroma(color=#c4c4c4);
 }

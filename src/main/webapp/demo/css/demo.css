@@ -1,5 +1,5 @@
 .ui-widget {
-    font-size: 14px !important;
+    font-size: 12px !important;
 }
 
 #sidebar {
@@ -21,12 +21,12 @@
     list-style-type: none;
     padding: 5px 10px 5px 15px;
     text-shadow: 0 1px 0 #FFFFFF;
-    border-bottom: 1px solid #CEDCDF;
+    border-bottom: 1px solid #F2F2F2;
     font-weight: bold;
 }
 
 #sidebar .widgets-header {
-    background: none repeat scroll 0 0 #A7C0C6;
+    background: none repeat scroll 0 0 #85B2CB;
 }
 
 #sidebar li a {
@@ -54,6 +54,17 @@
 	font: 18px "Trebuchet MS", "Times New Roman", Times, serif;
 }
 
+.content-block h1.widget-title {
+    font-size: 24px;
+    text-align: center;
+    background: none repeat scroll 0 0 #424548;
+    color: #F9F7F7;
+    padding: 4px 10px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
 .doc-table {
     border-collapse: collapse;
     width: 100%;
@@ -64,8 +75,4 @@
     border-style: solid;
     border-width: 1px;
     padding: 4px 10px;
-}
-
-.widget-title {
-    float: right !important;
 }
