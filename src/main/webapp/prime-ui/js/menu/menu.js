@@ -221,7 +221,7 @@ $(function() {
                     listItem.addClass('pui-menuitem ui-widget ui-corner-all');
                     if(listItem.children('ul').length > 0) {
                         listItem.addClass('pui-menu-parent');
-                        listItem.children('ul').addClass('ui-widget-content pui-menu-list ui-corner-all ui-helper-clearfix pui-menu-child ui-shadow');
+                        listItem.children('ul').addClass('ui-widget-content pui-menu-list ui-corner-all ui-helper-clearfix pui-menu-child pui-shadow');
                         menuitemLink.prepend('<span class="ui-icon ui-icon-triangle-1-e"></span>');
                     }
                 
