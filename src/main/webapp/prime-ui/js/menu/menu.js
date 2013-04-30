@@ -284,15 +284,7 @@ $(function() {
                 });
             }
             
-            this.element.find('ul.pui-menu-list').on('mouseleave.pui-menu', function(e) {
-                if($this.activeitem) {
-                    $this._deactivate($this.activeitem);
-                }
-           
-                e.stopPropagation();
-            });
-            
-            this.element.find('li.pui-menuitem').on('mouseleave.pui-menu', function(e) {
+            this.element.parent().find('ul.pui-menu-list').on('mouseleave.pui-menu', function(e) {
                 if($this.activeitem) {
                     $this._deactivate($this.activeitem);
                 }
