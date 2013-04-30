@@ -291,6 +291,14 @@ $(function() {
            
                 e.stopPropagation();
             });
+            
+            this.element.find('li.pui-menuitem').on('mouseleave.pui-menu', function(e) {
+                if($this.activeitem) {
+                    $this._deactivate($this.activeitem);
+                }
+           
+                e.stopPropagation();
+            });
         },
        
         _bindDocumentHandler: function() {
