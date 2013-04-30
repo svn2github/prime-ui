@@ -43,11 +43,6 @@
     display: none;
 }
 
-.content-block h3.subtitle {
-    margin:20px 20px 8px 0;
-	font: 18px "Trebuchet MS", "Times New Roman", Times, serif;
-}
-
 .content-block h1.widget-title {
     font-size: 24px;
     text-align: center;
@@ -79,4 +74,8 @@
 
 .content-block .pui-menu h3 {
 	color: inherit;
+}
+
+.content-block h3 {
+    color: #636363;
 }
