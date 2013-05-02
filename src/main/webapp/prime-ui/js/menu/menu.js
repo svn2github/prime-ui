@@ -585,7 +585,8 @@ $(function() {
     $.widget("primeui.puicontextmenu", $.primeui.puitieredmenu, {
         
         options: {
-            autoDisplay: true    
+            autoDisplay: true,
+            target: null
         },
         
         _create: function() {
@@ -602,7 +603,7 @@ $(function() {
             this.options.event = this.options.event||'contextmenu';
 
             //target
-            this.jqTargetId = documentTarget ? document : PUI.escapeClientId(this.this.options.target);
+            this.jqTargetId = documentTarget ? document : PUI.escapeClientId(this.options.target);
             this.jqTarget = $(this.jqTargetId);
 
             //append to body
@@ -618,7 +619,7 @@ $(function() {
             }
             else {
 
-                    var event = this.this.options.event + '.pui-contextmenu';
+                    var event = this.options.event + '.pui-contextmenu';
 
                     $(document).off(event, this.jqTargetId).on(event, this.jqTargetId, null, function(e) {
                         $this.show(e);
