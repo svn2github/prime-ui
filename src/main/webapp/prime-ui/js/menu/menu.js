@@ -362,7 +362,7 @@ $(function() {
 });
 
 /**
- * PrimeFaces Menubar Widget
+ * PrimeUI Menubar Widget
  */
 
 $(function() {
@@ -571,6 +571,150 @@ $(function() {
                 this._applyDimensions();
             }
         }        
+    });
+
+});
+
+
+/**
+ * PrimeUI Context Menu Widget
+ */
+
+$(function() {
+
+    $.widget("primeui.puicontextmenu", $.primeui.puitieredmenu, {
+        
+        options: {
+            autoDisplay: true    
+        },
+        
+        _create: function() {
+            this._super();
+            this.element.parent().removeClass('pui-tieredmenu').
+                    addClass('pui-contextmenu pui-menu-dynamic ui-shadow');
+            
+            this.options.autoDisplay = true;
+
+            var $this = this,
+            documentTarget = (this.options.target === undefined);
+
+            //event
+            this.options.event = this.options.event||'contextmenu';
+
+            //target
+            this.jqTargetId = documentTarget ? document : PUI.escapeClientId(this.this.options.target);
+            this.jqTarget = $(this.jqTargetId);
+
+            //append to body
+            if(!this.element.parent().parent().is(document.body)) {
+                this.element.parent().appendTo('body');
+            }
+
+            //attach contextmenu
+            if(documentTarget) {
+                $(document).off('contextmenu.pui-contextmenu').on('contextmenu.pui-contextmenu', function(e) {
+                    $this.show(e);
+                });
+            }
+            else {
+
+                    var event = this.this.options.event + '.pui-contextmenu';
+
+                    $(document).off(event, this.jqTargetId).on(event, this.jqTargetId, null, function(e) {
+                        $this.show(e);
+                    });
+                }
+
+            
+        },
+                
+        
+
+        _bindItemEvents: function() {
+            this._super();
+
+            var $this = this;
+
+            //hide menu on item click
+            this.links.bind('click', function() {
+                $this._hide();
+            });
+        },
+
+        _bindDocumentHandler: function() {
+            var $this = this;
+
+            //hide overlay when document is clicked
+            $(document.body).bind('click.pui-contextmenu', function (e) {
+                if($this.element.parent().is(":hidden")) {
+                    return;
+                }
+
+                $this._hide();
+            });
+        },
+
+        show: function(e) {  
+            //hide other contextmenus if any
+            $(document.body).children('.pui-contextmenu:visible').hide();
+
+            var win = $(window),
+            left = e.pageX,
+            top = e.pageY,
+            width = this.element.parent().outerWidth(),
+            height = this.element.parent().outerHeight();
+
+            //collision detection for window boundaries
+            if((left + width) > (win.width())+ win.scrollLeft()) {
+                left = left - width;
+            }
+            if((top + height ) > (win.height() + win.scrollTop())) {
+                top = top - height;
+            }
+
+            if(this.options.beforeShow) {
+                this.options.beforeShow.call(this);
+            }
+
+            this.element.parent().css({
+                'left': left,
+                'top': top,
+                'z-index': ++PUI.zindex
+            }).show();
+
+            e.preventDefault();
+        },
+
+        _hide: function() {
+            var $this = this;
+
+            //hide submenus
+            this.element.parent().find('li.pui-menuitem-active').each(function() {
+                $this._deactivate($(this), true);
+            });
+
+            this.element.parent().fadeOut('fast');
+        },
+        
+        refresh: function(cfg) {
+            var jqId = PUI.escapeClientId(cfg.id),
+            instances = $(jqId);
+
+            if(instances.length > 1) {
+                $(document.body).children(jqId).remove();
+            }
+
+            this.init(cfg);
+        },
+
+        isVisible: function() {
+            return this.element.parent().is(':visible');
+        },
+
+        getTarget: function() {
+            return this.jqTarget;
+        }              
+              
     });
 
 });
