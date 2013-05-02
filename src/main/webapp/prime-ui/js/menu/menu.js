@@ -586,7 +586,8 @@ $(function() {
         
         options: {
             autoDisplay: true,
-            target: null
+            target: null,
+            event: 'contextmenu'
         },
         
         _create: function() {
@@ -594,42 +595,18 @@ $(function() {
             this.element.parent().removeClass('pui-tieredmenu').
                     addClass('pui-contextmenu pui-menu-dynamic ui-shadow');
             
-            this.options.autoDisplay = true;
+            var $this = this;
 
-            var $this = this,
-            documentTarget = (this.options.target === undefined);
+            this.options.target = this.options.target||$(document.body);
 
-            //event
-            this.options.event = this.options.event||'contextmenu';
-
-            //target
-            this.jqTargetId = documentTarget ? document : PUI.escapeClientId(this.options.target);
-            this.jqTarget = $(this.jqTargetId);
-
-            //append to body
             if(!this.element.parent().parent().is(document.body)) {
                 this.element.parent().appendTo('body');
             }
-
-            //attach contextmenu
-            if(documentTarget) {
-                $(document).off('contextmenu.pui-contextmenu').on('contextmenu.pui-contextmenu', function(e) {
-                    $this.show(e);
-                });
-            }
-            else {
-
-                    var event = this.options.event + '.pui-contextmenu';
-
-                    $(document).off(event, this.jqTargetId).on(event, this.jqTargetId, null, function(e) {
-                        $this.show(e);
-                    });
-                }
-
             
-        },
-                
-        
+            this.options.target.on(this.options.event + '.pui-contextmenu' , function(e){
+                    $this.show(e);
+            });   
+        },        
 
         _bindItemEvents: function() {
             this._super();
@@ -684,6 +661,7 @@ $(function() {
             }).show();
 
             e.preventDefault();
+            e.stopPropagation();
         },
 
         _hide: function() {
