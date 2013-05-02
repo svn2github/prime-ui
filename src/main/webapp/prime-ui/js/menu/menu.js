@@ -593,7 +593,7 @@ $(function() {
         _create: function() {
             this._super();
             this.element.parent().removeClass('pui-tieredmenu').
-                    addClass('pui-contextmenu pui-menu-dynamic ui-shadow');
+                    addClass('pui-contextmenu pui-menu-dynamic pui-shadow');
             
             var $this = this;
 
