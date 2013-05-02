@@ -26,6 +26,10 @@
         <script type="text/javascript">
             $(function() {
                 $('#cm1').puicontextmenu();
+                
+                $('#cm2').puicontextmenu({
+                    target:$('#img1')
+                });
 
 
                 $('#doc').puitabview();
@@ -92,11 +96,22 @@
                                 <li><a href="tooltip.html">Tooltip</a></li>
                             </ul>
                         </div>
+                        
 
                         <div id="content-demo">
                             <h1 class="widget-title">ContextMenu</h1>
                             <p>Right click anywhere on this page to view the context-menu options.</p>
+                            
+                            <h3>On Target</h3>
+                            <p>Right click on image to view the context-menu options.</p>
+                            
+                            <img id="img1" src="demo/images/logo.png" />
 
+                            <ul id="cm2">
+                                <li><a data-icon="ui-icon-triangle-1-e">Next</a></li>
+                                <li><a data-icon="ui-icon-triangle-1-w">Prev</a></li>
+                            </ul>
+                            
                             <ul id="cm1">
                                 <li> <a data-icon="ui-icon-document">File</a>
                                     <ul> 
@@ -207,6 +222,12 @@
                                                     <td>true</td>
                                                     <td>Displays without the mouse click</td>
                                                 </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>target</td>
+                                                    <td>jQuery object</td>
+                                                    <td>$(document)</td>
+                                                    <td>Target to attached the menu</td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -215,8 +236,35 @@
                                         <h3>No events.</h3>
                                     </div>
 
-                                    <div id="doc-methods">
-                                        <h3>No methods.</h3>
+                                        <table class="doc-table">
+                                            <thead>
+                                                <th class="ui-state-default">Name</th>
+                                                <th class="ui-state-default">Parameters</th>
+                                                <th class="ui-state-default">Description</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="ui-widget-content">
+                                                    <td>show</td>
+                                                    <td>-</td>
+                                                    <td>Shows Menu.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>hide</td>
+                                                    <td>-</td>
+                                                    <td>Hides Menu.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>getTarget</td>
+                                                    <td>-</td>
+                                                    <td>Gets the menu target.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>isVisible</td>
+                                                    <td>-</td>
+                                                    <td>Returns true if menu is visible</td>
+                                                </tr>                                           
+                                            </tbody>
+                                        </table>                                    
                                     </div>
 
                                     <div id="doc-source">
@@ -224,7 +272,11 @@
                                         <pre name="code" class="jscript">
 &lt;script type="text/javascript"&gt;
 
-  $('#cm1').puicontextmenu();   
+$('#cm1').puicontextmenu();   
+  
+$('#cm2').puicontextmenu({
+   target:$('#img1')
+});
      
 &lt;/script&gt;
                                         </pre>
@@ -288,6 +340,13 @@
         &lta data-icon="ui-icon-close"&gtQuit&lt/a&gt
     &lt/li&gt
 &lt/ul&gt    
+
+
+&ltul id="cm2"&gt    
+    &ltli&gt &lta data-icon="ui-icon-triangle-1-e">Next&lt/a&gt&lt/li&gt
+    &ltli&gt &lta data-icon="ui-icon-triangle-1-w">Prev&lt/a&gt&lt/li&gt
+&lt/ul&gt
+
                                         </pre>
 
                                     </div>

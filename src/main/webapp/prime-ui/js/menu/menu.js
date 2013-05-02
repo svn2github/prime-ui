@@ -597,7 +597,7 @@ $(function() {
             
             var $this = this;
 
-            this.options.target = this.options.target||$(document.body);
+            this.options.target = this.options.target||$(document);
 
             if(!this.element.parent().parent().is(document.body)) {
                 this.element.parent().appendTo('body');
@@ -673,17 +673,6 @@ $(function() {
             });
 
             this.element.parent().fadeOut('fast');
-        },
-        
-        refresh: function(cfg) {
-            var jqId = PUI.escapeClientId(cfg.id),
-            instances = $(jqId);
-
-            if(instances.length > 1) {
-                $(document.body).children(jqId).remove();
-            }
-
-            this.init(cfg);
         },
 
         isVisible: function() {
