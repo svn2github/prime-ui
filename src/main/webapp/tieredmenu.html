@@ -87,6 +87,7 @@
                                 <li><a href="menu.html">Menu</a></li>
                                 <li><a href="slidemenu.html">Slide Menu</a></li>
                                 <li><a href="tieredmenu.html">Tiered Menu</a></li>
+                                <li><a href="contextmenu.html">Context Menu</a></li>
                                 <li><a href="menubar.html">Menubar</a></li>
                                 <li><a href="notify.html">Notify</a></li>
                                 <li><a href="panel.html">Panel</a></li>
@@ -355,18 +356,21 @@
                                     <div id="doc-source">
 
                                         <pre name="code" class="jscript">
-                $('#tm1').puitieredmenu();
-                $('#tm2').puitieredmenu({
-                    autoDisplay: false
-                });
-                
-                $('#tm3').puitieredmenu({
-                    popup: true,
-                    trigger: $('#tm3trigger')
-                });
-                
-                $('button').puibutton();
-        &lt;/script&gt; 
+&lt;script type="text/javascript"&gt;
+
+    $('#tm1').puitieredmenu();
+    $('#tm2').puitieredmenu({
+        autoDisplay: false
+    });
+
+    $('#tm3').puitieredmenu({
+        popup: true,
+        trigger: $('#tm3trigger')
+    });
+
+    $('button').puibutton();
+     
+&lt;/script&gt;
                                         </pre>
 
                                         <pre name="code" class="xml">
@@ -503,7 +507,7 @@
                         <div class="copy-block">
                             <span class="copy">Copyright 2011 <a href="#">PrimeFaces</a> All rights reserved.</span>
                         </div>
-                        <img src="images/ornament.png" width="167" height="43" alt="image description" class="ornament" />
+                        <img src="prime-ui/images/ornament.png" width="167" height="43" alt="image description" class="ornament" />
                     </div>
                 </div>
             </div>

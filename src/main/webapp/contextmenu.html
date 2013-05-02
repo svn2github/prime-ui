@@ -8,46 +8,25 @@
         <link rel="stylesheet" type="text/css" href="http://www.primefaces.org/css/all.css" />
         <link rel="stylesheet" type="text/css" href="demo/css/demo.css" />
         <link rel="stylesheet" href="demo/css/jquery-ui.css" />
-        <link rel="stylesheet" href="demo/css/aristo/theme.css" />
-        <link rel="stylesheet" href="demo/css/sh.css" />
         <link rel="stylesheet" href="prime-ui/css/core/core.css" />
         <link rel="stylesheet" href="prime-ui/css/button/button.css" />
-        <link rel="stylesheet" href="prime-ui/css/growl/growl.css" />
+        <link rel="stylesheet" href="demo/css/aristo/theme.css" />
+        <link rel="stylesheet" href="demo/css/sh.css" />
+        <link rel="stylesheet" href="prime-ui/css/menu/menu.css" />
         <link rel="stylesheet" href="prime-ui/css/tabview/tabview.css" />
         <script type="text/javascript" src="demo/js/sh.js"></script>
+        <script type="text/javascript" src="prime-ui/js/core/core.js"></script>
         <script type="text/javascript" src="demo/js/jquery.js"></script>
         <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
         <script src="http://www.primefaces.org/script/common.js"></script>
         <script type="text/javascript" src="prime-ui/js/button/button.js"></script>
-        <script type="text/javascript" src="prime-ui/js/growl/growl.js"></script>
+        <script type="text/javascript" src="prime-ui/js/inputtext/inputtext.js"></script>
+        <script type="text/javascript" src="prime-ui/js/menu/menu.js"></script>
         <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
         <script type="text/javascript">
             $(function() {
-                $('#default').puigrowl();
+                $('#cm1').puicontextmenu();
 
-                $('#doc').puitabview();
-
-                $('#btn-info').puibutton().click(function() {
-                    addMessage([{severity: 'info', summary: 'Message Title', detail: 'Message Detail here.'}]);
-                });
-
-                $('#btn-warn').puibutton().click(function() {
-                    addMessage([{severity: 'warn', summary: 'Message Title', detail: 'Message Detail here.'}]);
-                });
-
-                $('#btn-error').puibutton().click(function() {
-                    addMessage([{severity: 'error', summary: 'Message Title', detail: 'Message Detail here.'}]);
-                });
-
-                $('#btn-multiple').puibutton().click(function() {
-                    addMessage([{severity: 'info', summary: 'Message Title', detail: 'Message Detail here.'}
-                        , {severity: 'warn', summary: 'Message Title', detail: 'Message Detail here.'}
-                        , {severity: 'error', summary: 'Message Title', detail: 'Message Detail here.'}]);
-                });
-
-                addMessage = function(msg) {
-                    $('#default').puigrowl('show', msg);
-                }
 
                 $('#doc').puitabview();
             });
@@ -101,7 +80,7 @@
                                 <li><a href="slidemenu.html">Slide Menu</a></li>
                                 <li><a href="tieredmenu.html">Tiered Menu</a></li>
                                 <li><a href="contextmenu.html">Context Menu</a></li>
-                                <li><a href="menubar.html">MenuBar</a></li>                                
+                                <li><a href="menubar.html">Menubar</a></li>
                                 <li><a href="notify.html">Notify</a></li>
                                 <li><a href="panel.html">Panel</a></li>
                                 <li><a href="password.html">Password</a></li>
@@ -115,18 +94,70 @@
                         </div>
 
                         <div id="content-demo">
-                            <h1 class="widget-title">Growl</h1>
-                            <p>Growl is a notification widget to display messages as an overlay.</p>
+                            <h1 class="widget-title">ContextMenu</h1>
+                            <p>Right click anywhere on this page to view the context-menu options.</p>
+
+                            <ul id="cm1">
+                                <li> <a data-icon="ui-icon-document">File</a>
+                                    <ul> 
+                                        <li><a data-icon="ui-icon-contact">New</a>
+                                            <ul>
+                                                <li><a>Project</a></li>
+                                                <li><a>Other</a></li>
+                                            </ul>
+                                        </li> 
+                                        <li><a>Open</a></li> 
+                                        <li><a>Quit</a></li> 
+                                    </ul>
+                                </li>
+                                <li> <a data-icon="ui-icon-pencil">Edit</a>
+                                    <ul>
+                                        <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
+                                        <li><a data-icon="ui-icon-arrowreturnthick-1-e">Redo</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a data-icon="ui-icon-help">Help</a>
+                                    <ul>
+                                        <li><a>Contents</a></li>
+                                        <li>
+                                            <a data-icon="ui-icon-search">Search</a>
+                                            <ul>
+                                                <li><a>Text</a>
+                                                    <ul>
+                                                        <li><a>Workspace</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a>File</a></li>
+                                            </ul>
+                                        </li>
+                                            
+                                    </ul>
+                                    
+                                </li>
+                                <li>
+                                    <a data-icon="ui-icon-gear">Actions</a>
+                                    <ul>
+                                        <li><a data-icon="ui-icon-refresh">Ajax</a>
+                                            <ul>
+                                                <li><a data-icon="ui-icon-disk">Save</a></li>
+                                                <li><a data-icon="ui-icon-arrowrefresh-1-w">Update</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a data-icon="ui-icon-document">Non-Ajax</a>
+                                            <ul>
+                                                <li><a data-icon="ui-icon-close">Delete</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a data-icon="ui-icon-close">Quit</a>
+                                </li>
+                            </ul>
 
 
-                            <div id="default"></div>
-
-                            <button id="btn-info" type="button">Info</button>
-                            <button id="btn-warn" type="button">Warn</button>
-                            <button id="btn-error" type="button">Error</button>
-                            <button id="btn-multiple" type="button">Multiple</button>
-
-                            <h3>Documentation</h3>
+                            <h3 class="subtitle">Documentation</h3>
                             <div id="doc">
                                 <ul>
                                     <li><a href="#doc-overview">Overview</a></li>
@@ -135,21 +166,30 @@
                                     <li><a href="#doc-methods">Methods</a></li>
                                     <li><a href="#doc-methods">Source</a></li>
                                 </ul>
+
                                 <div>
+
                                     <div id="doc-overview">
-                                        <p>Growl is a notification widget to display messages as an overlay.</p>
 
                                         <pre name="code" class="jscript">
-//initialize
-$('#default').puigrowl();
-
-//show messages
-$('#default').puigrowl('show', [{severity: 'info', summary: 'Message Summary', detail: 'Message Detail'}]);
+               $('#cm1').puicontextmenu();
+                
                                         </pre>
 
                                         <pre name="code" class="xml">
-&lt;div id="default" /&gt;   
+        &lt;ul id="cm1" &gt;
+         &lt;li &gt;
+            &lt;ul &gt;
+                &lt;li /&gt;
+                &lt;li /&gt;
+            &lt;/ul &gt;
+         &lt;/li &gt;
+         &lt;li /&gt;
+         &lt;li /&gt;
+        &lt;/ul &gt;
+
                                         </pre>
+
                                     </div>
 
                                     <div id="doc-options">
@@ -162,16 +202,10 @@ $('#default').puigrowl('show', [{severity: 'info', summary: 'Message Summary', d
                                             </thead>
                                             <tbody>
                                                 <tr class="ui-widget-content">
-                                                    <td>sticky</td>
+                                                    <td>autoDisplay</td>
                                                     <td>boolean</td>
-                                                    <td>false</td>
-                                                    <td>Sticky messages do not disappear after a timeout defined by life.</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>life</td>
-                                                    <td>int</td>
-                                                    <td>3000</td>
-                                                    <td>Defines timeout in milliseconds to remove messages.</td>
+                                                    <td>true</td>
+                                                    <td>Displays without the mouse click</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -182,74 +216,92 @@ $('#default').puigrowl('show', [{severity: 'info', summary: 'Message Summary', d
                                     </div>
 
                                     <div id="doc-methods">
-                                        <table class="doc-table">
-                                            <thead>
-                                                <th class="ui-state-default">Name</th>
-                                                <th class="ui-state-default">Parameters</th>
-                                                <th class="ui-state-default">Description</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="ui-widget-content">
-                                                    <td>option</td>
-                                                    <td>name: Name of the option</td>
-                                                    <td>Returns the value of the option.</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>option</td>
-                                                    <td>name: Name of the option, value: Value of the option</td>
-                                                    <td>Set the value of the option.</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <h3>No methods.</h3>
                                     </div>
 
                                     <div id="doc-source">
+
                                         <pre name="code" class="jscript">
 &lt;script type="text/javascript"&gt;
-    $(function() {
-        $('#default').puigrowl();                
 
-        $('#btn-info').click(function() {
-            addMessage([{severity: 'info', summary: 'Message Title', detail: 'Message Detail here.'}]);
-        });
-
-        $('#btn-warn').click(function() {
-            addMessage([{severity: 'warn', summary: 'Message Title', detail: 'Message Detail here.'}]);
-        });
-
-        $('#btn-error').click(function() {
-            addMessage([{severity: 'error', summary: 'Message Title', detail: 'Message Detail here.'}]);
-        });
-
-        $('#btn-multiple').click(function() {
-            addMessage([{severity: 'info', summary: 'Message Title', detail: 'Message Detail here.'}
-                ,{severity: 'warn', summary: 'Message Title', detail: 'Message Detail here.'}
-                ,{severity: 'error', summary: 'Message Title', detail: 'Message Detail here.'}]);
-        });
-
-        addMessage = function(msg) {
-            $('#default').puigrowl('show', msg);
-        }
-
-        $('#content button').puibutton();
-    });
+  $('#cm1').puicontextmenu();   
+     
 &lt;/script&gt;
                                         </pre>
 
                                         <pre name="code" class="xml">
-&lt;div id="default" /&gt;
-                                        </pre>
-                                    </div>
-                                </div>
-                            </div>
+&ltul id="cm1"&gt
+    &ltli&gt &lta data-icon="ui-icon-document"&gtFile&lt/a&gt
+        &ltul&gt 
+            &ltli&gt&lta data-icon="ui-icon-contact"&gtNew&lt/a&gt
+                &ltul&gt
+                    &ltli&gt&lta&gtProject&lt/a&gt&lt/li&gt
+                    &ltli&gt&lta&gtOther&lt/a&gt&lt/li&gt
+                &lt/ul&gt
+            &lt/li&gt 
+            &ltli&gt&lta&gtOpen&lt/a&gt&lt/li&gt 
+            &ltli&gt&lta&gtQuit&lt/a&gt&lt/li&gt 
+        &lt/ul&gt
+    &lt/li&gt
+    &ltli&gt &lta data-icon="ui-icon-pencil"&gtEdit&lt/a&gt
+        &ltul&gt
+            &ltli&gt&lta data-icon="ui-icon-arrowreturnthick-1-w"&gtUndo&lt/a&gt&lt/li&gt
+            &ltli&gt&lta data-icon="ui-icon-arrowreturnthick-1-e"&gtRedo&lt/a&gt&lt/li&gt
+        &lt/ul&gt
+    &lt/li&gt
+    &ltli&gt
+        &lta data-icon="ui-icon-help"&gtHelp&lt/a&gt
+        &ltul&gt
+            &ltli&gt&lta&gtContents&lt/a&gt&lt/li&gt
+            &ltli&gt
+                &lta data-icon="ui-icon-search"&gtSearch&lt/a&gt
+                &ltul&gt
+                    &ltli&gt&lta&gtText&lt/a&gt
+                        &ltul&gt
+                            &ltli&gt&lta&gtWorkspace&lt/a&gt&lt/li&gt
+                        &lt/ul&gt
+                    &lt/li&gt
+                    &ltli&gt&lta&gtFile&lt/a&gt&lt/li&gt
+                &lt/ul&gt
+            &lt/li&gt
 
+        &lt/ul&gt
+
+    &lt/li&gt
+    &ltli&gt
+        &lta data-icon="ui-icon-gear"&gtActions&lt/a&gt
+        &ltul&gt
+            &ltli&gt&lta data-icon="ui-icon-refresh"&gtAjax&lt/a&gt
+                &ltul&gt
+                    &ltli&gt&lta data-icon="ui-icon-disk"&gtSave&lt/a&gt&lt/li&gt
+                    &ltli&gt&lta data-icon="ui-icon-arrowrefresh-1-w"&gtUpdate&lt/a&gt&lt/li&gt
+                &lt/ul&gt
+            &lt/li&gt
+            &ltli&gt&lta data-icon="ui-icon-document"&gtNon-Ajax&lt/a&gt
+                &ltul&gt
+                    &ltli&gt&lta data-icon="ui-icon-close"&gtDelete&lt/a&gt&lt/li&gt
+                &lt/ul&gt
+            &lt/li&gt
+        &lt/ul&gt
+    &lt/li&gt
+    &ltli&gt
+        &lta data-icon="ui-icon-close"&gtQuit&lt/a&gt
+    &lt/li&gt
+&lt/ul&gt    
+                                        </pre>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
 
                         </div>
 
                         <div style="clear: both" />
                     </div>
                 </div>
-                </div>
+                </div>    
                 <div id="footer">
                     <div class="footer-block">
                         <div class="box-section">
