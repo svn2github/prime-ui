@@ -26,9 +26,9 @@
         <script type="text/javascript">
             $(function() {
                 $('#cm1').puicontextmenu();
-                
+
                 $('#cm2').puicontextmenu({
-                    target:$('#img1')
+                    target: $('#img1')
                 });
 
 
@@ -96,22 +96,20 @@
                                 <li><a href="tooltip.html">Tooltip</a></li>
                             </ul>
                         </div>
-                        
+
 
                         <div id="content-demo">
                             <h1 class="widget-title">ContextMenu</h1>
                             <p>Right click anywhere on this page to view the context-menu options.</p>
-                            
-                            <h3>On Target</h3>
-                            <p>Right click on image to view the context-menu options.</p>
-                            
+
+                            <h3>Specific Target</h3>                            
                             <img id="img1" src="demo/images/logo.png" />
 
                             <ul id="cm2">
                                 <li><a data-icon="ui-icon-triangle-1-e">Next</a></li>
                                 <li><a data-icon="ui-icon-triangle-1-w">Prev</a></li>
                             </ul>
-                            
+
                             <ul id="cm1">
                                 <li> <a data-icon="ui-icon-document">File</a>
                                     <ul> 
@@ -146,9 +144,9 @@
                                                 <li><a>File</a></li>
                                             </ul>
                                         </li>
-                                            
+
                                     </ul>
-                                    
+
                                 </li>
                                 <li>
                                     <a data-icon="ui-icon-gear">Actions</a>
@@ -187,24 +185,21 @@
                                     <div id="doc-overview">
 
                                         <pre name="code" class="jscript">
-               $('#cm1').puicontextmenu();
-                
+$('#cm1').puicontextmenu();
                                         </pre>
 
                                         <pre name="code" class="xml">
-        &lt;ul id="cm1" &gt;
-         &lt;li &gt;
-            &lt;ul &gt;
-                &lt;li /&gt;
-                &lt;li /&gt;
-            &lt;/ul &gt;
-         &lt;/li &gt;
-         &lt;li /&gt;
-         &lt;li /&gt;
-        &lt;/ul &gt;
-
+&lt;ul id="cm1" &gt;
+ &lt;li &gt;
+    &lt;ul &gt;
+        &lt;li /&gt;
+        &lt;li /&gt;
+    &lt;/ul &gt;
+ &lt;/li &gt;
+ &lt;li /&gt;
+ &lt;li /&gt;
+&lt;/ul &gt;
                                         </pre>
-
                                     </div>
 
                                     <div id="doc-options">
@@ -220,13 +215,13 @@
                                                     <td>autoDisplay</td>
                                                     <td>boolean</td>
                                                     <td>true</td>
-                                                    <td>Displays without the mouse click</td>
+                                                    <td>Displays submenus without the mouse click</td>
                                                 </tr>
                                                 <tr class="ui-widget-content">
                                                     <td>target</td>
                                                     <td>jQuery object</td>
                                                     <td>$(document)</td>
-                                                    <td>Target to attached the menu</td>
+                                                    <td>Target to attach the menu</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -235,8 +230,8 @@
                                     <div id="doc-events">
                                         <h3>No events.</h3>
                                     </div>
-                                <div id="doc-methods">
-
+                                    
+                                    <div id="doc-methods">
                                         <table class="doc-table">
                                             <thead>
                                                 <th class="ui-state-default">Name</th>
@@ -262,7 +257,7 @@
                                                 <tr class="ui-widget-content">
                                                     <td>isVisible</td>
                                                     <td>-</td>
-                                                    <td>Returns true if menu is visible</td>
+                                                    <td>Returns visibility state of menu.</td>
                                                 </tr>                                           
                                             </tbody>
                                         </table>                                    
@@ -361,77 +356,77 @@ $('#cm2').puicontextmenu({
                         <div style="clear: both" />
                     </div>
                 </div>
-                </div>    
-                <div id="footer">
-                    <div class="footer-block">
-                        <div class="box-section">
-                            <div class="box">
-                                <h4>Overview</h4>
-                                <ul class="footer-list">
-                                    <li><a href="http://www.primefaces.org/whyprimefaces.html">Why PrimeFaces</a></li>
-                                    <li><a href="http://www.primefaces.org/whouses.html">Who Uses PrimeFaces</a></li>
-                                    <li><a href="http://www.primefaces.org/testimonials.html">Testimonials</a></li>
-                                    <li><a href="http://www.primefaces.org/license.html">License</a></li>
-                                    <li><a href="http://www.primefaces.org/multimedia.html">Multimedia</a></li>
-                                    <li><a href="http://www.primefaces.org/faq.html">FAQ</a></li>
-                                </ul>
-                            </div>
-                            <div class="box">
-                                <h4>Demos</h4>
-                                <ul class="footer-list">
-                                    <li><a href="http://www.primefaces.org/showcase/ui/home.jsf">Showcase</a></li>
-                                    <li><a href="http://www.primefaces.org/showcase/ui/macosx.jsf">Mock OS X</a></li>
-                                    <li><a href="http://www.primefaces.org/showcase-labs/mobile/index.jsf">Mobile</a></li>
-                                    <li><a href="http://primefaces-rocks.appspot.com/ui/">Cloud - GAE</a></li>
-                                    <li><a href="http://www.primefaces.org/prime-ui/">Prime-UI</a></li>
-                                </ul>
-                            </div>
-                            <div class="box">
-                                <h4>Development</h4>
-                                <ul class="footer-list">
-                                    <li><a href="http://www.primefaces.org/gettingStarted.html">Getting Started</a></li>
-                                    <li><a href="http://www.primefaces.org/documentation.html">Documentation</a></li>
-                                    <li><a href="http://www.primefaces.org/downloads.html">Downloads</a></li>
-                                    <li><a href="http://code.google.com/p/primefaces/w/list">Wiki</a></li>
-                                    <li><a href="http://www.primefaces.org/themes.html">Theme Gallery</a></li>
-                                    <li><a href="http://primefaces-extensions.github.com">Extensions</a></li>
-                                </ul>
-                            </div>
-                            <div class="box">
-                                <h4>Support</h4>
-                                <ul class="footer-list">
-                                    <li><a href="http://www.primefaces.org/support.html">Support Options</a></li>
-                                    <li><a href="http://pro.primefaces.org">PrimeFaces PRO</a></li>
-                                    <li><a href="http://www.primefaces.org/elite">PrimeFaces ELITE</a></li>
-                                    <li><a href="http://www.primefaces.org/training.html">Training</a></li>
-                                    <li><a href="http://forum.primefaces.org">Forum</a></li>
-                                    <li><a href="http://www.primefaces.org/issuetracker.html">Issue Tracker</a></li>
-                                    <li><a href="http://www.primefaces.org/partners.html">Partners</a></li>
-                                </ul>
-                            </div>
-                            <div class="box">
-                                <h4>Social</h4>
-                                <ul class="footer-list">
-                                    <li><a href="http://blog.primefaces.org">Blog</a></li>
-                                    <li><a href="http://forum.primefaces.org/">Forum</a></li>
-                                    <li><a href="http://www.primefaces.org/mobileapps.html">Mobile Apps</a></li>
-                                    <li><a href="http://twitter.com/primefaces">Twitter</a></li>
-                                    <li><a href="http://www.facebook.com/groups/206606616332/">Facebook</a></li>
-                                    <li><a href="http://www.linkedin.com/groups/PrimeFaces-NextGen-Component-Suite-3095471">LinkedIn</a></li>
-                                </ul>
-                            </div>
+            </div>    
+            <div id="footer">
+                <div class="footer-block">
+                    <div class="box-section">
+                        <div class="box">
+                            <h4>Overview</h4>
+                            <ul class="footer-list">
+                                <li><a href="http://www.primefaces.org/whyprimefaces.html">Why PrimeFaces</a></li>
+                                <li><a href="http://www.primefaces.org/whouses.html">Who Uses PrimeFaces</a></li>
+                                <li><a href="http://www.primefaces.org/testimonials.html">Testimonials</a></li>
+                                <li><a href="http://www.primefaces.org/license.html">License</a></li>
+                                <li><a href="http://www.primefaces.org/multimedia.html">Multimedia</a></li>
+                                <li><a href="http://www.primefaces.org/faq.html">FAQ</a></li>
+                            </ul>
                         </div>
-                        <div class="copy-block">
-                            <span class="copy">Copyright 2011 <a href="#">PrimeFaces</a> All rights reserved.</span>
+                        <div class="box">
+                            <h4>Demos</h4>
+                            <ul class="footer-list">
+                                <li><a href="http://www.primefaces.org/showcase/ui/home.jsf">Showcase</a></li>
+                                <li><a href="http://www.primefaces.org/showcase/ui/macosx.jsf">Mock OS X</a></li>
+                                <li><a href="http://www.primefaces.org/showcase-labs/mobile/index.jsf">Mobile</a></li>
+                                <li><a href="http://primefaces-rocks.appspot.com/ui/">Cloud - GAE</a></li>
+                                <li><a href="http://www.primefaces.org/prime-ui/">Prime-UI</a></li>
+                            </ul>
                         </div>
-                        <img src="prime-ui/images/ornament.png" width="167" height="43" alt="image description" class="ornament" />
+                        <div class="box">
+                            <h4>Development</h4>
+                            <ul class="footer-list">
+                                <li><a href="http://www.primefaces.org/gettingStarted.html">Getting Started</a></li>
+                                <li><a href="http://www.primefaces.org/documentation.html">Documentation</a></li>
+                                <li><a href="http://www.primefaces.org/downloads.html">Downloads</a></li>
+                                <li><a href="http://code.google.com/p/primefaces/w/list">Wiki</a></li>
+                                <li><a href="http://www.primefaces.org/themes.html">Theme Gallery</a></li>
+                                <li><a href="http://primefaces-extensions.github.com">Extensions</a></li>
+                            </ul>
+                        </div>
+                        <div class="box">
+                            <h4>Support</h4>
+                            <ul class="footer-list">
+                                <li><a href="http://www.primefaces.org/support.html">Support Options</a></li>
+                                <li><a href="http://pro.primefaces.org">PrimeFaces PRO</a></li>
+                                <li><a href="http://www.primefaces.org/elite">PrimeFaces ELITE</a></li>
+                                <li><a href="http://www.primefaces.org/training.html">Training</a></li>
+                                <li><a href="http://forum.primefaces.org">Forum</a></li>
+                                <li><a href="http://www.primefaces.org/issuetracker.html">Issue Tracker</a></li>
+                                <li><a href="http://www.primefaces.org/partners.html">Partners</a></li>
+                            </ul>
+                        </div>
+                        <div class="box">
+                            <h4>Social</h4>
+                            <ul class="footer-list">
+                                <li><a href="http://blog.primefaces.org">Blog</a></li>
+                                <li><a href="http://forum.primefaces.org/">Forum</a></li>
+                                <li><a href="http://www.primefaces.org/mobileapps.html">Mobile Apps</a></li>
+                                <li><a href="http://twitter.com/primefaces">Twitter</a></li>
+                                <li><a href="http://www.facebook.com/groups/206606616332/">Facebook</a></li>
+                                <li><a href="http://www.linkedin.com/groups/PrimeFaces-NextGen-Component-Suite-3095471">LinkedIn</a></li>
+                            </ul>
+                        </div>
                     </div>
+                    <div class="copy-block">
+                        <span class="copy">Copyright 2011 <a href="#">PrimeFaces</a> All rights reserved.</span>
+                    </div>
+                    <img src="prime-ui/images/ornament.png" width="167" height="43" alt="image description" class="ornament" />
                 </div>
             </div>
+        </div>
 
-            <script language="javascript">
-                dp.SyntaxHighlighter.ClipboardSwf = '/demo/js/clipboard.swf';
-                dp.SyntaxHighlighter.HighlightAll('code');
-            </script>
+        <script language="javascript">
+            dp.SyntaxHighlighter.ClipboardSwf = '/demo/js/clipboard.swf';
+            dp.SyntaxHighlighter.HighlightAll('code');
+        </script>
     </body>
 </html>
