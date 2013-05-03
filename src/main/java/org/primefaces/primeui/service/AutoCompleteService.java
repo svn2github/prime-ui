@@ -33,8 +33,10 @@ public class AutoCompleteService {
     public Collection<Suggestion> getSuggestions(@PathParam("query") String query) {
         List<Suggestion> suggestions = new ArrayList<Suggestion>();
         for(int i = 0; i < 10; i++) {
-            String item = query + i;
-            suggestions.add(new Suggestion(item, item));
+            String label = query + i;
+            String value = label + "_value";
+            
+            suggestions.add(new Suggestion(label, value));
         }
         
         return suggestions;
