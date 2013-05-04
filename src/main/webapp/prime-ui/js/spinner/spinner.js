@@ -18,6 +18,11 @@ $(function() {
             this.wrapper.append('<a class="pui-spinner-button pui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default ui-button-text-only"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-n"></span></span></a><a class="pui-spinner-button pui-spinner-down ui-corner-br ui-button ui-widget ui-state-default ui-button-text-only"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-s"></span></span></a>');
             this.upButton = this.wrapper.children('a.pui-spinner-up');
             this.downButton = this.wrapper.children('a.pui-spinner-down');
+            this.options.step = this.options.step||1;
+            
+            if(parseInt(this.options.step) === 0) {
+                this.options.precision = this.options.step.toString().split(/[,]|[.]/)[1].length;
+            }
             
             this._initValue();
     
@@ -134,16 +139,27 @@ $(function() {
 
             this._spin(this.options.step * dir);
         },
-
+                
+        _toFixed: function (value, precision) {
+            var power = Math.pow(10, precision||0);
+            return String(Math.round(value * power) / power);
+        },
+                
         _spin: function(step) {
-            var newValue = this.value + step;
+            var newValue;
+            currentValue = this.value ? this.value : 0;
+        
+            if(this.options.precision)
+                newValue = parseFloat(this._toFixed(currentValue + step, this.options.precision));
+            else
+                newValue = parseInt(currentValue + step);
 
             if(this.options.min != undefined && newValue < this.options.min) {
-                newValue = this.cfg.min;
+                newValue = this.options.min;
             }
 
             if(this.options.max != undefined && newValue > this.options.max) {
-                newValue = this.cfg.max;
+                newValue = this.options.max;
             }
 
             this.element.val(newValue).attr('aria-valuenow', newValue);
