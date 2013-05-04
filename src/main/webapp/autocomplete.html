@@ -98,6 +98,19 @@
 
                 $('#doc').puitabview();
             });
+            
+            
+            function save() {
+                        $.ajax({
+                            type: "POST",
+                            url: 'rest/autocomplete/save',
+                            dataType: "text",
+                            contentType: "application/json",
+                            data: JSON.stringify({"label":"John","value":"pm"})
+                        });
+                        
+                        console.log(JSON.stringify({"label":"John","value":"pm"}));
+            }
         </script>
     </head>
     <body>
