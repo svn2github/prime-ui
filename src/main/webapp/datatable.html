@@ -23,16 +23,17 @@
         <script type="text/javascript">
             $(function() {
                 $('#tbl').puidatatable({
+                    sortable: true,
                     columns: [
-                        {field:'brand', headerText: 'Brand'},
-                        {field:'year', headerText: 'Year'},
-                        {field:'color', headerText: 'Color'},
-                        {field:'model', headerText: 'Model'}
+                        {field:'brand', headerText: 'Brand', sortable:true},
+                        {field:'year', headerText: 'Year', sortable:true},
+                        {field:'color', headerText: 'Color', sortable:true},
+                        {field:'model', headerText: 'Model', sortable:true}
                     ],
                     data:[
                         {'brand':'Volkswagen','year': 2012, 'color':'White', 'model':'dsad231ff'},
                         {'brand':'Audi','year': 2011, 'color':'Black', 'model':'gwregre345'},
-                        {'brand':'Renault','year': 205, 'color':'Gray', 'model':'h354htr'},
+                        {'brand':'Renault','year': 2005, 'color':'Gray', 'model':'h354htr'},
                         {'brand':'Bmw','year': 2003, 'color':'Blue', 'model':'j6w54qgh'},
                         {'brand':'Mercedes','year': 1995, 'color':'White', 'model':'h54g245gh'},
                         {'brand':'Opel','year': 2005, 'color':'Black', 'model':'h524hg'},

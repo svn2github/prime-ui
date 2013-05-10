@@ -34,3 +34,12 @@
 .pui-datatable tbody td {
     border-color: inherit;
 }
+
+.pui-datatable .pui-sortable-column {
+    cursor: pointer;
+}
+
+.pui-datatable .pui-sortable-column-icon {
+    display: inline-block;
+    margin: -3px 0px -3px 2px;
+}
