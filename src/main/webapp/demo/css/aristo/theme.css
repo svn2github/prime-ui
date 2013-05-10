@@ -1244,6 +1244,6 @@ a {
     filter: chroma(color=#c4c4c4);
 }
 
-.ui-datatable-odd {
+.pui-datatable-odd {
     background: none repeat scroll 0 0 #F2F5F9;
 }
