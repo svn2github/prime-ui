@@ -21,7 +21,7 @@ $(function() {
             
             if(this.options.columns) {
                 $.each(this.options.columns, function(i, col) {
-                    var header = $('<th class="ui-state-default"></th>').appendTo($this.thead);
+                    var header = $('<th class="ui-state-default"></th>').data('field',col.field).appendTo($this.thead)
                     if(col.headerText) {
                         header.text(col.headerText);
                     }
@@ -36,13 +36,11 @@ $(function() {
                     
                     row.addClass(zebraStyle);
                     
-                    for(var j = 0; j < rowData.length; j++) {
+                    for(var field in rowData) {
                         var column = $('<td />').appendTo(row),
-                        value = rowData[j];
-                        
-                        if(value !== undefined) {
-                            column.text(value);
-                        }
+                        fieldValue = rowData[field];
+                
+                        column.text(fieldValue);
                     }
                 }
             }
