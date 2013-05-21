@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="demo/css/sh.css" />
         <link rel="stylesheet" href="prime-ui/css/core/core.css" />
         <link rel="stylesheet" href="prime-ui/css/datatable/datatable.css" />
+        <link rel="stylesheet" href="prime-ui/css/paginator/paginator.css" />
         <link rel="stylesheet" href="prime-ui/css/tabview/tabview.css" />
         <script type="text/javascript" src="demo/js/sh.js"></script>
         <script type="text/javascript" src="demo/js/jquery.js"></script>
@@ -19,10 +20,15 @@
         <script src="http://www.primefaces.org/script/common.js"></script>
         <script type="text/javascript" src="prime-ui/js/core/core.js"></script>
         <script type="text/javascript" src="prime-ui/js/datatable/datatable.js"></script>
+        <script type="text/javascript" src="prime-ui/js/paginator/paginator.js"></script>
         <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
         <script type="text/javascript">
             $(function() {
                 $('#tbl').puidatatable({
+                    paginator: {
+                        rows: 5,
+                        totalRecords: 9
+                    },
                     sortable: true,
                     columns: [
                         {field:'brand', headerText: 'Brand', sortable:true},

@@ -43,3 +43,7 @@
     display: inline-block;
     margin: -3px 0px -3px 2px;
 }
+
+.pui-datatable .pui-paginator {
+    border-top: 0 none;
+}

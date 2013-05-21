@@ -8,7 +8,8 @@ $(function() {
         options: {
             columns: null,
             data: null,
-            sortable: false
+            sortable: false,
+            paginator: null
         },
         
         _create: function() {
@@ -37,6 +38,11 @@ $(function() {
             }
             
             this._renderData();
+            
+            if(this.options.paginator) {
+                var paginatorContainer = $('<div></div>').insertAfter(this.tableWrapper);
+                paginatorContainer.puipaginator(this.options.paginator);
+            }
             
             if(this.options.sortable) {
                 this._initSorting();
