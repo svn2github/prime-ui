@@ -36,13 +36,16 @@ $(function() {
                     }
                 });
             }
+
+            if(this.options.paginator) {
+                this.options.paginator.paginate = function(state) {
+                    $this.paginate(state);
+                }
+                
+                this.paginator = $('<div></div>').insertAfter(this.tableWrapper).puipaginator(this.options.paginator);
+            }
             
             this._renderData();
-            
-            if(this.options.paginator) {
-                var paginatorContainer = $('<div></div>').insertAfter(this.tableWrapper);
-                paginatorContainer.puipaginator(this.options.paginator);
-            }
             
             if(this.options.sortable) {
                 this._initSorting();
@@ -88,7 +91,15 @@ $(function() {
             });
         },
                 
+        paginate: function(newState) {
+            this._renderData();
+        },
+                
         sort: function(field, order) {
+            if(this.paginator) {
+                this.paginator.puipaginator('option', 'page', 0);
+            }
+            
             this.options.data.sort(function(data1, data2) {
                 var value1 = data1[field],
                 value2 = data2[field],
@@ -109,8 +120,10 @@ $(function() {
         _renderData: function() {
             if(this.options.data) {
                 this.tbody.html('');
-                
-                for(var i = 0; i < this.options.data.length; i++) {
+                var first = this.getFirst(),
+                rows = this.getRows();
+
+                for(var i = first; i < (first + rows); i++) {
                     var rowData = this.options.data[i],
                     row = $('<tr class="ui-widget-content" />').appendTo(this.tbody),
                     zebraStyle = (i%2 === 0) ? 'pui-datatable-even' : 'pui-datatable-odd';
@@ -125,6 +138,22 @@ $(function() {
                     }
                 }
             }
+        },
+                
+        getFirst: function() {
+            if(this.paginator) {
+                var page = this.paginator.puipaginator('option', 'page'),
+                rows = this.paginator.puipaginator('option', 'rows');
+                
+                return (page * rows);
+            }
+            else {
+                return 0;
+            }
+        },
+        
+        getRows: function() {
+            return this.paginator ? this.paginator.puipaginator('option', 'rows') : this.options.data.length;
         }
     });
 });
