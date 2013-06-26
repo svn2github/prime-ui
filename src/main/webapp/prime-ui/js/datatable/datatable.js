@@ -8,16 +8,23 @@ $(function() {
         options: {
             columns: null,
             data: null,
-            sortable: false,
-            paginator: null
+            paginator: null,
+            selectionMode: null,
+            rowSelect: null,
+            rowUnselect: null
         },
         
         _create: function() {
+            this.id = this.element.attr('id');
+            if(!this.id) {
+                this.id = this.element.uniqueId().attr('id');
+            }
+            
             this.element.addClass('pui-datatable ui-widget');
             this.tableWrapper = $('<div class="pui-datatable-tablewrapper" />').appendTo(this.element);
             this.table = $('<table><thead></thead><tbody></tbody></table>').appendTo(this.tableWrapper);
             this.thead = this.table.children('thead');
-            this.tbody = this.table.children('tbody');
+            this.tbody = this.table.children('tbody').addClass('pui-datatable-data');
             
             var $this = this;
             
@@ -42,13 +49,18 @@ $(function() {
                     $this.paginate(state);
                 }
                 
+                this.options.paginator.totalRecords = this.options.paginator.totalRecords||(this.options.data ? this.options.data.length : 0);
                 this.paginator = $('<div></div>').insertAfter(this.tableWrapper).puipaginator(this.options.paginator);
             }
             
             this._renderData();
             
-            if(this.options.sortable) {
+            if(this._isSortingEnabled()) {
                 this._initSorting();
+            }
+            
+            if(this.options.selectionMode) {
+                this._initSelection();
             }
         },
                 
@@ -154,6 +166,139 @@ $(function() {
         
         getRows: function() {
             return this.paginator ? this.paginator.puipaginator('option', 'rows') : this.options.data.length;
+        },
+                
+        _isSortingEnabled: function() {
+            var cols = this.options.columns;
+            if(cols) {
+                for(var i = 0; i < cols.length; i++) {
+                    if(cols[i].sortable) {
+                        return true;
+                    }
+                }
+            }
+            
+            return false;
+        },
+                
+        _initSelection: function() {
+            var $this = this;
+            this.rowSelector = '#' + this.id + ' tbody.pui-datatable-data > tr.ui-widget-content:not(.ui-datatable-empty-message)';
+            
+            //shift key based range selection
+            if(this._isMultipleSelection()) {
+                this.originRowIndex = 0;
+                this.cursorIndex = null;
+            }
+
+            $(document).off('mouseover.puidatatable mouseout.puidatatable click.puidatatable', this.rowSelector)
+                    .on('mouseover.datatable', this.rowSelector, null, function() {
+                        var element = $(this);
+
+                        if(!element.hasClass('ui-state-highlight')) {
+                            element.addClass('ui-state-hover');
+                        }
+                    })
+                    .on('mouseout.datatable', this.rowSelector, null, function() {
+                        var element = $(this);
+
+                        if(!element.hasClass('ui-state-highlight')) {
+                            element.removeClass('ui-state-hover');
+                        }
+                    })
+                    .on('click.datatable', this.rowSelector, null, function(e) {
+                        $this._onRowClick(e, this);
+                    });
+        },
+                
+        _onRowClick: function(event, rowElement) {
+            if(!$(event.target).is(':input,:button,a')) {
+                var row = $(rowElement),
+                selected = row.hasClass('ui-state-highlight'),
+                metaKey = event.metaKey||event.ctrlKey,
+                shiftKey = event.shiftKey;
+
+                //unselect a selected row if metakey is on
+                if(selected && metaKey) {
+                    this.unselectRow(row);
+                }
+                else {
+                    //unselect previous selection if this is single selection or multiple one with no keys
+                    if(this._isSingleSelection() || (this._isMultipleSelection() && event && !metaKey && !shiftKey)) {
+                        this.unselectAllRows();
+                    }
+
+                    //range selection with shift key
+                    if(this._isMultipleSelection() && event && event.shiftKey) {                    
+                        this.selectRowsInRange(row);
+                    }
+                    //select current row
+                    else {
+                        this.originRowIndex = row.index();
+                        this.cursorIndex = null;
+                        this.selectRow(row);
+                    }
+                } 
+
+                PUI.clearSelection();
+            }
+        },
+                
+        _isSingleSelection: function() {
+            return this.options.selectionMode === 'single';
+        },
+
+        _isMultipleSelection: function() {
+            return this.options.selectionMode === 'multiple';
+        },
+                
+        unselectAllRows: function() {
+            this.tbody.children('tr.ui-state-highlight').removeClass('ui-state-highlight').attr('aria-selected', false);
+            this.selection = [];
+        },
+        
+        unselectRow: function(row, silent) {
+            var rowIndex = this._getRowIndex(row);
+            row.removeClass('ui-state-highlight').attr('aria-selected', false);
+
+            this._removeSelection(rowIndex);
+
+            if(!silent) {
+                this._trigger('rowUnselect', null, this.options.data[rowIndex]);
+            }
+        },
+                
+        selectRow: function(row, silent) {
+            var rowIndex = this._getRowIndex(row);
+            row.removeClass('ui-state-hover').addClass('ui-state-highlight').attr('aria-selected', true);
+
+            this._addSelection(rowIndex);
+
+            if(!silent) {
+                this._trigger('rowSelect', null, this.options.data[rowIndex]);
+            }
+        },
+                
+        _removeSelection: function(rowIndex) {        
+            this.selection = $.grep(this.selection, function(value) {
+                return value !== rowIndex;
+            });
+        },
+
+        _addSelection: function(rowIndex) {
+            if(!this._isSelected(rowIndex)) {
+                this.selection.push(rowIndex);
+            }
+        },
+                
+        _isSelected: function(rowIndex) {
+            return PUI.inArray(this.selection, rowIndex);
+        },
+                
+        _getRowIndex: function(row) {
+            var index = row.index();
+            
+            return this.options.paginator ? this.getFirst() + index : index;
         }
     });
 });

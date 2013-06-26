@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="prime-ui/css/datatable/datatable.css" />
         <link rel="stylesheet" href="prime-ui/css/paginator/paginator.css" />
         <link rel="stylesheet" href="prime-ui/css/tabview/tabview.css" />
+        <link rel="stylesheet" href="prime-ui/css/growl/growl.css" />
         <script type="text/javascript" src="demo/js/sh.js"></script>
         <script type="text/javascript" src="demo/js/jquery.js"></script>
         <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
@@ -22,14 +23,13 @@
         <script type="text/javascript" src="prime-ui/js/datatable/datatable.js"></script>
         <script type="text/javascript" src="prime-ui/js/paginator/paginator.js"></script>
         <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
+        <script type="text/javascript" src="prime-ui/js/growl/growl.js"></script>
         <script type="text/javascript">
             $(function() {
                 $('#tbl').puidatatable({
                     paginator: {
-                        rows: 5,
-                        totalRecords: 9
+                        rows: 5
                     },
-                    sortable: true,
                     columns: [
                         {field:'brand', headerText: 'Brand', sortable:true},
                         {field:'year', headerText: 'Year', sortable:true},
@@ -46,12 +46,25 @@
                         {'brand':'Honda','year': 2012, 'color':'Yellow', 'model':'h542h'},
                         {'brand':'Chevrolet','year': 2013, 'color':'White', 'model':'h542h'},
                         {'brand':'Opel','year': 2000, 'color':'Black', 'model':'h54hw5'}
-                    ]
+                    ],
+                    selectionMode: 'single',
+                    rowSelect: function(event, data) {
+                        $('#messages').puigrowl('show', [{severity:'info', summary: 'Row Selected', detail: (data.brand + ' ' + data.model)}]);
+                    },
+                    rowUnselect: function(event, data) {
+                        $('#messages').puigrowl('show', [{severity:'info', summary: 'Row Unselected', detail: (data.brand + ' ' + data.model)}]);
+                    }
                 });
-
+                
+                $('#messages').puigrowl();
                 $('#doc').puitabview();
             });
         </script>
+        <style type="text/css">
+            .pui-datatable table {
+                table-layout: fixed;
+            }
+        </style>
     </head>
     <body>
         <div id="wrapper">
@@ -119,6 +132,8 @@
                             <h1 class="widget-title">Datatable</h1>
                             <p>Datatable is used to display tabular data.</p>
 
+                            <div id="messages"></div>
+                            
                             <div id="tbl"></div>
 
                             <h3>Documentation</h3>

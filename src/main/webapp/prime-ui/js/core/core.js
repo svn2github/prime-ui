@@ -25,7 +25,7 @@ PUI = {
     },
     
     isIE: function(version) {
-        return ($.browser.msie && parseInt($.browser.version, 10) == version);
+        return ($.browser.msie && parseInt($.browser.version, 10) === version);
     },
     
     escapeRegExp: function(text) {
@@ -34,5 +34,27 @@ PUI = {
 
     escapeHTML: function(value) {
         return value.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    },
+            
+    clearSelection: function() {
+        if(window.getSelection) {
+            if(window.getSelection().empty) {
+                window.getSelection().empty();
+            } else if(window.getSelection().removeAllRanges) {
+                window.getSelection().removeAllRanges();
+            }
+        } else if(document.selection && document.selection.empty) {
+                document.selection.empty();
+        }
+    },
+            
+    inArray: function(arr, item) {
+        for(var i = 0; i < arr.length; i++) {
+            if(arr[i] === item) {
+                return true;
+            }
+        }
+
+        return false;
     }
 };

@@ -1,5 +1,5 @@
 .pui-datatable table {
-	border-collapse:collapse;
+	border-collapse: collapse;
     width: 100%;
 }
 
@@ -46,4 +46,13 @@
 
 .pui-datatable .pui-paginator {
     border-top: 0 none;
+}
+
+.pui-datatable .pui-datatable-data tr.ui-state-hover {
+    font-weight: inherit;
+    cursor: pointer;
+}
+
+.pui-datatable tr.ui-state-highlight {
+    cursor: pointer;
 }
