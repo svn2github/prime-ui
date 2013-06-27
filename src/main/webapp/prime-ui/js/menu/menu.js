@@ -388,23 +388,19 @@ $(function() {
                 menuitemTop = offset.top,
                 submenuHeight = submenu.outerHeight(),
                 menuitemHeight = menuitem.outerHeight();
-
+                
+                submenu.css({
+                    'left': menuitem.outerWidth(),
+                    'top': 0,
+                    'z-index': ++PUI.zindex,
+                });
                 if((menuitemTop + submenuHeight) > (win.height() + win.scrollTop())) {
                     submenu.css({
-                        'left': menuitem.outerWidth(),
-                        'top': 0,
                         'overflow' : 'auto',
                         'height' : win.height()-(menuitemHeight+menuitemTop),
-                        'z-index': ++PUI.zindex,
-                    }).show();
+                    });
                 }
-                else {
-                    submenu.css({
-                        'left': menuitem.outerWidth(),
-                        'top': 0,
-                        'z-index': ++PUI.zindex
-                    }).show();
-                }
+                submenu.show();
             } 
             else {  
                 submenu.css({                                    //root menuitem         
