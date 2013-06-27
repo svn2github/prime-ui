@@ -387,14 +387,24 @@ $(function() {
                 offset = menuitem.offset(),
                 menuitemTop = offset.top,
                 submenuHeight = submenu.outerHeight(),
-                menuitemHeight = menuitem.outerHeight(),
-                top = (menuitemTop + submenuHeight) > (win.height() + win.scrollTop()) ? (-1 * submenuHeight) + menuitemHeight : 0;  //viewport check
+                menuitemHeight = menuitem.outerHeight();
 
-                submenu.css({
-                    'left': menuitem.outerWidth(),
-                    'top': top,
-                    'z-index': ++PUI.zindex
-                }).show();
+                if((menuitemTop + submenuHeight) > (win.height() + win.scrollTop())) {
+                    submenu.css({
+                        'left': menuitem.outerWidth(),
+                        'top': 0,
+                        'overflow' : 'auto',
+                        'height' : win.height()-(menuitemHeight+menuitemTop),
+                        'z-index': ++PUI.zindex,
+                    }).show();
+                }
+                else {
+                    submenu.css({
+                        'left': menuitem.outerWidth(),
+                        'top': 0,
+                        'z-index': ++PUI.zindex
+                    }).show();
+                }
             } 
             else {  
                 submenu.css({                                    //root menuitem         
