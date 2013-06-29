@@ -15,8 +15,6 @@
  */
 package org.primefaces.primeui.service;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 public class Suggestion {
 
     private String label;
