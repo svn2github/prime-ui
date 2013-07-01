@@ -26,26 +26,27 @@
         <script type="text/javascript" src="prime-ui/js/growl/growl.js"></script>
         <script type="text/javascript">
             $(function() {
-                $('#tbl').puidatatable({
+                $('#tbllocal').puidatatable({
+                    caption: 'Local Datasource',
                     paginator: {
                         rows: 5
                     },
                     columns: [
+                        {field:'vin', headerText: 'Vin', sortable:true},
                         {field:'brand', headerText: 'Brand', sortable:true},
                         {field:'year', headerText: 'Year', sortable:true},
-                        {field:'color', headerText: 'Color', sortable:true},
-                        {field:'model', headerText: 'Model', sortable:true}
+                        {field:'color', headerText: 'Color', sortable:true}
                     ],
-                    data: [
-                        {'brand':'Volkswagen','year': 2012, 'color':'White', 'model':'dsad231ff'},
-                        {'brand':'Audi','year': 2011, 'color':'Black', 'model':'gwregre345'},
-                        {'brand':'Renault','year': 2005, 'color':'Gray', 'model':'h354htr'},
-                        {'brand':'Bmw','year': 2003, 'color':'Blue', 'model':'j6w54qgh'},
-                        {'brand':'Mercedes','year': 1995, 'color':'White', 'model':'h54g245gh'},
-                        {'brand':'Opel','year': 2005, 'color':'Black', 'model':'h524hg'},
-                        {'brand':'Honda','year': 2012, 'color':'Yellow', 'model':'h542h'},
-                        {'brand':'Chevrolet','year': 2013, 'color':'White', 'model':'h542h'},
-                        {'brand':'Opel','year': 2000, 'color':'Black', 'model':'h54hw5'}
+                    datasource: [
+                        {'brand':'Volkswagen','year': 2012, 'color':'White', 'vin':'dsad231ff'},
+                        {'brand':'Audi','year': 2011, 'color':'Black', 'vin':'gwregre345'},
+                        {'brand':'Renault','year': 2005, 'color':'Gray', 'vin':'h354htr'},
+                        {'brand':'Bmw','year': 2003, 'color':'Blue', 'vin':'j6w54qgh'},
+                        {'brand':'Mercedes','year': 1995, 'color':'White', 'vin':'h54g245gh'},
+                        {'brand':'Opel','year': 2005, 'color':'Black', 'vin':'h524hg'},
+                        {'brand':'Honda','year': 2012, 'color':'Yellow', 'vin':'h542h'},
+                        {'brand':'Chevrolet','year': 2013, 'color':'White', 'vin':'h542h'},
+                        {'brand':'Opel','year': 2000, 'color':'Black', 'vin':'h54hw5'}
                     ],
                     selectionMode: 'single',
                     rowSelect: function(event, data) {
@@ -53,6 +54,30 @@
                     },
                     rowUnselect: function(event, data) {
                         $('#messages').puigrowl('show', [{severity:'info', summary: 'Row Unselected', detail: (data.brand + ' ' + data.model)}]);
+                    }
+                });
+                
+                $('#tblremote').puidatatable({
+                    caption: 'Remote Restful Webservice',
+                    paginator: {
+                        rows: 5
+                    },
+                    columns: [
+                        {field:'vin', headerText: 'Vin', sortable:true},
+                        {field:'brand', headerText: 'Brand', sortable:true},
+                        {field:'year', headerText: 'Year', sortable:true},
+                        {field:'color', headerText: 'Color', sortable:true}
+                    ],
+                    datasource: function(callback) {
+                        $.ajax({
+                            type: "GET",
+                            url: 'rest/cars/list',
+                            dataType: "json",
+                            context: this,
+                            success: function(response) {
+                                callback.call(this, response);
+                            }
+                        });
                     }
                 });
                 
@@ -130,11 +155,15 @@
 
                         <div id="content-demo">
                             <h1 class="widget-title">Datatable</h1>
-                            <p>Datatable is used to display tabular data.</p>
+                            <p>Datatable displays data in tabular format. Pagination, Sorting, Selection are built-in features supporting both local and remote data.</p>
 
                             <div id="messages"></div>
                             
-                            <div id="tbl"></div>
+                            <div id="tbllocal"></div>
+                            
+                            <br />
+                            
+                            <div id="tblremote"></div>
 
                             <h3>Documentation</h3>
                             <div id="doc">

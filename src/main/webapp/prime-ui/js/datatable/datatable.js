@@ -7,11 +7,12 @@ $(function() {
        
         options: {
             columns: null,
-            data: null,
+            datasource: null,
             paginator: null,
             selectionMode: null,
             rowSelect: null,
-            rowUnselect: null
+            rowUnselect: null,
+            caption: null
         },
         
         _create: function() {
@@ -26,6 +27,18 @@ $(function() {
             this.thead = this.table.children('thead');
             this.tbody = this.table.children('tbody').addClass('pui-datatable-data');
             
+            if(this.options.datasource) {
+                if($.isArray(this.options.datasource)) {
+                    this.data = this.options.datasource;
+                    this._initialize();
+                }
+                else if($.type(this.options.datasource) === 'function') {
+                    this.options.datasource.call(this, this._handleDataLoad);
+                }
+            }
+        },
+                
+        _initialize: function() {
             var $this = this;
             
             if(this.options.columns) {
@@ -43,18 +56,20 @@ $(function() {
                     }
                 });
             }
+            
+            if(this.options.caption) {
+                this.table.prepend('<caption class="pui-datatable-caption ui-widget-header">' + this.options.caption + '</caption>');
+            }
 
             if(this.options.paginator) {
                 this.options.paginator.paginate = function(state) {
                     $this.paginate(state);
                 }
                 
-                this.options.paginator.totalRecords = this.options.paginator.totalRecords||(this.options.data ? this.options.data.length : 0);
+                this.options.paginator.totalRecords = this.options.paginator.totalRecords||(this.data ? this.data.length : 0);
                 this.paginator = $('<div></div>').insertAfter(this.tableWrapper).puipaginator(this.options.paginator);
             }
-            
-            this._renderData();
-            
+
             if(this._isSortingEnabled()) {
                 this._initSorting();
             }
@@ -62,6 +77,13 @@ $(function() {
             if(this.options.selectionMode) {
                 this._initSelection();
             }
+            
+            this._renderData();
+        },
+                
+        _handleDataLoad: function(data) {
+            this.data = data,
+            this._initialize();
         },
                 
         _initSorting: function() {
@@ -112,7 +134,7 @@ $(function() {
                 this.paginator.puipaginator('option', 'page', 0);
             }
             
-            this.options.data.sort(function(data1, data2) {
+            this.data.sort(function(data1, data2) {
                 var value1 = data1[field],
                 value2 = data2[field],
                 result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
@@ -130,13 +152,13 @@ $(function() {
         },
                 
         _renderData: function() {
-            if(this.options.data) {
+            if(this.data) {
                 this.tbody.html('');
                 var first = this.getFirst(),
                 rows = this.getRows();
 
                 for(var i = first; i < (first + rows); i++) {
-                    var rowData = this.options.data[i],
+                    var rowData = this.data[i],
                     row = $('<tr class="ui-widget-content" />').appendTo(this.tbody),
                     zebraStyle = (i%2 === 0) ? 'pui-datatable-even' : 'pui-datatable-odd';
                     
@@ -165,7 +187,7 @@ $(function() {
         },
         
         getRows: function() {
-            return this.paginator ? this.paginator.puipaginator('option', 'rows') : this.options.data.length;
+            return this.paginator ? this.paginator.puipaginator('option', 'rows') : this.data.length;
         },
                 
         _isSortingEnabled: function() {
@@ -264,7 +286,7 @@ $(function() {
             this._removeSelection(rowIndex);
 
             if(!silent) {
-                this._trigger('rowUnselect', null, this.options.data[rowIndex]);
+                this._trigger('rowUnselect', null, this.data[rowIndex]);
             }
         },
                 
@@ -275,7 +297,7 @@ $(function() {
             this._addSelection(rowIndex);
 
             if(!silent) {
-                this._trigger('rowSelect', null, this.options.data[rowIndex]);
+                this._trigger('rowSelect', null, this.data[rowIndex]);
             }
         },
                 

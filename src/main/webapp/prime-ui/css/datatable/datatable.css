@@ -9,8 +9,10 @@
     padding: 4px 10px;
 }
 
-.pui-datatable .pui-datatable-header {
+.pui-datatable .pui-datatable-caption {
     border-bottom: 0px none;
+    text-align: center;
+    padding: 4px 10px;
 }
 
 .pui-datatable .pui-datatable-footer {
