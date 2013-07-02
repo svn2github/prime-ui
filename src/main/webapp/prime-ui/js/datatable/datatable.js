@@ -43,7 +43,7 @@ $(function() {
             
             if(this.options.columns) {
                 $.each(this.options.columns, function(i, col) {
-                    var header = $('<th class="ui-state-default"></th>').data('field',col.field).appendTo($this.thead);
+                    var header = $('<th class="ui-state-default"></th>').data('field', col.field).appendTo($this.thead);
                                         
                     if(col.headerText) {
                         header.text(col.headerText);
@@ -63,10 +63,10 @@ $(function() {
 
             if(this.options.paginator) {
                 this.options.paginator.paginate = function(state) {
-                    $this.paginate(state);
+                    $this.paginate();
                 }
                 
-                this.options.paginator.totalRecords = this.options.paginator.totalRecords||(this.data ? this.data.length : 0);
+                this.options.paginator.totalRecords = this.options.paginator.totalRecords||this.data.length;
                 this.paginator = $('<div></div>').insertAfter(this.tableWrapper).puipaginator(this.options.paginator);
             }
 
@@ -82,7 +82,11 @@ $(function() {
         },
                 
         _handleDataLoad: function(data) {
-            this.data = data,
+            this.data = data;
+            if(!this.data) {
+                this.data = [];
+            }
+                
             this._initialize();
         },
                 
@@ -90,26 +94,26 @@ $(function() {
             var $this = this,
             sortableColumns = this.thead.children('th.pui-sortable-column');
             
-            sortableColumns.on('mouseover.datatable', function() {
+            sortableColumns.on('mouseover.puidatatable', function() {
                 var column = $(this);
 
                 if(!column.hasClass('ui-state-active'))
                     column.addClass('ui-state-hover');
             })
-            .on('mouseout.datatable', function() {
+            .on('mouseout.puidatatable', function() {
                 var column = $(this);
 
                 if(!column.hasClass('ui-state-active'))
                     column.removeClass('ui-state-hover');
             })
-            .on('click.datatable', function() {
+            .on('click.puidatatable', function() {
                 var column = $(this),
                 field = column.data('field'),
                 order = column.data('order'),
                 sortIcon = column.children('.pui-sortable-column-icon');
                 
                 //clean previous sort state
-                column.siblings().filter('.ui-state-active').removeClass('ui-state-active').children('span.pui-sortable-column-icon')
+                column.siblings().filter('.ui-state-active').data('order', 1).removeClass('ui-state-active').children('span.pui-sortable-column-icon')
                                                             .removeClass('ui-icon-triangle-1-n ui-icon-triangle-1-s');
                 
                 $this.sort(field, order);
@@ -125,15 +129,11 @@ $(function() {
             });
         },
                 
-        paginate: function(newState) {
+        paginate: function() {
             this._renderData();
         },
                 
         sort: function(field, order) {
-            if(this.paginator) {
-                this.paginator.puipaginator('option', 'page', 0);
-            }
-            
             this.data.sort(function(data1, data2) {
                 var value1 = data1[field],
                 value2 = data2[field],
@@ -141,6 +141,14 @@ $(function() {
 
                 return (order * result);
             });
+            
+            if(this.options.selectionMode) {
+                this.selection = [];
+            }
+
+            if(this.paginator) {
+                this.paginator.puipaginator('option', 'page', 0);
+            }
             
             this._renderData();
         },
@@ -154,21 +162,29 @@ $(function() {
         _renderData: function() {
             if(this.data) {
                 this.tbody.html('');
+                
                 var first = this.getFirst(),
                 rows = this.getRows();
 
                 for(var i = first; i < (first + rows); i++) {
-                    var rowData = this.data[i],
-                    row = $('<tr class="ui-widget-content" />').appendTo(this.tbody),
-                    zebraStyle = (i%2 === 0) ? 'pui-datatable-even' : 'pui-datatable-odd';
+                    var rowData = this.data[i];
                     
-                    row.addClass(zebraStyle);
-                    
-                    for(var field in rowData) {
-                        var column = $('<td />').appendTo(row),
-                        fieldValue = rowData[field];
-                
-                        column.text(fieldValue);
+                    if(rowData) {
+                        var row = $('<tr class="ui-widget-content" />').appendTo(this.tbody),
+                        zebraStyle = (i%2 === 0) ? 'pui-datatable-even' : 'pui-datatable-odd';
+
+                        row.addClass(zebraStyle);
+                        
+                        if(this.options.selectionMode && PUI.inArray(this.selection, i)) {
+                            row.addClass("ui-state-highlight");
+                        }
+
+                        for(var j = 0; j < this.options.columns.length; j++) {
+                            var column = $('<td />').appendTo(row),
+                            fieldValue = rowData[this.options.columns[j].field];
+
+                            column.text(fieldValue);
+                        }
                     }
                 }
             }
@@ -205,6 +221,7 @@ $(function() {
                 
         _initSelection: function() {
             var $this = this;
+            this.selection = [];
             this.rowSelector = '#' + this.id + ' tbody.pui-datatable-data > tr.ui-widget-content:not(.ui-datatable-empty-message)';
             
             //shift key based range selection
@@ -212,7 +229,7 @@ $(function() {
                 this.originRowIndex = 0;
                 this.cursorIndex = null;
             }
-
+            
             $(document).off('mouseover.puidatatable mouseout.puidatatable click.puidatatable', this.rowSelector)
                     .on('mouseover.datatable', this.rowSelector, null, function() {
                         var element = $(this);
@@ -246,20 +263,11 @@ $(function() {
                 }
                 else {
                     //unselect previous selection if this is single selection or multiple one with no keys
-                    if(this._isSingleSelection() || (this._isMultipleSelection() && event && !metaKey && !shiftKey)) {
+                    if(this._isSingleSelection() || (this._isMultipleSelection() && !metaKey && !shiftKey)) {
                         this.unselectAllRows();
                     }
-
-                    //range selection with shift key
-                    if(this._isMultipleSelection() && event && event.shiftKey) {                    
-                        this.selectRowsInRange(row);
-                    }
-                    //select current row
-                    else {
-                        this.originRowIndex = row.index();
-                        this.cursorIndex = null;
-                        this.selectRow(row);
-                    }
+                    
+                    this.selectRow(row);
                 } 
 
                 PUI.clearSelection();
