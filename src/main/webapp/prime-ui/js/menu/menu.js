@@ -383,10 +383,10 @@ $(function() {
             var win = $(window),
             submenuOffsetTop = null,
             submenuCSS = {
-                'z-index': ++PrimeFaces.zindex
+                'z-index': ++PUI.zindex
             };
 
-            if(menuitem.parent().hasClass('ui-menu-child')) {
+            if(menuitem.parent().hasClass('pui-menu-child')) {
                 submenuCSS.left = menuitem.outerWidth();
                 submenuCSS.top = 0; 
                 submenuOffsetTop = menuitem.offset().top - win.scrollTop();
