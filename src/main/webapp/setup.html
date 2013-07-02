@@ -10,21 +10,10 @@
         <link rel="stylesheet" href="demo/css/jquery-ui.css" />
         <link rel="stylesheet" href="demo/css/aristo/theme.css" />
         <link rel="stylesheet" href="demo/css/sh.css" />
-        <link rel="stylesheet" href="prime-ui/css/inputtext/inputtext.css" />
-        <link rel="stylesheet" href="prime-ui/css/tabview/tabview.css" />
         <script type="text/javascript" src="demo/js/sh.js"></script>
         <script type="text/javascript" src="demo/js/jquery.js"></script>
         <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
         <script src="http://www.primefaces.org/script/common.js"></script>
-        <script type="text/javascript" src="prime-ui/js/inputtext/inputtext.js"></script>
-        <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
-        <script type="text/javascript">
-            $(function() {
-                $('#in').puiinputtext();
-
-                $('#doc').puitabview();
-            });
-        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -90,83 +79,33 @@
                         </div>
 
                         <div id="content-demo">
-                            <h1 class="widget-title">Inputtext</h1>
-                            <p>InputText is an extension to standard inputText with skinning capabilities.</p>
+                            <h1 class="widget-title">Setup</h1>
+                            <p>Getting Started with PrimeUI is quite trivial.</p>
 
-                            <input id="in" type="text" />
-
-                            <h3>Documentation</h3>
-                            <div id="doc">
-                                <ul>
-                                    <li><a href="#doc-overview">Overview</a></li>
-                                    <li><a href="#doc-options">Options</a></li>
-                                    <li><a href="#doc-events">Events</a></li>
-                                    <li><a href="#doc-methods">Methods</a></li>
-                                    <li><a href="#doc-methods">Source</a></li>
-                                </ul>
-                                <div>
-                                    <div id="doc-overview">
-
-
-                                        <pre name="code" class="jscript">
-$('#default').puiinputtext(); 
-                                        </pre>
-
-                                        <pre name="code" class="jscript">
-&lt;input id="default" type="text" /&gt;
-                                        </pre>
-
-                                    </div>
-
-                                    <div id="doc-options">
-                                        <h3>No options.</h3>
-                                    </div>
-
-                                    <div id="doc-events">
-                                        <h3>No events.</h3>
-                                    </div>
-
-                                    <div id="doc-methods">
-                                        <table class="doc-table">
-                                            <thead>
-                                                <th class="ui-state-default">Name</th>
-                                                <th class="ui-state-default">Parameters</th>
-                                                <th class="ui-state-default">Description</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="ui-widget-content">
-                                                    <td>option</td>
-                                                    <td>name: Name of the option</td>
-                                                    <td>Returns the value of the option.</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>option</td>
-                                                    <td>name: Name of the option, value: Value of the option</td>
-                                                    <td>Set the value of the option.</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                    <div id="doc-source">
-
-                                        <pre name="code" class="jscript">
-&lt;script type="text/javascript"&gt;
-        $(function() {
-            $('#in').puiinputtext(); 
-        });
-&lt;/script&gt; 
-                                        </pre>
-
-                                        <pre name="code" class="xml">
-&lt;input id="in" type="text" /&gt;
-                                        </pre>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
+                            <h3>Download</h3>
+                            <p>PrimeUI is distributed in a zip file that is available at <a href="http://www.primefaces.org/downloads.html#primeui">download page</a>.
+                            Once you download the file and extract it in filesystem, you'd see two folders named development and production. Development folder has
+                            the uncompressed and the Production folder has the compressed distribution.</p>
+                            
+                            <h3>Include Resources</h3>
+                            <p>Although you can include resources of each widget individually, it is suggested to use the prime-ui.js and prime-ui.css file to register all
+                                the widgets at once. As PrimeUI is jQuery UI based, you also need to include jQuery and jQuery UI.</p>
+                            
+                            <pre name="code" class="xml">
+                                <head>
+                                    &lt;link rel="stylesheet" href="%PATH%/jquery-ui.css" /&gt;
+                                    &lt;link rel="stylesheet" href="%PATH%/theme.css" /&gt;
+                                    &lt;link rel="stylesheet" href="%PATH%/prime-ui-min.css" /&gt;
+                                    &lt;script type="text/javascript" src="%PATH%/jquery.js"&gt;&lt;/script&gt;
+                                    &lt;script type="text/javascript" src="%PATH%/jquery-ui.js"&gt;&lt;/script&gt;
+                                    &lt;script type="text/javascript" src="%PATH%/prime-ui.js"&gt;&lt;/script&gt;
+                                </head>
+                            </pre>
+                            
+                            <p>Distribution also has a couple of images that are used by some of the widgets. The image folder should be placed at two level up for correct
+                            reference. For example if prime-ui.css is under %PATH%/resources/prime-ui/css/prime-ui-min.css location images folder should be at
+                            %PATH%/resources/images.</p>
+                            
                         </div>
 
                         <div style="clear: both" />
