@@ -98,7 +98,7 @@ $(function() {
                 
                 element.on('click.puipaginator', function() {
                     if(!$(this).hasClass("ui-state-disabled")) {
-                        paginator.option('page', paginator.getPageCount());
+                        paginator.option('page', paginator.getPageCount() - 1);
                     }
                 });
                 
