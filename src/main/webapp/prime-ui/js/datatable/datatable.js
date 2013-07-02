@@ -133,7 +133,7 @@ $(function() {
             this._renderData();
         },
                 
-        sort: function(field, order) {
+        sort: function(field,order) {
             this.data.sort(function(data1, data2) {
                 var value1 = data1[field],
                 value2 = data2[field],

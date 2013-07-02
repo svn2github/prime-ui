@@ -98,6 +98,7 @@
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/autocomplete/autocomplete.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/button/button.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/checkbox/checkbox.js</include>
+                                                <include>${basedir}/src/main/webapp/prime-ui/js/datatable/datatable.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/dialog/dialog.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/dropdown/dropdown.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/fieldset/fieldset.js</include>
@@ -108,6 +109,7 @@
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/lightbox/lightbox.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/menu/menu.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/notify/notify.js</include>
+                                                <include>${basedir}/src/main/webapp/prime-ui/js/paginator/paginator.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/panel/panel.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/password/password.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/progressbar/progressbar.js</include>
@@ -127,6 +129,7 @@
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/autocomplete/autocomplete.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/button/button.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/checkbox/checkbox.css</include>
+                                                <include>${basedir}/src/main/webapp/prime-ui/css/datatable/datatable.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/dialog/dialog.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/dropdown/dropdown.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/fieldset/fieldset.css</include>
@@ -137,6 +140,7 @@
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/lightbox/lightbox.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/menu/menu.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/notify/notify.css</include>
+                                                <include>${basedir}/src/main/webapp/prime-ui/css/paginator/paginator.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/panel/panel.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/password/password.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/progressbar/progressbar.css</include>
@@ -171,6 +175,7 @@
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/autocomplete/autocomplete.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/button/button.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/checkbox/checkbox.js</include>
+                                                <include>${basedir}/src/main/webapp/prime-ui/js/datatable/datatable.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/dialog/dialog.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/dropdown/dropdown.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/fieldset/fieldset.js</include>
@@ -181,6 +186,7 @@
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/lightbox/lightbox.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/menu/menu.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/notify/notify.js</include>
+                                                <include>${basedir}/src/main/webapp/prime-ui/js/paginator/paginator.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/panel/panel.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/password/password.js</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/js/progressbar/progressbar.js</include>
@@ -201,6 +207,7 @@
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/autocomplete/autocomplete.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/button/button.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/checkbox/checkbox.css</include>
+                                                <include>${basedir}/src/main/webapp/prime-ui/css/datatable/datatable.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/dialog/dialog.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/dropdown/dropdown.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/fieldset/fieldset.css</include>
@@ -211,6 +218,7 @@
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/lightbox/lightbox.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/menu/menu.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/notify/notify.css</include>
+                                                <include>${basedir}/src/main/webapp/prime-ui/css/paginator/paginator.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/panel/panel.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/password/password.css</include>
                                                 <include>${basedir}/src/main/webapp/prime-ui/css/progressbar/progressbar.css</include>
