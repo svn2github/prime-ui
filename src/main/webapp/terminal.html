@@ -29,7 +29,7 @@
         <script type="text/javascript">
             $(function() {
                 $('#trmnl').puiterminal({
-                    
+                    welcomeMessage:'Welcome to PrimeFaces Terminal, how are you today?',
                     commandHandler: function(request, response) {
                         $.ajax({
                             type: "GET",
@@ -133,15 +133,15 @@
                                 <li><a href="rating.html">Rating</a></li>
                                 <li><a href="spinner.html">Spinner</a></li>
                                 <li><a href="tabview.html">Tabview</a></li>
+                                <li><a href="terminal.html">Terminal</a></li>
                                 <li><a href="tooltip.html">Tooltip</a></li>
                             </ul>
                         </div>
 
                         <div id="content-demo">
                             <h1 class="widget-title">Terminal</h1>
-                            <p>Terminal.</p>
+                            
 
-                            <h3>Terminal</h3>
                             <div id="trmnl"></div>
 
                             <h3>Documentation</h3>
@@ -158,11 +158,13 @@
 
 
                                         <pre name="code" class="jscript">
-$('#default').puiprogressbar();
+$('#trmnl').puiterminal({
+    commandHandler: // function
+});
                                         </pre>
 
                                         <pre name="code" class="jscript">
-&lt;div id="default" /&gt;
+&lt;div id="trmnl" /&gt;
                                         </pre>
 
                                     </div>
@@ -176,63 +178,28 @@ $('#default').puiprogressbar();
                                                 <th class="ui-state-default">Description</th>
                                             </thead>
                                             <tbody>
+                                                
                                                 <tr class="ui-widget-content">
-                                                    <td>value</td>
-                                                    <td>number</td>
-                                                    <td>0</td>
-                                                    <td>Progress Bar value</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>labelTemplate</td>
+                                                    <td>welcomeMessage</td>
                                                     <td>string</td>
-                                                    <td>{value}%</td>
-                                                    <td>Progress Bar label template</td>
+                                                    <td></td>
+                                                    <td>Welcome message to be displayed on initial load.</td>
                                                 </tr>
+                                               
                                                 <tr class="ui-widget-content">
-                                                    <td>showLabel</td>
-                                                    <td>boolean</td>
-                                                    <td>true</td>
-                                                    <td>Shows label on ProgressBar</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>easing</td>
+                                                    <td>prompt</td>
                                                     <td>string</td>
-                                                    <td>swing</td>
-                                                    <td>Optional easing to use in animation.</td>
+                                                    <td>prime $</td>
+                                                    <td>Primary prompt text.</td>
                                                 </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>effectSpeed</td>
-                                                    <td>int/string</td>
-                                                    <td>normal</td>
-                                                    <td>Speed in milliseconds or keywords like slow, normal and fast.</td>
-                                                </tr>
+                                                
                                             </tbody>
                                         </table>
                                     </div>
 
                                     <div id="doc-events">
-                                        <table class="doc-table">
-                                            <thead>
-                                                <th class="ui-state-default">Name</th>
-                                                <th class="ui-state-default">Parameters</th>
-                                                <th class="ui-state-default">Description</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="ui-widget-content">
-                                                    <td>complete</td>
-                                                    <td>event: puiprogressbarcomplete event</td>
-                                                    <td>Fired when value equals 100</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-
-                                        <pre name="code" class="jscript">
-$('#default').puiprogressbar({
-    complete: function(event) {
-        //...
-    }
-});
-                                        </pre>
+                                        <h3>No events.</h3>
+                                          
                                     </div>
 
                                     <div id="doc-methods">
@@ -244,14 +211,9 @@ $('#default').puiprogressbar({
                                             </thead>
                                             <tbody>
                                                 <tr class="ui-widget-content">
-                                                    <td>option</td>
-                                                    <td>name: Name of the option</td>
-                                                    <td>Returns the value of the option.</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>option</td>
-                                                    <td>name: Name of the option, value: Value of the option</td>
-                                                    <td>Set the value of the option.</td>
+                                                    <td>clear</td>
+                                                    <td>-</td>
+                                                    <td>Clears the terminal content.</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -261,23 +223,26 @@ $('#default').puiprogressbar({
 
                                         <pre name="code" class="jscript">
 &lt;script type="text/javascript"&gt;
-         $('#pb1').puiprogressbar();
-                
-         $('#pb2').puiprogressbar({
-              value: 50
-         });                
-         
-         setInterval(function() {
-              var val = $('#pb1').puiprogressbar('option', 'value') + 10;
-              $('#pb1').puiprogressbar('option', 'value', val);
-         }, 1000);
+         $('#trmnl').puiterminal({
+                    welcomeMessage:'Welcome to PrimeFaces Terminal, how are you today?',
+                    commandHandler: function(request, response) {
+                        $.ajax({
+                            type: "GET",
+                            url: 'rest/terminal/' + request.command +"-"+ request.params,
+                            dataType: "text",
+                            context: this,
+                            success: function(data) {
+                                response.call(this, data);
+                            }
+                        });
+                    }
+                });
 &lt;/script&gt; 
                                         </pre>
 
                                         <pre name="code" class="xml">
-&lt;div id="pb1"&gt&lt;/div&gt;
+&lt;div id="trmnl"&gt&lt;/div&gt;
 
-&lt;div id="pb2"&gt&lt;/div&gt;
                                         </pre>
 
                                     </div>
