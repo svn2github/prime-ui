@@ -6,9 +6,8 @@ $(function() {
     $.widget("primeui.puiterminal", {
        
         options: {
-            welcomeMessage: null,
-            prompt:'prime $',
-            commandHandler:null
+            welcomeMessage: '',
+            prompt:'prime $'
         },
         
         _create: function() {
@@ -77,8 +76,9 @@ $(function() {
             params:args        
         };
 
-        if(this.options.handler) {
-                this.options.handler.call(this, request, this._updateContent);
+        if(this.options.commandHandler) {
+            if($.type(this.options.commandHandler) === 'function')
+                this.options.commandHandler.call(this, request, this._updateContent);
         }
 
 

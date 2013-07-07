@@ -29,8 +29,8 @@
         <script type="text/javascript">
             $(function() {
                 $('#trmnl').puiterminal({
-                    welcomeMessage:'Hello World!!',
-                    handler: function(request, response) {
+                    
+                    commandHandler: function(request, response) {
                         $.ajax({
                             type: "GET",
                             url: 'rest/terminal/' + request.command +"-"+ request.params,
