@@ -15,8 +15,8 @@
  */
 package org.primefaces.primeui.service;
 
+import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -27,20 +27,22 @@ import javax.ws.rs.core.MediaType;
 public class TerminalService {
     
     @GET
-    @Path("{command}-{params}")
+    @Path("{command}")
     @Produces(MediaType.TEXT_PLAIN)
-    public String handleCommand(@PathParam("command") String command, @PathParam("params") List<String> params) {
-		if(command.equals("greet")) {
-            if(!"-".equals(params.get(0)))
-                return "Hello " + params.get(0);
+    public String handleCommand(@PathParam("command") String command) {
+        String tokens[] = command.split(" ");
+		String commandName = tokens[0];
+		String[] args = Arrays.copyOfRange(tokens, 1, tokens.length);
+        
+		if(commandName.equals("greet")) {
+            if(args.length > 0)
+                return "Hello " + args[0];
             else
                 return "Hello Stranger";
         }
-		else if(command.equals("date"))
+		else if(commandName.equals("date"))
 			return new Date().toString();
 		else
-			return command + " not found";
+			return commandName + " not found";
 	}  
-    
-    
 }

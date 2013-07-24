@@ -24,6 +24,10 @@
     font-weight: bold;
 }
 
+#sidebar li.themes-container {
+    padding: 5px 10px;
+}
+
 #sidebar .widgets-header {
     background: none repeat scroll 0 0 #85B2CB;
     color: #FFFFFF;

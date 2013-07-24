@@ -7,19 +7,20 @@ $(function() {
        
         options: {
             welcomeMessage: '',
-            prompt:'prime $'
+            prompt:'prime $',
+            handler: null
         },
         
         _create: function() {
             this.element.addClass('pui-terminal ui-widget ui-widget-content ui-corner-all')
-                        .append( '<div>' + this.options.welcomeMessage + '</div>' )
-                        .append( '<div class="pui-terminal-content"></div>' )
-                        .append( '<div><span class="pui-terminal-prompt">' + this.options.prompt + '</span>' +
+                        .append('<div>' + this.options.welcomeMessage + '</div>')
+                        .append('<div class="pui-terminal-content"></div>')
+                        .append('<div><span class="pui-terminal-prompt">' + this.options.prompt + '</span>' +
                                  '<input type="text" class="pui-terminal-input" autocomplete="off"></div>' );
                          
             this.promptContainer = this.element.find('> div:last-child > span.pui-terminal-prompt');
             this.content = this.element.children('.pui-terminal-content');
-            this.input = this.promptContainer.next('');
+            this.input = this.promptContainer.next();
             this.commands = [];
             this.commandIndex = 0;
             
@@ -61,43 +62,30 @@ $(function() {
                     break;
                 }
             });        
-    },
+        },
                 
-    _processCommand: function() {
-        this.commands.push(this.input.val());
-        this.commandIndex++;
+        _processCommand: function() {
+            var command = this.input.val();
+            this.commands.push();
+            this.commandIndex++;
 
-        var tokens = this.input.val().split(" "),
-        command = tokens[0],
-        args = (tokens.length === 1) ? '-' : tokens.slice(1, tokens.length);             
+            if(this.options.handler && $.type(this.options.handler) === 'function') {
+                this.options.handler.call(this, command, this._updateContent); 
+            }
+        },
 
-        var request = {
-            command: command,
-            params:args        
-        };
+        _updateContent: function(content) {
+            var commandResponseContainer = $('<div></div>');
+            commandResponseContainer.append('<span>' + this.options.prompt + '</span><span class="pui-terminal-command">' +  this.input.val() + '</span>')
+                                    .append('<div>' + content + '</div>').appendTo(this.content);
 
-        if(this.options.commandHandler) {
-            if($.type(this.options.commandHandler) === 'function')
-                this.options.commandHandler.call(this, request, this._updateContent);
-        }
+            this.input.val('');
+            this.element.scrollTop(this.content.height());
+        },
 
-
-    },
-
-    _updateContent: function(content) {
-        var commandResponseContainer = $('<div></div>');
-        commandResponseContainer.append('<span>' + this.options.prompt + '</span><span class="pui-terminal-command">' +  this.input.val() + '</span>')
-                                .append('<div>' + content + '</div>').appendTo(this.content);
-
-        this.input.val('');
-        this.element.scrollTop(this.content.height());
-    },
-    
-    clear: function() {
-        this.content.html('');
-        this.input.val('');
-    }
-                               
-       
+        clear: function() {
+            this.content.html('');
+            this.input.val('');
+        }                       
     });
 });

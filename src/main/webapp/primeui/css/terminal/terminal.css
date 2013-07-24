@@ -9,13 +9,15 @@
     background-color: transparent;
     color: inherit;
     padding: 0;
-    margin-left: 2px;
+    margin: 0 0 0 2px;
     width: 75%;
     outline: none;
+    vertical-align: baseline;
 }
 
 .pui-terminal-command {
-    margin-left: 3px;
+    margin-left: 2px;
+    -moz-margin-start: 3px;
 }
 
 .pui-terminal-input::-ms-clear {
