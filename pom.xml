@@ -4,7 +4,7 @@
     
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.primefaces</groupId>
-    <artifactId>prime-ui</artifactId>
+    <artifactId>primeui</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>primeui</name>
@@ -172,32 +172,32 @@
                                             <output>${project.build.directory}/primeui/production/primeui-${project.version}-min.js</output>
                                             <includes>
                                                 <include>${basedir}/src/main/resources/copyright.txt</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/core/core.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/accordion/accordion.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/autocomplete/autocomplete.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/button/button.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/checkbox/checkbox.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/datatable/datatable.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/dialog/dialog.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/dropdown/dropdown.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/fieldset/fieldset.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/galleria/galleria.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/growl/growl.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/inputtext/inputtext.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/inputtextarea/inputtextarea.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/lightbox/lightbox.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/menu/menu.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/notify/notify.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/paginator/paginator.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/panel/panel.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/password/password.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/progressbar/progressbar.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/radiobutton/radiobutton.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/rating/rating.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/spinner/spinner.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/tabview/tabview.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/terminal/terminal.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/tooltip/tooltip.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/core/core.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/accordion/accordion.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/autocomplete/autocomplete.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/button/button.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/checkbox/checkbox.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/datatable/datatable.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/dialog/dialog.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/dropdown/dropdown.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/fieldset/fieldset.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/galleria/galleria.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/growl/growl.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/inputtext/inputtext.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/inputtextarea/inputtextarea.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/lightbox/lightbox.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/menu/menu.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/notify/notify.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/paginator/paginator.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/panel/panel.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/password/password.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/progressbar/progressbar.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/radiobutton/radiobutton.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/rating/rating.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/spinner/spinner.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/tabview/tabview.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/terminal/terminal.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/tooltip/tooltip.js</include>
                                             </includes>
                                         </aggregation>
 
@@ -205,31 +205,31 @@
                                             <output>${project.build.directory}/primeui/production/primeui-${project.version}-min.css</output>
                                             <includes>
                                                 <include>${basedir}/src/main/resources/copyright.txt</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/core/core.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/autocomplete/autocomplete.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/button/button.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/checkbox/checkbox.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/datatable/datatable.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/dialog/dialog.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/dropdown/dropdown.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/fieldset/fieldset.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/galleria/galleria.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/growl/growl.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/inputtext/inputtext.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/inputtextarea/inputtextarea.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/lightbox/lightbox.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/menu/menu.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/notify/notify.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/paginator/paginator.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/panel/panel.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/password/password.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/progressbar/progressbar.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/radiobutton/radiobutton.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/rating/rating.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/spinner/spinner.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/tabview/tabview.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/terminal/terminal.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/tooltip/tooltip.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/core/core.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/autocomplete/autocomplete.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/button/button.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/checkbox/checkbox.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/datatable/datatable.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/dialog/dialog.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/dropdown/dropdown.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/fieldset/fieldset.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/galleria/galleria.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/growl/growl.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/inputtext/inputtext.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/inputtextarea/inputtextarea.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/lightbox/lightbox.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/menu/menu.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/notify/notify.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/paginator/paginator.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/panel/panel.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/password/password.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/progressbar/progressbar.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/radiobutton/radiobutton.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/rating/rating.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/spinner/spinner.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/tabview/tabview.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/terminal/terminal.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/tooltip/tooltip.css</include>
                                             </includes>
                                         </aggregation>
                                     </aggregations>

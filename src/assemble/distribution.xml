@@ -31,6 +31,10 @@
             <directory>${basedir}/src/main/webapp/primeui/images</directory>
             <outputDirectory>/production/images</outputDirectory>
         </fileSet>
+        <fileSet>
+            <directory>${basedir}/src/main/webapp/themes</directory>
+            <outputDirectory>/themes</outputDirectory>
+        </fileSet>
     </fileSets>
     
 </assembly>
