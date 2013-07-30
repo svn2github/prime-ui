@@ -99,13 +99,14 @@ $(function() {
             }
             
             if(this.options.forceSelection) {
-                this.cachedResults = [this.element.val()];
-                this.element.on('blur.puiautocomplete', function() {
-                    var value = $this.element.val(),
-                    valid = false;
+                this.currentItems = [this.element.val()];
 
-                    for(var i = 0; i < $this.cachedResults.length; i++) {
-                        if($this.cachedResults[i] == value) {
+                this.element.on('blur.puiautocomplete', function() {
+                    var value = $(this).val(),
+                    valid = false;
+                    
+                    for(var i = 0; i < $this.currentItems.length; i++) {
+                        if($this.currentItems[i] === value) {
                             valid = true;
                             break;
                         }
@@ -349,9 +350,9 @@ $(function() {
                 }
 
                 if(this.options.forceSelection) {
-                    this.cachedResults = [];
-                    this.data.each(function(i, item) {
-                        $this.cachedResults.push(item.label);
+                    this.currentItems = [];
+                    $.each(data, function(i, item) {
+                        $this.currentItems.push(item.label);
                     });
                 }
 
